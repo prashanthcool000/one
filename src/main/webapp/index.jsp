@@ -1,5 +1,6 @@
 ```jsp
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java"
+    contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>LUXE — Fashion Store</title>
+    <title>CineBook — Movie Ticket Booking</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect"
@@ -29,1564 +30,1872 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <style>
 
-        /* =====================================================
-           GLOBAL
-        ===================================================== */
+<style>
 
-        :root {
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-            --black: #111111;
-            --dark: #191919;
-            --white: #ffffff;
+:root {
 
-            --cream: #f8f5f0;
-            --light: #f4f2ef;
+    --black: #101010;
+    --dark: #181818;
+    --dark2: #222222;
 
-            --gray: #777;
-            --border: #e7e4df;
+    --white: #ffffff;
 
-            --gold: #b88b4a;
-            --pink: #e9a6a6;
+    --red: #e50914;
+    --red-dark: #b20710;
 
-            --radius: 16px;
+    --gold: #f4b942;
 
-            --container: 1250px;
-        }
+    --gray: #8c8c8c;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    --light: #f5f5f5;
 
-        html {
-            scroll-behavior: smooth;
-        }
+    --border: #e5e5e5;
 
-        body {
+    --container: 1250px;
 
-            font-family: "DM Sans", sans-serif;
+    --radius: 14px;
+}
 
-            background: var(--white);
 
-            color: var(--black);
+* {
 
-            line-height: 1.5;
+    margin: 0;
 
-            overflow-x: hidden;
-        }
+    padding: 0;
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
+    box-sizing: border-box;
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
 
-        button,
-        input {
-            font-family: inherit;
-        }
+html {
 
-        .container {
+    scroll-behavior: smooth;
+}
 
-            width: 100%;
 
-            max-width: var(--container);
+body {
 
-            margin: auto;
+    font-family: "DM Sans", sans-serif;
 
-            padding: 0 24px;
-        }
+    background: var(--white);
 
+    color: var(--black);
 
-        /* =====================================================
-           TOP BAR
-        ===================================================== */
+    line-height: 1.5;
 
-        .top-bar {
+    overflow-x: hidden;
+}
 
-            background: var(--black);
 
-            color: white;
+a {
 
-            text-align: center;
+    text-decoration: none;
 
-            padding: 9px;
+    color: inherit;
+}
 
-            font-size: 12px;
 
-            letter-spacing: .5px;
-        }
+button,
+input,
+select {
 
-        .top-bar strong {
-            color: #e9c58c;
-        }
+    font-family: inherit;
+}
 
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+.container {
 
-        header {
+    width: 100%;
 
-            position: sticky;
+    max-width: var(--container);
 
-            top: 0;
+    margin: auto;
 
-            z-index: 1000;
+    padding: 0 24px;
+}
 
-            background: rgba(255,255,255,.96);
 
-            backdrop-filter: blur(15px);
+/* =========================================================
+   TOP BAR
+========================================================= */
 
-            border-bottom: 1px solid var(--border);
-        }
+.topbar {
 
-        .header {
+    background: var(--black);
 
-            height: 78px;
+    color: white;
 
-            display: flex;
+    padding: 8px;
 
-            align-items: center;
+    text-align: center;
 
-            justify-content: space-between;
+    font-size: 12px;
 
-            gap: 30px;
-        }
+    letter-spacing: .4px;
+}
 
-        .logo {
 
-            font-family: "Playfair Display", serif;
+.topbar i {
 
-            font-size: 30px;
+    color: var(--gold);
 
-            font-weight: 700;
+    margin-right: 6px;
+}
 
-            letter-spacing: 2px;
-        }
 
-        .logo span {
-            color: var(--gold);
-        }
+/* =========================================================
+   HEADER
+========================================================= */
 
+header {
 
-        /* NAV */
+    position: sticky;
 
-        .nav ul {
+    top: 0;
 
-            list-style: none;
+    z-index: 1000;
 
-            display: flex;
+    background: rgba(16,16,16,.96);
 
-            gap: 28px;
-        }
+    backdrop-filter: blur(12px);
 
-        .nav a {
+    border-bottom: 1px solid #2d2d2d;
 
-            font-size: 14px;
+    color: white;
+}
 
-            font-weight: 600;
 
-            position: relative;
+.header {
 
-            padding: 29px 0;
-        }
+    height: 76px;
 
-        .nav a::after {
+    display: flex;
 
-            content: "";
+    align-items: center;
 
-            position: absolute;
+    justify-content: space-between;
 
-            bottom: 19px;
+    gap: 30px;
+}
 
-            left: 0;
 
-            width: 0;
+.logo {
 
-            height: 2px;
+    font-family: "Playfair Display", serif;
 
-            background: var(--black);
+    font-size: 30px;
 
-            transition: .3s;
-        }
+    font-weight: 700;
 
-        .nav a:hover::after {
+    letter-spacing: 1px;
+}
 
-            width: 100%;
-        }
 
+.logo span {
 
-        /* HEADER ACTIONS */
+    color: var(--red);
+}
 
-        .header-actions {
 
-            display: flex;
+.nav ul {
 
-            align-items: center;
+    display: flex;
 
-            gap: 18px;
-        }
+    list-style: none;
 
-        .header-icon {
+    gap: 30px;
+}
 
-            border: 0;
 
-            background: transparent;
+.nav a {
 
-            cursor: pointer;
+    font-size: 14px;
 
-            font-size: 17px;
+    color: #ddd;
 
-            position: relative;
+    transition: .2s;
+}
 
-            color: var(--black);
-        }
 
-        .cart-count {
+.nav a:hover {
 
-            position: absolute;
+    color: white;
+}
 
-            top: -10px;
 
-            right: -10px;
+.header-actions {
 
-            width: 18px;
+    display: flex;
 
-            height: 18px;
+    align-items: center;
 
-            border-radius: 50%;
+    gap: 18px;
+}
 
-            background: var(--black);
 
-            color: white;
+.header-icon {
 
-            display: grid;
+    color: white;
 
-            place-items: center;
+    background: transparent;
 
-            font-size: 10px;
+    border: 0;
 
-            font-weight: 700;
-        }
+    cursor: pointer;
 
-        .mobile-menu-btn {
+    font-size: 16px;
 
-            display: none;
+    position: relative;
+}
 
-            background: transparent;
 
-            border: 0;
+.location {
 
-            font-size: 20px;
+    display: flex;
 
-            cursor: pointer;
-        }
+    align-items: center;
 
+    gap: 7px;
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+    color: #ddd;
 
-        .hero {
+    font-size: 13px;
+}
 
-            min-height: 650px;
 
-            background-image:
+.location i {
 
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,.65),
-                    rgba(0,0,0,.15)
-                ),
+    color: var(--red);
+}
 
-                url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1800&q=90");
 
-            background-size: cover;
+.mobile-menu {
 
-            background-position: center;
+    display: none;
 
-            display: flex;
+    background: transparent;
 
-            align-items: center;
+    border: 0;
 
-            color: white;
-        }
+    color: white;
 
-        .hero-content {
+    font-size: 20px;
 
-            max-width: 650px;
-        }
+    cursor: pointer;
+}
 
-        .hero-small {
 
-            text-transform: uppercase;
+/* =========================================================
+   HERO
+========================================================= */
 
-            letter-spacing: 4px;
+.hero {
 
-            font-size: 12px;
+    min-height: 610px;
 
-            margin-bottom: 20px;
+    background:
 
-            font-weight: 600;
-        }
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.92),
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.2)
+        ),
 
-        .hero h1 {
+        url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=90")
+        center/cover;
 
-            font-family: "Playfair Display", serif;
+    display: flex;
 
-            font-size: clamp(50px, 7vw, 88px);
+    align-items: center;
 
-            line-height: 1.02;
+    color: white;
+}
 
-            margin-bottom: 25px;
 
-            font-weight: 600;
-        }
+.hero-content {
 
-        .hero h1 span {
-            color: #e9c58c;
-        }
+    max-width: 650px;
+}
 
-        .hero p {
 
-            max-width: 500px;
+.hero-label {
 
-            font-size: 16px;
+    color: #ffb4b4;
 
-            color: rgba(255,255,255,.9);
+    font-size: 12px;
 
-            margin-bottom: 35px;
-        }
+    text-transform: uppercase;
 
-        .hero-buttons {
+    letter-spacing: 3px;
 
-            display: flex;
+    font-weight: 700;
 
-            gap: 12px;
+    margin-bottom: 18px;
+}
 
-            flex-wrap: wrap;
-        }
 
-        .btn {
+.hero h1 {
 
-            border: 0;
+    font-family: "Playfair Display", serif;
 
-            padding: 14px 28px;
+    font-size: clamp(48px, 7vw, 80px);
 
-            cursor: pointer;
+    line-height: 1.05;
 
-            font-weight: 600;
+    margin-bottom: 20px;
+}
 
-            transition: .25s;
 
-            display: inline-flex;
+.hero h1 span {
 
-            align-items: center;
+    color: #ff3942;
+}
 
-            justify-content: center;
 
-            gap: 10px;
-        }
+.hero p {
 
-        .btn-dark {
+    color: #ddd;
 
-            background: white;
+    max-width: 560px;
 
-            color: black;
-        }
+    font-size: 16px;
 
-        .btn-dark:hover {
+    margin-bottom: 30px;
+}
 
-            background: #eee;
 
-            transform: translateY(-2px);
-        }
+.hero-buttons {
 
-        .btn-outline {
+    display: flex;
 
-            border: 1px solid rgba(255,255,255,.6);
+    gap: 12px;
 
-            background: transparent;
+    flex-wrap: wrap;
+}
 
-            color: white;
-        }
 
-        .btn-outline:hover {
+.btn {
 
-            background: white;
+    border: 0;
 
-            color: black;
-        }
+    padding: 14px 24px;
 
+    cursor: pointer;
 
-        /* =====================================================
-           BENEFITS
-        ===================================================== */
+    font-weight: 700;
 
-        .benefits {
+    display: inline-flex;
 
-            border-bottom: 1px solid var(--border);
+    align-items: center;
 
-            border-top: 1px solid var(--border);
-        }
+    justify-content: center;
 
-        .benefit-grid {
+    gap: 9px;
 
-            display: grid;
+    transition: .25s;
+}
 
-            grid-template-columns: repeat(4,1fr);
-        }
 
-        .benefit {
+.btn-red {
 
-            padding: 28px 20px;
+    background: var(--red);
 
-            display: flex;
+    color: white;
+}
 
-            align-items: center;
 
-            gap: 14px;
+.btn-red:hover {
 
-            border-right: 1px solid var(--border);
-        }
+    background: var(--red-dark);
 
-        .benefit:last-child {
-            border-right: 0;
-        }
+    transform: translateY(-2px);
+}
 
-        .benefit i {
 
-            font-size: 22px;
+.btn-outline {
 
-            color: var(--gold);
-        }
+    background: transparent;
 
-        .benefit h4 {
+    color: white;
 
-            font-size: 13px;
+    border: 1px solid #777;
+}
 
-            margin-bottom: 3px;
-        }
 
-        .benefit p {
+.btn-outline:hover {
 
-            font-size: 11px;
+    background: white;
 
-            color: var(--gray);
-        }
+    color: black;
+}
 
 
-        /* =====================================================
-           SECTION
-        ===================================================== */
+/* =========================================================
+   BOOKING SEARCH
+========================================================= */
 
-        .section {
+.booking-search {
 
-            padding: 85px 0;
-        }
+    margin-top: -45px;
 
-        .section-header {
+    position: relative;
 
-            text-align: center;
+    z-index: 10;
+}
 
-            margin-bottom: 42px;
-        }
 
-        .eyebrow {
+.search-box {
 
-            text-transform: uppercase;
+    background: white;
 
-            letter-spacing: 3px;
+    padding: 22px;
 
-            color: var(--gold);
+    box-shadow: 0 15px 50px rgba(0,0,0,.15);
 
-            font-size: 11px;
+    display: grid;
 
-            font-weight: 700;
+    grid-template-columns: 1.5fr 1fr 1fr auto;
 
-            margin-bottom: 10px;
-        }
+    gap: 12px;
 
-        .section-title {
+    border-radius: 12px;
+}
 
-            font-family: "Playfair Display", serif;
 
-            font-size: 42px;
+.search-field {
 
-            font-weight: 600;
+    border: 1px solid var(--border);
 
-            margin-bottom: 10px;
-        }
+    padding: 13px 15px;
 
-        .section-description {
+    display: flex;
 
-            color: var(--gray);
+    align-items: center;
 
-            font-size: 14px;
-        }
+    gap: 10px;
 
+    background: #fafafa;
+}
 
-        /* =====================================================
-           CATEGORIES
-        ===================================================== */
 
-        .categories {
+.search-field i {
 
-            display: grid;
+    color: var(--red);
+}
 
-            grid-template-columns: repeat(4,1fr);
 
-            gap: 18px;
-        }
+.search-field input,
+.search-field select {
 
-        .category {
+    border: 0;
 
-            height: 390px;
+    outline: none;
 
-            position: relative;
+    background: transparent;
 
-            overflow: hidden;
+    width: 100%;
 
-            cursor: pointer;
-        }
+    font-size: 14px;
+}
 
-        .category img {
 
-            width: 100%;
+.search-submit {
 
-            height: 100%;
+    background: var(--red);
 
-            object-fit: cover;
+    color: white;
 
-            transition: .5s;
-        }
+    border: 0;
 
-        .category:hover img {
+    padding: 0 26px;
 
-            transform: scale(1.06);
-        }
+    cursor: pointer;
 
-        .category-overlay {
+    font-weight: 700;
 
-            position: absolute;
+    border-radius: 5px;
+}
 
-            inset: 0;
 
-            display: flex;
+/* =========================================================
+   SECTION
+========================================================= */
 
-            flex-direction: column;
+.section {
 
-            align-items: center;
+    padding: 85px 0;
+}
 
-            justify-content: flex-end;
 
-            padding: 35px 20px;
+.section-header {
 
-            color: white;
+    display: flex;
 
-            text-align: center;
+    align-items: end;
 
-            background:
-                linear-gradient(
-                    transparent 35%,
-                    rgba(0,0,0,.65)
-                );
-        }
+    justify-content: space-between;
 
-        .category h3 {
+    margin-bottom: 35px;
 
-            font-family: "Playfair Display", serif;
+    gap: 20px;
+}
 
-            font-size: 29px;
 
-            margin-bottom: 8px;
-        }
+.eyebrow {
 
-        .category a {
+    color: var(--red);
 
-            font-size: 12px;
+    text-transform: uppercase;
 
-            text-transform: uppercase;
+    font-size: 11px;
 
-            letter-spacing: 2px;
+    font-weight: 700;
 
-            border-bottom: 1px solid white;
+    letter-spacing: 3px;
 
-            padding-bottom: 4px;
-        }
+    margin-bottom: 7px;
+}
 
 
-        /* =====================================================
-           PRODUCTS
-        ===================================================== */
+.section-title {
 
-        .product-toolbar {
+    font-family: "Playfair Display", serif;
 
-            display: flex;
+    font-size: 40px;
 
-            justify-content: space-between;
+    line-height: 1.1;
+}
 
-            align-items: center;
 
-            margin-bottom: 25px;
+.section-description {
 
-            gap: 20px;
-        }
+    color: var(--gray);
 
-        .filter-buttons {
+    font-size: 14px;
 
-            display: flex;
+    margin-top: 8px;
+}
 
-            gap: 8px;
 
-            flex-wrap: wrap;
-        }
+.view-all {
 
-        .filter-btn {
+    color: var(--red);
 
-            background: transparent;
+    font-size: 13px;
 
-            border: 1px solid var(--border);
+    font-weight: 700;
+}
 
-            padding: 9px 18px;
 
-            cursor: pointer;
+/* =========================================================
+   MOVIE FILTER
+========================================================= */
 
-            border-radius: 30px;
+.movie-filters {
 
-            font-size: 12px;
+    display: flex;
 
-            transition: .25s;
-        }
+    gap: 8px;
 
-        .filter-btn:hover,
-        .filter-btn.active {
+    flex-wrap: wrap;
 
-            background: var(--black);
+    margin-bottom: 30px;
+}
 
-            color: white;
 
-            border-color: var(--black);
-        }
+.filter {
 
-        .product-grid {
+    border: 1px solid var(--border);
 
-            display: grid;
+    background: white;
 
-            grid-template-columns: repeat(4,1fr);
+    padding: 9px 18px;
 
-            gap: 24px;
-        }
+    border-radius: 30px;
 
-        .product-card {
+    cursor: pointer;
 
-            position: relative;
+    font-size: 12px;
 
-            background: white;
+    transition: .2s;
+}
 
-            min-width: 0;
-        }
 
-        .product-image {
+.filter:hover,
+.filter.active {
 
-            position: relative;
+    background: var(--red);
 
-            overflow: hidden;
+    border-color: var(--red);
 
-            background: var(--light);
+    color: white;
+}
 
-            aspect-ratio: 3 / 4;
-        }
 
-        .product-image img {
+/* =========================================================
+   MOVIE GRID
+========================================================= */
 
-            width: 100%;
+.movie-grid {
 
-            height: 100%;
+    display: grid;
 
-            object-fit: cover;
+    grid-template-columns: repeat(4,1fr);
 
-            transition: .45s;
-        }
+    gap: 22px;
+}
 
-        .product-card:hover .product-image img {
 
-            transform: scale(1.05);
-        }
+.movie-card {
 
-        .product-badge {
+    background: white;
 
-            position: absolute;
+    border-radius: 12px;
 
-            top: 13px;
+    overflow: hidden;
 
-            left: 13px;
+    border: 1px solid var(--border);
 
-            background: var(--black);
+    transition: .3s;
 
-            color: white;
+    position: relative;
+}
 
-            padding: 6px 10px;
 
-            font-size: 10px;
+.movie-card:hover {
 
-            font-weight: 700;
+    transform: translateY(-7px);
 
-            text-transform: uppercase;
+    box-shadow: 0 20px 45px rgba(0,0,0,.12);
+}
 
-            letter-spacing: 1px;
 
-            z-index: 2;
-        }
+.movie-poster {
 
-        .product-badge.sale {
-            background: #c65d5d;
-        }
+    aspect-ratio: 2 / 3;
 
-        .wishlist {
+    overflow: hidden;
 
-            position: absolute;
+    position: relative;
 
-            top: 13px;
+    background: #ddd;
+}
 
-            right: 13px;
 
-            width: 38px;
+.movie-poster img {
 
-            height: 38px;
+    width: 100%;
 
-            border: 0;
+    height: 100%;
 
-            border-radius: 50%;
+    object-fit: cover;
 
-            background: white;
+    transition: .45s;
+}
 
-            cursor: pointer;
 
-            z-index: 2;
+.movie-card:hover .movie-poster img {
 
-            box-shadow: 0 5px 20px rgba(0,0,0,.1);
-        }
+    transform: scale(1.05);
+}
 
-        .wishlist:hover {
 
-            color: #c65d5d;
-        }
+.movie-badge {
 
-        .quick-add {
+    position: absolute;
 
-            position: absolute;
+    top: 12px;
 
-            bottom: -55px;
+    left: 12px;
 
-            left: 12px;
+    background: var(--red);
 
-            right: 12px;
+    color: white;
 
-            background: white;
+    padding: 6px 9px;
 
-            border: 0;
+    font-size: 10px;
 
-            padding: 13px;
+    font-weight: 700;
 
-            font-weight: 700;
+    z-index: 2;
 
-            cursor: pointer;
+    text-transform: uppercase;
+}
 
-            transition: .3s;
 
-            z-index: 3;
-        }
+.movie-rating {
 
-        .product-card:hover .quick-add {
+    position: absolute;
 
-            bottom: 12px;
-        }
+    top: 12px;
 
-        .product-info {
+    right: 12px;
 
-            padding: 17px 2px;
-        }
+    background: rgba(0,0,0,.8);
 
-        .product-category {
+    color: #ffc107;
 
-            color: var(--gray);
+    padding: 6px 8px;
 
-            font-size: 11px;
+    font-size: 11px;
 
-            text-transform: uppercase;
+    border-radius: 5px;
+}
 
-            letter-spacing: 1px;
 
-            margin-bottom: 5px;
-        }
+.movie-info {
 
-        .product-name {
+    padding: 16px;
+}
 
-            font-size: 15px;
 
-            font-weight: 600;
+.movie-name {
 
-            margin-bottom: 8px;
-        }
+    font-weight: 700;
 
-        .product-rating {
+    font-size: 16px;
 
-            font-size: 11px;
+    margin-bottom: 5px;
+}
 
-            color: #d39a38;
 
-            margin-bottom: 9px;
-        }
+.movie-meta {
 
-        .price {
+    color: var(--gray);
 
-            font-size: 15px;
+    font-size: 12px;
 
-            font-weight: 700;
-        }
+    margin-bottom: 14px;
+}
 
-        .old-price {
 
-            color: #999;
+.movie-meta span {
 
-            text-decoration: line-through;
+    margin-right: 7px;
+}
 
-            font-weight: 400;
 
-            margin-left: 6px;
+.movie-actions {
 
-            font-size: 13px;
-        }
+    display: flex;
 
+    gap: 8px;
+}
 
-        /* =====================================================
-           PROMO
-        ===================================================== */
 
-        .promo {
+.book-btn {
 
-            background: var(--cream);
+    flex: 1;
 
-            padding: 80px 0;
-        }
+    background: var(--black);
 
-        .promo-box {
+    color: white;
 
-            display: grid;
+    border: 0;
 
-            grid-template-columns: 1fr 1fr;
+    padding: 10px;
 
-            min-height: 520px;
-        }
+    cursor: pointer;
 
-        .promo-image {
+    font-weight: 700;
 
-            background-image:
-                url("https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=90");
+    font-size: 12px;
+}
 
-            background-size: cover;
 
-            background-position: center;
-        }
+.book-btn:hover {
 
-        .promo-content {
+    background: var(--red);
+}
 
-            display: flex;
 
-            flex-direction: column;
+.info-btn {
 
-            justify-content: center;
+    width: 40px;
 
-            padding: 70px;
+    background: white;
 
-            background: white;
-        }
+    border: 1px solid var(--border);
 
-        .promo-content h2 {
+    cursor: pointer;
+}
 
-            font-family: "Playfair Display", serif;
 
-            font-size: 52px;
+/* =========================================================
+   SHOWTIMES
+========================================================= */
 
-            line-height: 1.1;
+.showtimes-section {
 
-            margin-bottom: 18px;
-        }
+    background: #f7f7f7;
+}
 
-        .promo-content p {
 
-            color: var(--gray);
+.showtime-layout {
 
-            max-width: 430px;
+    display: grid;
 
-            margin-bottom: 25px;
-        }
+    grid-template-columns: 1fr 1.5fr;
 
-        .promo-price {
+    gap: 35px;
 
-            font-size: 28px;
+    align-items: center;
+}
 
-            font-weight: 700;
 
-            margin-bottom: 25px;
-        }
+.showtime-poster {
 
-        .promo-price span {
+    height: 500px;
 
-            color: #999;
+    overflow: hidden;
+}
 
-            font-size: 15px;
 
-            text-decoration: line-through;
+.showtime-poster img {
 
-            margin-left: 10px;
-        }
+    width: 100%;
 
+    height: 100%;
 
-        /* =====================================================
-           NEW COLLECTION
-        ===================================================== */
+    object-fit: cover;
+}
 
-        .collection {
 
-            background: var(--dark);
+.showtime-content h2 {
 
-            color: white;
-        }
+    font-family: "Playfair Display", serif;
 
-        .collection .section-description {
-            color: #aaa;
-        }
+    font-size: 48px;
 
-        .collection-grid {
+    margin-bottom: 10px;
+}
 
-            display: grid;
 
-            grid-template-columns: 1.3fr 1fr 1fr;
+.movie-info-line {
 
-            gap: 18px;
+    color: var(--gray);
 
-            height: 580px;
-        }
+    font-size: 13px;
 
-        .collection-item {
+    margin-bottom: 20px;
+}
 
-            position: relative;
 
-            overflow: hidden;
-        }
+.show-date {
 
-        .collection-item img {
+    font-size: 12px;
 
-            width: 100%;
+    text-transform: uppercase;
 
-            height: 100%;
+    letter-spacing: 1px;
 
-            object-fit: cover;
+    font-weight: 700;
 
-            transition: .5s;
-        }
+    margin-bottom: 12px;
+}
 
-        .collection-item:hover img {
 
-            transform: scale(1.05);
-        }
+.dates {
 
-        .collection-item:first-child {
+    display: flex;
 
-            grid-row: span 2;
-        }
+    gap: 8px;
 
-        .collection-caption {
+    margin-bottom: 25px;
+}
 
-            position: absolute;
 
-            left: 25px;
+.date {
 
-            bottom: 25px;
-        }
+    min-width: 65px;
 
-        .collection-caption h3 {
+    border: 1px solid var(--border);
 
-            font-family: "Playfair Display", serif;
+    background: white;
 
-            font-size: 27px;
-        }
+    padding: 9px;
 
-        .collection-caption p {
+    text-align: center;
 
-            font-size: 12px;
+    cursor: pointer;
+}
 
-            opacity: .8;
-        }
 
+.date strong {
 
-        /* =====================================================
-           TESTIMONIALS
-        ===================================================== */
+    display: block;
 
-        .reviews {
+    font-size: 16px;
+}
 
-            display: grid;
 
-            grid-template-columns: repeat(3,1fr);
+.date span {
 
-            gap: 20px;
-        }
+    font-size: 10px;
 
-        .review {
+    color: var(--gray);
+}
 
-            border: 1px solid var(--border);
 
-            padding: 30px;
+.date.active {
 
-            text-align: center;
-        }
+    background: var(--red);
 
-        .review-stars {
+    border-color: var(--red);
 
-            color: #d39a38;
+    color: white;
+}
 
-            letter-spacing: 3px;
 
-            margin-bottom: 17px;
-        }
+.date.active span {
 
-        .review p {
+    color: white;
+}
 
-            font-family: "Playfair Display", serif;
 
-            font-size: 18px;
+.cinema-name {
 
-            line-height: 1.6;
+    font-weight: 700;
 
-            margin-bottom: 20px;
-        }
+    font-size: 15px;
 
-        .review-name {
+    margin-bottom: 10px;
+}
 
-            font-size: 12px;
 
-            font-weight: 700;
+.showtimes {
 
-            text-transform: uppercase;
+    display: flex;
 
-            letter-spacing: 1px;
-        }
+    gap: 9px;
 
+    flex-wrap: wrap;
 
-        /* =====================================================
-           NEWSLETTER
-        ===================================================== */
+    margin-bottom: 25px;
+}
 
-        .newsletter {
 
-            background: var(--cream);
+.time {
 
-            padding: 75px 20px;
+    border: 1px solid #bbb;
 
-            text-align: center;
-        }
+    background: white;
 
-        .newsletter h2 {
+    padding: 10px 15px;
 
-            font-family: "Playfair Display", serif;
+    cursor: pointer;
 
-            font-size: 40px;
+    font-size: 12px;
 
-            margin-bottom: 10px;
-        }
+    font-weight: 600;
+}
 
-        .newsletter p {
 
-            color: var(--gray);
+.time:hover,
+.time.selected {
 
-            margin-bottom: 25px;
-        }
+    border-color: var(--red);
 
-        .newsletter-form {
+    color: var(--red);
+}
 
-            display: flex;
 
-            max-width: 500px;
+/* =========================================================
+   FEATURES
+========================================================= */
 
-            margin: auto;
-        }
+.features {
 
-        .newsletter-form input {
+    display: grid;
 
-            flex: 1;
+    grid-template-columns: repeat(4,1fr);
 
-            border: 1px solid var(--border);
+    border-top: 1px solid var(--border);
 
-            padding: 14px 17px;
+    border-bottom: 1px solid var(--border);
+}
 
-            outline: none;
 
-            background: white;
-        }
+.feature {
 
-        .newsletter-form button {
+    padding: 30px 20px;
 
-            border: 0;
+    display: flex;
 
-            background: var(--black);
+    align-items: center;
 
-            color: white;
+    gap: 13px;
 
-            padding: 0 25px;
+    border-right: 1px solid var(--border);
+}
 
-            cursor: pointer;
 
-            font-weight: 700;
-        }
+.feature:last-child {
 
+    border-right: 0;
+}
 
-        /* =====================================================
-           FOOTER
-        ===================================================== */
 
-        footer {
+.feature i {
 
-            background: var(--black);
+    color: var(--red);
 
-            color: white;
+    font-size: 22px;
+}
 
-            padding: 70px 0 25px;
-        }
 
-        .footer-grid {
+.feature h4 {
 
-            display: grid;
+    font-size: 13px;
 
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+    margin-bottom: 2px;
+}
 
-            gap: 50px;
 
-            padding-bottom: 50px;
+.feature p {
 
-            border-bottom: 1px solid #333;
-        }
+    font-size: 11px;
 
-        .footer-logo {
+    color: var(--gray);
+}
 
-            font-family: "Playfair Display", serif;
 
-            font-size: 30px;
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
 
-            margin-bottom: 15px;
-        }
+.steps {
 
-        .footer-about {
+    display: grid;
 
-            color: #999;
+    grid-template-columns: repeat(3,1fr);
 
-            font-size: 13px;
+    gap: 20px;
+}
 
-            max-width: 320px;
-        }
 
-        .footer-title {
+.step {
 
-            font-size: 13px;
+    border: 1px solid var(--border);
 
-            font-weight: 700;
+    padding: 35px;
 
-            text-transform: uppercase;
+    text-align: center;
+}
 
-            letter-spacing: 1px;
 
-            margin-bottom: 18px;
-        }
+.step-number {
 
-        .footer-links {
+    width: 45px;
 
-            list-style: none;
-        }
+    height: 45px;
 
-        .footer-links li {
+    margin: auto;
 
-            margin-bottom: 10px;
+    display: grid;
 
-            color: #999;
+    place-items: center;
 
-            font-size: 13px;
-        }
+    border-radius: 50%;
 
-        .footer-links li:hover {
+    background: #fff0f0;
 
-            color: white;
+    color: var(--red);
 
-            cursor: pointer;
-        }
+    font-weight: 700;
 
-        .social {
+    margin-bottom: 18px;
+}
 
-            display: flex;
 
-            gap: 10px;
+.step i {
 
-            margin-top: 20px;
-        }
+    font-size: 28px;
 
-        .social a {
+    color: var(--red);
 
-            width: 35px;
+    margin-bottom: 12px;
+}
 
-            height: 35px;
 
-            border: 1px solid #444;
+.step h3 {
 
-            border-radius: 50%;
+    font-size: 17px;
 
-            display: grid;
+    margin-bottom: 7px;
+}
 
-            place-items: center;
-        }
 
-        .copyright {
+.step p {
 
-            text-align: center;
+    color: var(--gray);
 
-            padding-top: 25px;
+    font-size: 13px;
+}
 
-            color: #777;
 
-            font-size: 12px;
-        }
+/* =========================================================
+   NEWSLETTER
+========================================================= */
 
+.newsletter {
 
-        /* =====================================================
-           SEARCH MODAL
-        ===================================================== */
+    background: var(--black);
 
-        .search-panel {
+    color: white;
 
-            position: fixed;
+    padding: 70px 20px;
 
-            inset: 0;
+    text-align: center;
+}
 
-            background: rgba(0,0,0,.7);
 
-            z-index: 2000;
+.newsletter h2 {
 
-            display: none;
+    font-family: "Playfair Display", serif;
 
-            align-items: flex-start;
+    font-size: 42px;
 
-            justify-content: center;
+    margin-bottom: 10px;
+}
 
-            padding-top: 100px;
-        }
 
-        .search-panel.show {
+.newsletter p {
 
-            display: flex;
-        }
+    color: #aaa;
 
-        .search-box {
+    font-size: 14px;
 
-            width: 90%;
+    margin-bottom: 25px;
+}
 
-            max-width: 700px;
 
-            background: white;
+.newsletter-form {
 
-            padding: 25px;
+    max-width: 500px;
 
-            display: flex;
+    margin: auto;
 
-            gap: 10px;
-        }
+    display: flex;
+}
 
-        .search-box input {
 
-            flex: 1;
+.newsletter-form input {
 
-            border: 0;
+    flex: 1;
 
-            outline: none;
+    padding: 14px;
 
-            font-size: 18px;
+    border: 0;
 
-            padding: 10px;
-        }
+    outline: none;
+}
 
-        .close-search {
 
-            border: 0;
+.newsletter-form button {
 
-            background: transparent;
+    background: var(--red);
 
-            font-size: 20px;
+    color: white;
 
-            cursor: pointer;
-        }
+    border: 0;
 
+    padding: 0 25px;
 
-        /* =====================================================
-           MOBILE MENU
-        ===================================================== */
+    font-weight: 700;
 
-        .mobile-nav {
+    cursor: pointer;
+}
 
-            display: none;
 
-            background: white;
+/* =========================================================
+   FOOTER
+========================================================= */
 
-            border-top: 1px solid var(--border);
+footer {
 
-            padding: 20px;
-        }
+    background: #090909;
 
-        .mobile-nav a {
+    color: white;
 
-            display: block;
+    padding: 65px 0 25px;
+}
 
-            padding: 12px 0;
 
-            border-bottom: 1px solid var(--border);
+.footer-grid {
 
-            font-weight: 600;
-        }
+    display: grid;
 
+    grid-template-columns: 2fr 1fr 1fr 1fr;
 
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
+    gap: 45px;
 
-        @media(max-width:1000px) {
+    padding-bottom: 40px;
 
-            .nav {
-                display: none;
-            }
+    border-bottom: 1px solid #292929;
+}
 
-            .mobile-menu-btn {
-                display: block;
-            }
 
-            .header {
-                justify-content: space-between;
-            }
+.footer-logo {
 
-            .benefit-grid {
-                grid-template-columns: repeat(2,1fr);
-            }
+    font-family: "Playfair Display", serif;
 
-            .benefit:nth-child(2) {
-                border-right: 0;
-            }
+    font-size: 30px;
 
-            .categories {
-                grid-template-columns: repeat(2,1fr);
-            }
+    margin-bottom: 13px;
+}
 
-            .product-grid {
-                grid-template-columns: repeat(3,1fr);
-            }
 
-            .collection-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+.footer-logo span {
 
-            .collection-item:first-child {
-                grid-row: span 1;
-            }
+    color: var(--red);
+}
 
-            .reviews {
-                grid-template-columns: 1fr;
-            }
 
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+.footer-about {
 
+    color: #888;
 
-        @media(max-width:700px) {
+    max-width: 330px;
 
-            .header {
-                height: 65px;
-            }
+    font-size: 13px;
+}
 
-            .logo {
-                font-size: 24px;
-            }
 
-            .header-actions {
-                gap: 12px;
-            }
+.footer-title {
 
-            .hero {
-                min-height: 600px;
+    text-transform: uppercase;
 
-                background-position: 65% center;
-            }
+    letter-spacing: 1px;
 
-            .hero h1 {
-                font-size: 48px;
-            }
+    font-size: 12px;
 
-            .section {
-                padding: 60px 0;
-            }
+    font-weight: 700;
 
-            .section-title {
-                font-size: 34px;
-            }
+    margin-bottom: 17px;
+}
 
-            .categories {
-                grid-template-columns: 1fr 1fr;
 
-                gap: 10px;
-            }
+.footer-links {
 
-            .category {
-                height: 280px;
-            }
+    list-style: none;
+}
 
-            .category h3 {
-                font-size: 23px;
-            }
 
-            .product-toolbar {
-                align-items: flex-start;
+.footer-links li {
 
-                flex-direction: column;
-            }
+    color: #888;
 
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
+    font-size: 13px;
 
-                gap: 15px;
-            }
+    margin-bottom: 9px;
+}
 
-            .quick-add {
-                position: static;
 
-                margin: 0 10px 10px;
+.footer-links li:hover {
 
-                width: calc(100% - 20px);
-            }
+    color: white;
 
-            .product-card:hover .quick-add {
-                bottom: auto;
-            }
+    cursor: pointer;
+}
 
-            .promo-box {
-                grid-template-columns: 1fr;
-            }
 
-            .promo-image {
-                min-height: 400px;
-            }
+.social {
 
-            .promo-content {
-                padding: 45px 25px;
-            }
+    display: flex;
 
-            .promo-content h2 {
-                font-size: 40px;
-            }
+    gap: 9px;
 
-            .collection-grid {
-                grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+}
 
-                height: 500px;
-            }
 
-            .collection-item:first-child {
-                grid-column: span 2;
-            }
+.social a {
 
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
+    width: 35px;
 
-                gap: 30px;
-            }
+    height: 35px;
 
-        }
+    border: 1px solid #444;
 
+    border-radius: 50%;
 
-        @media(max-width:480px) {
+    display: grid;
 
-            .container {
-                padding: 0 16px;
-            }
+    place-items: center;
+}
 
-            .header-actions .search-icon {
-                display: none;
-            }
 
-            .benefit-grid {
-                grid-template-columns: 1fr;
-            }
+.copyright {
 
-            .benefit {
-                border-right: 0;
+    text-align: center;
 
-                border-bottom: 1px solid var(--border);
-            }
+    color: #666;
 
-            .categories {
-                grid-template-columns: 1fr;
-            }
+    padding-top: 23px;
 
-            .category {
-                height: 350px;
-            }
+    font-size: 11px;
+}
 
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
-            }
 
-            .product-name {
-                font-size: 13px;
-            }
+/* =========================================================
+   BOOKING MODAL
+========================================================= */
 
-            .price {
-                font-size: 13px;
-            }
+.modal {
 
-            .collection-grid {
-                height: 650px;
+    position: fixed;
 
-                grid-template-columns: 1fr;
-            }
+    inset: 0;
 
-            .collection-item:first-child {
-                grid-column: auto;
-            }
+    background: rgba(0,0,0,.75);
 
-            .newsletter-form {
-                flex-direction: column;
+    z-index: 3000;
 
-                gap: 8px;
-            }
+    display: none;
 
-            .newsletter-form input {
-                width: 100%;
-            }
+    align-items: center;
 
-            .newsletter-form button {
-                padding: 14px;
-            }
+    justify-content: center;
 
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    padding: 20px;
+}
 
-    </style>
+
+.modal.show {
+
+    display: flex;
+}
+
+
+.booking-modal {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    position: relative;
+}
+
+
+.close-modal {
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 20px;
+
+    width: 35px;
+
+    height: 35px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #f3f3f3;
+
+    cursor: pointer;
+}
+
+
+.booking-header {
+
+    margin-bottom: 25px;
+
+    padding-right: 40px;
+}
+
+
+.booking-header h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 34px;
+}
+
+
+.booking-header p {
+
+    color: var(--gray);
+
+    font-size: 13px;
+}
+
+
+/* SEAT SCREEN */
+
+.screen {
+
+    margin: 10px auto 30px;
+
+    max-width: 500px;
+
+    text-align: center;
+}
+
+
+.screen-line {
+
+    height: 8px;
+
+    background: #ddd;
+
+    border-radius: 50%;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+
+    margin-bottom: 8px;
+}
+
+
+.screen span {
+
+    color: #999;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+.seat-layout {
+
+    max-width: 520px;
+
+    margin: auto;
+}
+
+
+.seat-row {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+}
+
+
+.seat {
+
+    width: 32px;
+
+    height: 28px;
+
+    border: 0;
+
+    border-radius: 6px 6px 3px 3px;
+
+    background: #ddd;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+
+.seat:hover {
+
+    background: #bbb;
+}
+
+
+.seat.selected {
+
+    background: var(--red);
+
+    color: white;
+}
+
+
+.seat.booked {
+
+    background: #333;
+
+    color: white;
+
+    cursor: not-allowed;
+}
+
+
+.seat-space {
+
+    width: 18px;
+}
+
+
+/* BOOKING SUMMARY */
+
+.booking-summary {
+
+    margin-top: 30px;
+
+    border-top: 1px solid var(--border);
+
+    padding-top: 25px;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 20px;
+
+    align-items: end;
+}
+
+
+.summary-details h3 {
+
+    margin-bottom: 8px;
+}
+
+
+.summary-details p {
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+
+.total {
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+.confirm-btn {
+
+    background: var(--red);
+
+    color: white;
+
+    border: 0;
+
+    padding: 13px 25px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.success-message {
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    display: none;
+}
+
+
+.success-message i {
+
+    font-size: 55px;
+
+    color: #28a745;
+
+    margin-bottom: 18px;
+}
+
+
+.success-message h2 {
+
+    font-family: "Playfair Display", serif;
+
+    margin-bottom: 8px;
+}
+
+
+.success-message p {
+
+    color: var(--gray);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px) {
+
+    .nav {
+
+        display: none;
+    }
+
+    .mobile-menu {
+
+        display: block;
+    }
+
+    .movie-grid {
+
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .search-box {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .search-submit {
+
+        padding: 13px;
+    }
+
+    .showtime-layout {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .features {
+
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .feature:nth-child(2) {
+
+        border-right: 0;
+    }
+
+    .footer-grid {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media(max-width:700px) {
+
+    .header {
+
+        height: 65px;
+    }
+
+    .logo {
+
+        font-size: 25px;
+    }
+
+    .location {
+
+        display: none;
+    }
+
+    .hero {
+
+        min-height: 580px;
+    }
+
+    .hero h1 {
+
+        font-size: 49px;
+    }
+
+    .booking-search {
+
+        margin-top: -25px;
+    }
+
+    .search-box {
+
+        grid-template-columns: 1fr;
+
+        padding: 15px;
+    }
+
+    .section {
+
+        padding: 60px 0;
+    }
+
+    .section-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .section-title {
+
+        font-size: 34px;
+    }
+
+    .movie-grid {
+
+        grid-template-columns: repeat(2,1fr);
+
+        gap: 14px;
+    }
+
+    .movie-info {
+
+        padding: 12px;
+    }
+
+    .movie-name {
+
+        font-size: 14px;
+    }
+
+    .showtime-layout {
+
+        grid-template-columns: 1fr;
+    }
+
+    .showtime-poster {
+
+        height: 400px;
+    }
+
+    .showtime-content h2 {
+
+        font-size: 38px;
+    }
+
+    .steps {
+
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .newsletter-form input {
+
+        padding: 14px;
+    }
+
+    .newsletter-form button {
+
+        padding: 14px;
+    }
+
+}
+
+
+@media(max-width:480px) {
+
+    .container {
+
+        padding: 0 15px;
+    }
+
+    .header-actions {
+
+        gap: 11px;
+    }
+
+    .header-actions .desktop-only {
+
+        display: none;
+    }
+
+    .hero {
+
+        background-position: 62% center;
+    }
+
+    .hero h1 {
+
+        font-size: 42px;
+    }
+
+    .movie-grid {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .movie-poster {
+
+        aspect-ratio: 2 / 2.8;
+    }
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+
+        border-right: 0;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .booking-modal {
+
+        padding: 20px 15px;
+    }
+
+    .seat {
+
+        width: 27px;
+
+        height: 25px;
+
+        font-size: 8px;
+    }
+
+    .seat-row {
+
+        gap: 4px;
+    }
+
+    .booking-summary {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -1594,38 +1903,42 @@
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      TOP BAR
-===================================================== -->
+========================================================= -->
 
-<div class="top-bar">
+<div class="topbar">
 
-    ✦ FREE SHIPPING ON ORDERS OVER ₹1,999
-    &nbsp; | &nbsp;
-    <strong>GET 20% OFF YOUR FIRST ORDER</strong>
+    <i class="fa-solid fa-ticket"></i>
+
+    Book your favorite movies instantly —
+    <strong>Fast, Easy & Secure</strong>
 
 </div>
 
 
-<!-- =====================================================
+
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
 <header>
 
     <div class="container header">
 
-        <button class="mobile-menu-btn"
-                id="mobileMenuBtn">
+
+        <button class="mobile-menu"
+                id="mobileMenu">
 
             <i class="fa-solid fa-bars"></i>
 
         </button>
 
 
-        <a href="index.jsp" class="logo">
+        <a href="index.jsp"
+           class="logo">
 
-            LUXE<span>.</span>
+            Cine<span>Book.</span>
 
         </a>
 
@@ -1635,23 +1948,33 @@
             <ul>
 
                 <li>
-                    <a href="index.jsp">Home</a>
+                    <a href="index.jsp">
+                        Home
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#categories">Collections</a>
+                    <a href="#movies">
+                        Movies
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#products">Shop</a>
+                    <a href="#showtimes">
+                        Showtimes
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#new">New Arrivals</a>
+                    <a href="#how">
+                        How It Works
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#deals">Sale</a>
+                    <a href="#offers">
+                        Offers
+                    </a>
                 </li>
 
             </ul>
@@ -1661,8 +1984,17 @@
 
         <div class="header-actions">
 
-            <button class="header-icon search-icon"
-                    id="searchButton">
+
+            <div class="location desktop-only">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Hyderabad
+
+            </div>
+
+
+            <button class="header-icon">
 
                 <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -1677,47 +2009,14 @@
             </a>
 
 
-            <a href="wishlist.jsp"
+            <a href="mybookings.jsp"
                class="header-icon">
 
-                <i class="fa-regular fa-heart"></i>
-
-            </a>
-
-
-            <a href="cart.jsp"
-               class="header-icon">
-
-                <i class="fa-solid fa-bag-shopping"></i>
-
-                <span class="cart-count"
-                      id="cartCount">
-
-                    0
-
-                </span>
+                <i class="fa-solid fa-ticket"></i>
 
             </a>
 
         </div>
-
-    </div>
-
-
-    <!-- MOBILE NAV -->
-
-    <div class="mobile-nav"
-         id="mobileNav">
-
-        <a href="index.jsp">Home</a>
-
-        <a href="#categories">Collections</a>
-
-        <a href="#products">Shop</a>
-
-        <a href="#new">New Arrivals</a>
-
-        <a href="#deals">Sale</a>
 
     </div>
 
@@ -1725,9 +2024,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      HERO
-===================================================== -->
+========================================================= -->
 
 <section class="hero">
 
@@ -1735,44 +2034,46 @@
 
         <div class="hero-content">
 
-            <div class="hero-small">
+            <div class="hero-label">
 
-                New Season · 2026 Collection
+                Your Cinema Experience
 
             </div>
 
+
             <h1>
 
-                Dress like
-                <span>you mean it.</span>
+                Lights.
+                <span>Camera.</span>
+                Action.
 
             </h1>
 
+
             <p>
 
-                Discover timeless silhouettes, modern essentials
-                and statement pieces designed to make every
-                moment unforgettable.
+                Discover the latest blockbusters, choose your
+                favorite seats and book movie tickets in seconds.
 
             </p>
 
 
             <div class="hero-buttons">
 
-                <a href="#products"
-                   class="btn btn-dark">
+                <a href="#movies"
+                   class="btn btn-red">
 
-                    Shop Collection
+                    Browse Movies
 
                     <i class="fa-solid fa-arrow-right"></i>
 
                 </a>
 
 
-                <a href="#categories"
+                <a href="#showtimes"
                    class="btn btn-outline">
 
-                    Explore Styles
+                    Today's Shows
 
                 </a>
 
@@ -1786,45 +2087,381 @@
 
 
 
-<!-- =====================================================
-     BENEFITS
-===================================================== -->
+<!-- =========================================================
+     SEARCH
+========================================================= -->
 
-<section class="benefits">
+<section class="booking-search">
 
-    <div class="container benefit-grid">
+    <div class="container">
 
-        <div class="benefit">
+        <div class="search-box">
 
-            <i class="fa-solid fa-truck-fast"></i>
+
+            <div class="search-field">
+
+                <i class="fa-solid fa-film"></i>
+
+                <input
+                    type="text"
+                    id="movieSearch"
+                    placeholder="Search movie...">
+
+            </div>
+
+
+            <div class="search-field">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <select id="citySelect">
+
+                    <option>Hyderabad</option>
+
+                    <option>Bengaluru</option>
+
+                    <option>Chennai</option>
+
+                    <option>Mumbai</option>
+
+                    <option>Delhi</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="search-field">
+
+                <i class="fa-regular fa-calendar"></i>
+
+                <input
+                    type="date"
+                    id="dateSelect">
+
+            </div>
+
+
+            <button
+                class="search-submit"
+                id="searchMovies">
+
+                Search Movies
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     MOVIES
+========================================================= -->
+
+<section class="section"
+         id="movies">
+
+    <div class="container">
+
+
+        <div class="section-header">
 
             <div>
 
-                <h4>Free Shipping</h4>
+                <div class="eyebrow">
+                    Now Showing
+                </div>
 
-                <p>On orders above ₹1,999</p>
+                <h2 class="section-title">
+                    Movies You'll Love
+                </h2>
+
+                <p class="section-description">
+                    Catch the latest releases on the big screen.
+                </p>
+
+            </div>
+
+
+            <a href="#movies"
+               class="view-all">
+
+                View All Movies →
+
+            </a>
+
+        </div>
+
+
+        <div class="movie-filters">
+
+            <button
+                class="filter active"
+                data-genre="All">
+
+                All
+
+            </button>
+
+            <button
+                class="filter"
+                data-genre="Action">
+
+                Action
+
+            </button>
+
+            <button
+                class="filter"
+                data-genre="Drama">
+
+                Drama
+
+            </button>
+
+            <button
+                class="filter"
+                data-genre="Comedy">
+
+                Comedy
+
+            </button>
+
+            <button
+                class="filter"
+                data-genre="Romance">
+
+                Romance
+
+            </button>
+
+            <button
+                class="filter"
+                data-genre="Thriller">
+
+                Thriller
+
+            </button>
+
+        </div>
+
+
+        <div class="movie-grid"
+             id="movieGrid">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SHOWTIMES
+========================================================= -->
+
+<section class="section showtimes-section"
+         id="showtimes">
+
+    <div class="container">
+
+        <div class="showtime-layout">
+
+
+            <div class="showtime-poster">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85"
+                    alt="Featured movie">
+
+            </div>
+
+
+            <div class="showtime-content">
+
+                <div class="eyebrow">
+                    Featured Movie
+                </div>
+
+
+                <h2>
+                    The Last Horizon
+                </h2>
+
+
+                <div class="movie-info-line">
+
+                    ⭐ 4.8 &nbsp; • &nbsp;
+                    Action / Sci-Fi &nbsp; • &nbsp;
+                    2h 24m &nbsp; • &nbsp;
+                    U/A
+
+                </div>
+
+
+                <p class="section-description"
+                   style="margin-bottom:25px;">
+
+                    A legendary journey begins when a team
+                    of explorers discovers a mysterious world
+                    beyond the edge of known space.
+
+                </p>
+
+
+                <div class="show-date">
+                    Select Date
+                </div>
+
+
+                <div class="dates">
+
+
+                    <button class="date active">
+
+                        <strong>02</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+
+                    <button class="date">
+
+                        <strong>03</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+
+                    <button class="date">
+
+                        <strong>04</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+
+                    <button class="date">
+
+                        <strong>05</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+
+                    <button class="date">
+
+                        <strong>06</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="cinema-name">
+
+                    PVR ICON — Hyderabad
+
+                </div>
+
+
+                <div class="showtimes">
+
+
+                    <button class="time">
+                        10:30 AM
+                    </button>
+
+                    <button class="time">
+                        01:15 PM
+                    </button>
+
+                    <button class="time selected">
+                        04:30 PM
+                    </button>
+
+                    <button class="time">
+                        07:45 PM
+                    </button>
+
+                    <button class="time">
+                        10:30 PM
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="btn btn-red"
+                    id="featuredBook">
+
+                    Book Tickets
+
+                    <i class="fa-solid fa-ticket"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section class="container">
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-ticket"></i>
+
+            <div>
+
+                <h4>Instant Booking</h4>
+
+                <p>Book your seats in seconds</p>
 
             </div>
 
         </div>
 
 
-        <div class="benefit">
+        <div class="feature">
 
-            <i class="fa-solid fa-rotate-left"></i>
+            <i class="fa-solid fa-couch"></i>
 
             <div>
 
-                <h4>Easy Returns</h4>
+                <h4>Choose Your Seat</h4>
 
-                <p>7 day return policy</p>
+                <p>Select your favorite seats</p>
 
             </div>
 
         </div>
 
 
-        <div class="benefit">
+        <div class="feature">
 
             <i class="fa-solid fa-shield-halved"></i>
 
@@ -1832,26 +2469,27 @@
 
                 <h4>Secure Payment</h4>
 
-                <p>100% secure checkout</p>
+                <p>100% safe transactions</p>
 
             </div>
 
         </div>
 
 
-        <div class="benefit">
+        <div class="feature">
 
-            <i class="fa-solid fa-headset"></i>
+            <i class="fa-solid fa-mobile-screen-button"></i>
 
             <div>
 
-                <h4>24/7 Support</h4>
+                <h4>Digital Tickets</h4>
 
-                <p>We're here to help</p>
+                <p>Tickets delivered instantly</p>
 
             </div>
 
         </div>
+
 
     </div>
 
@@ -1859,352 +2497,92 @@
 
 
 
-<!-- =====================================================
-     CATEGORIES
-===================================================== -->
+<!-- =========================================================
+     HOW IT WORKS
+========================================================= -->
 
 <section class="section"
-         id="categories">
+         id="how">
 
     <div class="container">
+
 
         <div class="section-header">
 
-            <div class="eyebrow">
-                Discover
-            </div>
-
-            <h2 class="section-title">
-                Shop by Style
-            </h2>
-
-            <p class="section-description">
-                Find something beautiful for every occasion.
-            </p>
-
-        </div>
-
-
-        <div class="categories">
-
-
-            <div class="category">
-
-                <img
-                    src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=85"
-                    alt="Dresses">
-
-                <div class="category-overlay">
-
-                    <h3>Dresses</h3>
-
-                    <a href="#products"
-                       data-filter="Dresses">
-
-                        Shop Now
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="category">
-
-                <img
-                    src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=85"
-                    alt="Tops">
-
-                <div class="category-overlay">
-
-                    <h3>Tops</h3>
-
-                    <a href="#products"
-                       data-filter="Tops">
-
-                        Shop Now
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="category">
-
-                <img
-                    src="https://images.unsplash.com/photo-1506629905607-d9c297d6f7c1?auto=format&fit=crop&w=800&q=85"
-                    alt="Party Wear">
-
-                <div class="category-overlay">
-
-                    <h3>Party Wear</h3>
-
-                    <a href="#products"
-                       data-filter="Party Wear">
-
-                        Shop Now
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="category">
-
-                <img
-                    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85"
-                    alt="New Arrivals">
-
-                <div class="category-overlay">
-
-                    <h3>New Arrivals</h3>
-
-                    <a href="#products">
-
-                        Explore
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PRODUCTS
-===================================================== -->
-
-<section class="section"
-         id="products"
-         style="background:#faf9f7;">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div class="eyebrow">
-                Best Sellers
-            </div>
-
-            <h2 class="section-title">
-                Trending Now
-            </h2>
-
-            <p class="section-description">
-                The pieces everyone is talking about.
-            </p>
-
-        </div>
-
-
-        <div class="product-toolbar">
-
-            <div class="filter-buttons">
-
-                <button class="filter-btn active"
-                        data-category="All">
-
-                    All
-
-                </button>
-
-                <button class="filter-btn"
-                        data-category="Dresses">
-
-                    Dresses
-
-                </button>
-
-                <button class="filter-btn"
-                        data-category="Tops">
-
-                    Tops
-
-                </button>
-
-                <button class="filter-btn"
-                        data-category="Party Wear">
-
-                    Party Wear
-
-                </button>
-
-                <button class="filter-btn"
-                        data-category="Casual">
-
-                    Casual
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="product-grid"
-             id="productGrid">
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     DEAL
-===================================================== -->
-
-<section class="promo"
-         id="deals">
-
-    <div class="container">
-
-        <div class="promo-box">
-
-            <div class="promo-image"></div>
-
-
-            <div class="promo-content">
+            <div>
 
                 <div class="eyebrow">
-                    Limited Time
+                    Simple Process
                 </div>
 
-                <h2>
-                    The perfect
-                    evening dress.
+                <h2 class="section-title">
+                    Book in 3 Easy Steps
                 </h2>
 
+            </div>
+
+        </div>
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <i class="fa-solid fa-film"></i>
+
+                <h3>
+                    Choose a Movie
+                </h3>
+
                 <p>
-
-                    Elegant lines, premium fabric and
-                    effortless sophistication. Make your
-                    next evening unforgettable.
-
+                    Browse the latest movies and
+                    select the one you want to watch.
                 </p>
 
-                <div class="promo-price">
-
-                    ₹1,999
-
-                    <span>₹3,499</span>
-
-                </div>
-
-                <div>
-
-                    <button class="btn"
-                            style="background:#111;color:white;"
-                            id="dealButton">
-
-                        Shop This Look
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </button>
-
-                </div>
-
             </div>
 
-        </div>
 
-    </div>
+            <div class="step">
 
-</section>
-
-
-
-<!-- =====================================================
-     COLLECTION
-===================================================== -->
-
-<section class="section collection"
-         id="new">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div class="eyebrow">
-                Just Dropped
-            </div>
-
-            <h2 class="section-title">
-                New Collection
-            </h2>
-
-            <p class="section-description">
-                Fresh silhouettes for your wardrobe.
-            </p>
-
-        </div>
-
-
-        <div class="collection-grid">
-
-
-            <div class="collection-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1000&q=85"
-                    alt="Fashion Collection">
-
-                <div class="collection-caption">
-
-                    <h3>Modern Classics</h3>
-
-                    <p>Timeless. Refined. Yours.</p>
-
+                <div class="step-number">
+                    02
                 </div>
+
+                <i class="fa-solid fa-chair"></i>
+
+                <h3>
+                    Pick Your Seats
+                </h3>
+
+                <p>
+                    Select your preferred showtime
+                    and choose your seats.
+                </p>
 
             </div>
 
 
-            <div class="collection-item">
+            <div class="step">
 
-                <img
-                    src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=800&q=85"
-                    alt="Women's Fashion">
-
-                <div class="collection-caption">
-
-                    <h3>Weekend Edit</h3>
-
-                    <p>Effortless everyday style</p>
-
+                <div class="step-number">
+                    03
                 </div>
 
-            </div>
+                <i class="fa-solid fa-ticket"></i>
 
+                <h3>
+                    Confirm Booking
+                </h3>
 
-            <div class="collection-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85"
-                    alt="Jackets">
-
-                <div class="collection-caption">
-
-                    <h3>Outerwear</h3>
-
-                    <p>Layer up in style</p>
-
-                </div>
+                <p>
+                    Complete payment and receive
+                    your digital movie tickets.
+                </p>
 
             </div>
 
@@ -2217,137 +2595,56 @@
 
 
 
-<!-- =====================================================
-     REVIEWS
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div class="eyebrow">
-                Reviews
-            </div>
-
-            <h2 class="section-title">
-                Loved by You
-            </h2>
-
-        </div>
-
-
-        <div class="reviews">
-
-
-            <div class="review">
-
-                <div class="review-stars">
-                    ★★★★★
-                </div>
-
-                <p>
-
-                    "The quality is absolutely beautiful.
-                    My dress looked even better in person."
-
-                </p>
-
-                <div class="review-name">
-                    Priya S.
-                </div>
-
-            </div>
-
-
-            <div class="review">
-
-                <div class="review-stars">
-                    ★★★★★
-                </div>
-
-                <p>
-
-                    "Fast delivery, perfect fit and
-                    gorgeous packaging. I'm obsessed!"
-
-                </p>
-
-                <div class="review-name">
-                    Ananya R.
-                </div>
-
-            </div>
-
-
-            <div class="review">
-
-                <div class="review-stars">
-                    ★★★★★
-                </div>
-
-                <p>
-
-                    "LUXE has become my go-to fashion
-                    store. Everything feels premium."
-
-                </p>
-
-                <div class="review-name">
-                    Meera K.
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
+<!-- =========================================================
      NEWSLETTER
-===================================================== -->
+========================================================= -->
 
-<section class="newsletter">
+<section class="newsletter"
+         id="offers">
 
     <div class="container">
 
-        <div class="eyebrow">
-            Stay Updated
+        <div class="eyebrow"
+             style="color:#ff5a61;">
+
+            Exclusive Offers
+
         </div>
+
 
         <h2>
-            Join the LUXE list.
+            Never Miss a Movie.
         </h2>
 
+
         <p>
-            Get first access to new collections,
-            exclusive offers and fashion inspiration.
+            Subscribe and get movie updates,
+            early access and exclusive offers.
         </p>
 
 
-        <form class="newsletter-form"
-              id="newsletterForm">
+        <form
+            class="newsletter-form"
+            id="newsletterForm">
 
             <input
                 type="email"
                 id="email"
-                placeholder="Your email address"
+                placeholder="Enter your email"
                 required>
 
             <button type="submit">
+
                 Subscribe
+
             </button>
 
         </form>
 
+
         <div id="newsletterMessage"
-             style="margin-top:15px;font-size:13px;">
+             style="margin-top:12px;font-size:13px;">
+
         </div>
 
     </div>
@@ -2356,13 +2653,14 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
 
     <div class="container">
+
 
         <div class="footer-grid">
 
@@ -2370,14 +2668,18 @@
             <div>
 
                 <div class="footer-logo">
-                    LUXE.
+
+                    Cine<span>Book.</span>
+
                 </div>
+
 
                 <p class="footer-about">
 
-                    Modern fashion for modern lives.
-                    Discover clothing designed with
-                    confidence, comfort and timeless style.
+                    Your simple and convenient destination
+                    for booking movie tickets online.
+                    Find movies, select seats and enjoy
+                    the show.
 
                 </p>
 
@@ -2393,11 +2695,11 @@
                     </a>
 
                     <a href="#">
-                        <i class="fa-brands fa-pinterest-p"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
                     </a>
 
                     <a href="#">
-                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-youtube"></i>
                     </a>
 
                 </div>
@@ -2408,20 +2710,18 @@
             <div>
 
                 <div class="footer-title">
-                    Shop
+                    Movies
                 </div>
 
                 <ul class="footer-links">
 
-                    <li>Dresses</li>
+                    <li>Now Showing</li>
 
-                    <li>Tops</li>
+                    <li>Coming Soon</li>
 
-                    <li>Party Wear</li>
+                    <li>Popular Movies</li>
 
-                    <li>New Arrivals</li>
-
-                    <li>Sale</li>
+                    <li>Top Rated</li>
 
                 </ul>
 
@@ -2431,20 +2731,18 @@
             <div>
 
                 <div class="footer-title">
-                    Help
+                    Support
                 </div>
 
                 <ul class="footer-links">
 
+                    <li>Help Center</li>
+
                     <li>Contact Us</li>
 
-                    <li>Shipping</li>
+                    <li>Cancellation</li>
 
-                    <li>Returns</li>
-
-                    <li>Size Guide</li>
-
-                    <li>FAQs</li>
+                    <li>Refund Policy</li>
 
                 </ul>
 
@@ -2467,19 +2765,19 @@
 
                     <li>
                         <a href="register.jsp">
-                            Create Account
+                            Register
                         </a>
                     </li>
 
                     <li>
-                        <a href="wishlist.jsp">
-                            Wishlist
+                        <a href="mybookings.jsp">
+                            My Bookings
                         </a>
                     </li>
 
                     <li>
-                        <a href="cart.jsp">
-                            My Cart
+                        <a href="profile.jsp">
+                            Profile
                         </a>
                     </li>
 
@@ -2487,13 +2785,14 @@
 
             </div>
 
+
         </div>
 
 
         <div class="copyright">
 
             © <span id="year"></span>
-            LUXE Fashion. All Rights Reserved.
+            CineBook. All Rights Reserved.
 
         </div>
 
@@ -2503,26 +2802,151 @@
 
 
 
-<!-- =====================================================
-     SEARCH PANEL
-===================================================== -->
+<!-- =========================================================
+     BOOKING MODAL
+========================================================= -->
 
-<div class="search-panel"
-     id="searchPanel">
+<div class="modal"
+     id="bookingModal">
 
-    <div class="search-box">
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search dresses, tops, party wear...">
+    <div class="booking-modal">
 
-        <button class="close-search"
-                id="closeSearch">
+
+        <button
+            class="close-modal"
+            id="closeModal">
 
             <i class="fa-solid fa-xmark"></i>
 
         </button>
+
+
+        <!-- BOOKING AREA -->
+
+        <div id="bookingArea">
+
+
+            <div class="booking-header">
+
+                <h2 id="bookingMovie">
+                    Movie Name
+                </h2>
+
+                <p id="bookingInfo">
+                    Select your seats
+                </p>
+
+            </div>
+
+
+            <!-- SCREEN -->
+
+            <div class="screen">
+
+                <div class="screen-line"></div>
+
+                <span>
+                    SCREEN
+                </span>
+
+            </div>
+
+
+            <!-- SEATS -->
+
+            <div class="seat-layout"
+                 id="seatLayout">
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="booking-summary">
+
+
+                <div class="summary-details">
+
+                    <h3>
+                        Booking Summary
+                    </h3>
+
+                    <p>
+                        Seats:
+                        <strong id="selectedSeats">
+                            None
+                        </strong>
+                    </p>
+
+                    <p>
+                        Ticket Price:
+                        ₹<span id="ticketPrice">
+                            250
+                        </span>
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <div class="total">
+
+                        ₹<span id="totalPrice">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="confirm-btn"
+                        id="confirmBooking">
+
+                        Confirm Booking
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SUCCESS -->
+
+        <div class="success-message"
+             id="successMessage">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h2>
+                Booking Confirmed!
+            </h2>
+
+            <p>
+                Your movie tickets have been booked successfully.
+            </p>
+
+            <p style="margin-top:10px;">
+                Booking ID:
+                <strong id="bookingId"></strong>
+            </p>
+
+            <button
+                class="btn btn-red"
+                style="margin-top:25px;"
+                onclick="location.href='mybookings.jsp'">
+
+                View My Bookings
+
+            </button>
+
+        </div>
+
 
     </div>
 
@@ -2532,268 +2956,361 @@
 
 <script>
 
+/* =========================================================
+   MOVIE DATA
+========================================================= */
 
-/* =====================================================
-   PRODUCT DATA
-===================================================== */
-
-const PRODUCTS = [
+const MOVIES = [
 
     {
         id: 1,
-        name: "Satin Slip Dress",
-        category: "Dresses",
-        price: 1899,
-        oldPrice: 2499,
-        rating: 5,
-        badge: "Bestseller",
+
+        name: "The Last Horizon",
+
+        genre: "Action",
+
+        duration: "2h 24m",
+
+        rating: 4.8,
+
+        language: "English",
+
+        price: 250,
+
+        badge: "Featured",
+
         image:
-        "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=85"
+        "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=85"
+
     },
+
 
     {
         id: 2,
-        name: "Floral Summer Dress",
-        category: "Dresses",
-        price: 1499,
-        oldPrice: 1999,
-        rating: 5,
+
+        name: "Midnight Echo",
+
+        genre: "Thriller",
+
+        duration: "2h 08m",
+
+        rating: 4.6,
+
+        language: "English",
+
+        price: 220,
+
         badge: "New",
+
         image:
-        "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=85"
+        "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=85"
+
     },
+
 
     {
         id: 3,
-        name: "Oversized Linen Shirt",
-        category: "Tops",
-        price: 1199,
-        oldPrice: 1599,
-        rating: 4,
-        badge: "New",
+
+        name: "Love in Paris",
+
+        genre: "Romance",
+
+        duration: "2h 15m",
+
+        rating: 4.7,
+
+        language: "Hindi",
+
+        price: 200,
+
+        badge: "Popular",
+
         image:
-        "https://images.unsplash.com/photo-1605763240000-7e93b172d754?auto=format&fit=crop&w=700&q=85"
+        "https://images.unsplash.com/photo-1518929458119-e5bf444c30f4?auto=format&fit=crop&w=700&q=85"
+
     },
+
 
     {
         id: 4,
-        name: "Elegant Black Dress",
-        category: "Party Wear",
-        price: 2199,
-        oldPrice: 3299,
-        rating: 5,
-        badge: "Sale",
+
+        name: "Laugh Out Loud",
+
+        genre: "Comedy",
+
+        duration: "1h 52m",
+
+        rating: 4.4,
+
+        language: "Telugu",
+
+        price: 180,
+
+        badge: "Comedy",
+
         image:
-        "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=85"
+        "https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&w=700&q=85"
+
     },
+
 
     {
         id: 5,
-        name: "Minimal White Top",
-        category: "Tops",
-        price: 899,
-        oldPrice: 1299,
-        rating: 4,
+
+        name: "Shadow Protocol",
+
+        genre: "Action",
+
+        duration: "2h 31m",
+
+        rating: 4.9,
+
+        language: "English",
+
+        price: 280,
+
+        badge: "Blockbuster",
+
         image:
-        "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=700&q=85"
+        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=85"
+
     },
+
 
     {
         id: 6,
-        name: "Pleated Midi Dress",
-        category: "Dresses",
-        price: 1799,
-        oldPrice: 2299,
-        rating: 5,
-        badge: "Trending",
+
+        name: "The Forgotten Road",
+
+        genre: "Drama",
+
+        duration: "2h 02m",
+
+        rating: 4.5,
+
+        language: "Hindi",
+
+        price: 190,
+
+        badge: "",
+
         image:
-        "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=85"
+        "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=85"
+
     },
+
 
     {
         id: 7,
-        name: "Weekend Casual Set",
-        category: "Casual",
-        price: 1299,
-        oldPrice: 1699,
-        rating: 4,
+
+        name: "City Lights",
+
+        genre: "Romance",
+
+        duration: "2h 10m",
+
+        rating: 4.3,
+
+        language: "Telugu",
+
+        price: 180,
+
+        badge: "Trending",
+
         image:
-        "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=85"
+        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=700&q=85"
+
     },
+
 
     {
         id: 8,
-        name: "Premium Evening Gown",
-        category: "Party Wear",
-        price: 2999,
-        oldPrice: 4499,
-        rating: 5,
-        badge: "Limited",
+
+        name: "Final Mission",
+
+        genre: "Action",
+
+        duration: "2h 18m",
+
+        rating: 4.7,
+
+        language: "English",
+
+        price: 250,
+
+        badge: "Hit",
+
         image:
-        "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=85"
+        "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?auto=format&fit=crop&w=700&q=85"
+
     }
 
 ];
 
 
 
-/* =====================================================
-   CART
-===================================================== */
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-let cartCount = 0;
+const movieGrid =
+    document.getElementById("movieGrid");
 
-const cartCountElement =
-    document.getElementById("cartCount");
+const bookingModal =
+    document.getElementById("bookingModal");
 
+const bookingMovie =
+    document.getElementById("bookingMovie");
 
-function addToCart(productId) {
+const bookingInfo =
+    document.getElementById("bookingInfo");
 
-    const product =
-        PRODUCTS.find(p => p.id === productId);
+const seatLayout =
+    document.getElementById("seatLayout");
 
-    if (!product) return;
+const selectedSeats =
+    document.getElementById("selectedSeats");
 
-    cartCount++;
+const totalPrice =
+    document.getElementById("totalPrice");
 
-    cartCountElement.textContent =
-        cartCount;
-
-    alert(
-        product.name +
-        " added to your cart!"
-    );
-}
-
-
-
-/* =====================================================
-   RENDER PRODUCTS
-===================================================== */
-
-const productGrid =
-    document.getElementById("productGrid");
+const ticketPrice =
+    document.getElementById("ticketPrice");
 
 
-function renderProducts(products) {
 
-    productGrid.innerHTML = "";
+/* =========================================================
+   RENDER MOVIES
+========================================================= */
 
-    if (products.length === 0) {
+function renderMovies(movies) {
 
-        productGrid.innerHTML = `
+    movieGrid.innerHTML = "";
+
+
+    if (movies.length === 0) {
+
+        movieGrid.innerHTML = `
+
             <div style="
                 grid-column:1/-1;
                 text-align:center;
                 padding:60px;
-                color:#777;
+                color:#888;
             ">
-                No products found.
+
+                <i class="fa-solid fa-film"
+                   style="
+                   font-size:35px;
+                   margin-bottom:15px;
+                "></i>
+
+                <h3>No movies found</h3>
+
+                <p>
+                    Try another search or genre.
+                </p>
+
             </div>
+
         `;
 
         return;
     }
 
 
-    products.forEach(product => {
+    movies.forEach(movie => {
 
         const card =
             document.createElement("article");
 
+
         card.className =
-            "product-card";
+            "movie-card";
 
 
         card.innerHTML = `
 
-            <div class="product-image">
+            <div class="movie-poster">
 
                 ${
-                    product.badge
+                    movie.badge
                     ?
                     `
-                    <span class="product-badge
-                        ${product.badge === "Sale"
-                        ? "sale"
-                        : ""}">
-                        ${product.badge}
-                    </span>
+                    <div class="movie-badge">
+                        ${movie.badge}
+                    </div>
                     `
-                    : ""
+                    :
+                    ""
                 }
 
-                <button
-                    class="wishlist"
-                    aria-label="Wishlist">
 
-                    <i class="fa-regular fa-heart"></i>
+                <div class="movie-rating">
 
-                </button>
+                    <i class="fa-solid fa-star"></i>
+
+                    ${movie.rating}
+
+                </div>
 
 
                 <img
-                    src="${product.image}"
-                    alt="${product.name}"
+                    src="${movie.image}"
+                    alt="${movie.name}"
                     loading="lazy">
-
-
-                <button
-                    class="quick-add"
-                    data-id="${product.id}">
-
-                    <i class="fa-solid fa-bag-shopping"></i>
-
-                    ADD TO BAG
-
-                </button>
 
             </div>
 
 
-            <div class="product-info">
+            <div class="movie-info">
 
-                <div class="product-category">
-
-                    ${product.category}
-
-                </div>
-
-                <div class="product-name">
-
-                    ${product.name}
-
+                <div class="movie-name">
+                    ${movie.name}
                 </div>
 
 
-                <div class="product-rating">
+                <div class="movie-meta">
 
-                    ${"★".repeat(product.rating)}
+                    <span>
+                        ${movie.genre}
+                    </span>
 
-                    <span style="color:#bbb">
-                        ${"★".repeat(5-product.rating)}
+                    •
+
+                    <span>
+                        ${movie.duration}
+                    </span>
+
+                    •
+
+                    <span>
+                        ${movie.language}
                     </span>
 
                 </div>
 
 
-                <div class="price">
+                <div class="movie-actions">
 
-                    ₹${product.price.toLocaleString("en-IN")}
+                    <button
+                        class="book-btn"
+                        data-id="${movie.id}">
 
-                    ${
-                        product.oldPrice
-                        ?
-                        `
-                        <span class="old-price">
+                        <i class="fa-solid fa-ticket"></i>
 
-                            ₹${product.oldPrice
-                                .toLocaleString("en-IN")}
+                        Book Tickets
 
-                        </span>
-                        `
-                        : ""
-                    }
+                    </button>
+
+
+                    <button
+                        class="info-btn"
+                        title="Movie information">
+
+                        <i class="fa-solid fa-info"></i>
+
+                    </button>
 
                 </div>
 
@@ -2802,22 +3319,20 @@ function renderProducts(products) {
         `;
 
 
-        productGrid.appendChild(card);
+        movieGrid.appendChild(card);
 
     });
 
 
-    /* ADD TO CART */
-
     document
-        .querySelectorAll(".quick-add")
+        .querySelectorAll(".book-btn")
         .forEach(button => {
 
             button.addEventListener(
                 "click",
                 function() {
 
-                    addToCart(
+                    openBooking(
                         Number(this.dataset.id)
                     );
 
@@ -2826,50 +3341,16 @@ function renderProducts(products) {
 
         });
 
-
-    /* WISHLIST */
-
-    document
-        .querySelectorAll(".wishlist")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                function() {
-
-                    const icon =
-                        this.querySelector("i");
-
-                    icon.classList.toggle(
-                        "fa-regular"
-                    );
-
-                    icon.classList.toggle(
-                        "fa-solid"
-                    );
-
-                    this.style.color =
-                        icon.classList.contains(
-                            "fa-solid"
-                        )
-                        ? "#c65d5d"
-                        : "";
-
-                }
-            );
-
-        });
-
 }
 
 
 
-/* =====================================================
-   FILTER PRODUCTS
-===================================================== */
+/* =========================================================
+   FILTER
+========================================================= */
 
 document
-    .querySelectorAll(".filter-btn")
+    .querySelectorAll(".filter")
     .forEach(button => {
 
         button.addEventListener(
@@ -2877,7 +3358,7 @@ document
             function() {
 
                 document
-                    .querySelectorAll(".filter-btn")
+                    .querySelectorAll(".filter")
                     .forEach(btn =>
                         btn.classList.remove("active")
                     );
@@ -2886,20 +3367,20 @@ document
                 this.classList.add("active");
 
 
-                const category =
-                    this.dataset.category;
+                const genre =
+                    this.dataset.genre;
 
 
-                if (category === "All") {
+                if (genre === "All") {
 
-                    renderProducts(PRODUCTS);
+                    renderMovies(MOVIES);
 
                 } else {
 
-                    renderProducts(
-                        PRODUCTS.filter(
-                            product =>
-                            product.category === category
+                    renderMovies(
+                        MOVIES.filter(
+                            movie =>
+                            movie.genre === genre
                         )
                     );
 
@@ -2912,33 +3393,536 @@ document
 
 
 
-/* =====================================================
-   CATEGORY LINKS
-===================================================== */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 document
-    .querySelectorAll("[data-filter]")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            function() {
-
-                const filter =
-                    this.dataset.filter;
+    .getElementById("searchMovies")
+    .addEventListener(
+        "click",
+        searchMovies
+    );
 
 
-                const button =
-                    document.querySelector(
-                        `[data-category="${filter}"]`
+document
+    .getElementById("movieSearch")
+    .addEventListener(
+        "keydown",
+        function(e) {
+
+            if (e.key === "Enter") {
+
+                searchMovies();
+
+            }
+
+        }
+    );
+
+
+function searchMovies() {
+
+    const query =
+        document
+        .getElementById("movieSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    if (!query) {
+
+        renderMovies(MOVIES);
+
+    } else {
+
+        renderMovies(
+
+            MOVIES.filter(movie =>
+
+                movie.name
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                movie.genre
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                movie.language
+                    .toLowerCase()
+                    .includes(query)
+
+            )
+
+        );
+
+    }
+
+
+    document
+        .getElementById("movies")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+/* =========================================================
+   BOOKING
+========================================================= */
+
+let currentMovie = null;
+
+let selectedSeatList = [];
+
+const SEAT_PRICE = 250;
+
+
+function openBooking(movieId) {
+
+    currentMovie =
+        MOVIES.find(
+            movie =>
+            movie.id === movieId
+        );
+
+
+    if (!currentMovie) return;
+
+
+    selectedSeatList = [];
+
+
+    bookingMovie.textContent =
+        currentMovie.name;
+
+
+    bookingInfo.textContent =
+        currentMovie.genre +
+        " • " +
+        currentMovie.duration +
+        " • " +
+        currentMovie.language;
+
+
+    ticketPrice.textContent =
+        currentMovie.price;
+
+
+    totalPrice.textContent = "0";
+
+
+    selectedSeats.textContent =
+        "None";
+
+
+    generateSeats();
+
+
+    document
+        .getElementById("bookingArea")
+        .style.display = "block";
+
+
+    document
+        .getElementById("successMessage")
+        .style.display = "none";
+
+
+    bookingModal.classList.add("show");
+
+}
+
+
+
+function generateSeats() {
+
+    seatLayout.innerHTML = "";
+
+
+    const rows = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+    ];
+
+
+    rows.forEach(
+        (row, rowIndex) => {
+
+            const rowElement =
+                document.createElement(
+                    "div"
+                );
+
+
+            rowElement.className =
+                "seat-row";
+
+
+            for (
+                let seatNumber = 1;
+                seatNumber <= 10;
+                seatNumber++
+            ) {
+
+                if (seatNumber === 6) {
+
+                    const space =
+                        document.createElement(
+                            "div"
+                        );
+
+                    space.className =
+                        "seat-space";
+
+                    rowElement.appendChild(
+                        space
+                    );
+
+                }
+
+
+                const seat =
+                    document.createElement(
+                        "button"
                     );
 
 
-                if (button) {
+                const seatId =
+                    row + seatNumber;
 
-                    button.click();
+
+                seat.className =
+                    "seat";
+
+
+                seat.textContent =
+                    seatNumber;
+
+
+                seat.dataset.seat =
+                    seatId;
+
+
+                /*
+                    Demo booked seats
+                */
+
+                if (
+                    (
+                        rowIndex === 0 &&
+                        seatNumber === 3
+                    )
+
+                    ||
+
+                    (
+                        rowIndex === 0 &&
+                        seatNumber === 4
+                    )
+
+                    ||
+
+                    (
+                        rowIndex === 2 &&
+                        seatNumber === 7
+                    )
+
+                    ||
+
+                    (
+                        rowIndex === 4 &&
+                        seatNumber === 2
+                    )
+
+                    ||
+
+                    (
+                        rowIndex === 5 &&
+                        seatNumber === 8
+                    )
+                ) {
+
+                    seat.classList.add(
+                        "booked"
+                    );
+
+                    seat.disabled = true;
 
                 }
+
+
+                seat.addEventListener(
+                    "click",
+                    function() {
+
+                        toggleSeat(
+                            this
+                        );
+
+                    }
+                );
+
+
+                rowElement.appendChild(
+                    seat
+                );
+
+            }
+
+
+            seatLayout.appendChild(
+                rowElement
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   SEAT SELECTION
+========================================================= */
+
+function toggleSeat(seat) {
+
+    const seatId =
+        seat.dataset.seat;
+
+
+    if (
+        seat.classList.contains(
+            "selected"
+        )
+    ) {
+
+        seat.classList.remove(
+            "selected"
+        );
+
+
+        selectedSeatList =
+            selectedSeatList.filter(
+                id => id !== seatId
+            );
+
+    } else {
+
+        if (
+            selectedSeatList.length >= 6
+        ) {
+
+            alert(
+                "You can select maximum 6 seats."
+            );
+
+            return;
+
+        }
+
+
+        seat.classList.add(
+            "selected"
+        );
+
+
+        selectedSeatList.push(
+            seatId
+        );
+
+    }
+
+
+    updateBookingSummary();
+
+}
+
+
+
+/* =========================================================
+   BOOKING SUMMARY
+========================================================= */
+
+function updateBookingSummary() {
+
+    if (
+        selectedSeatList.length === 0
+    ) {
+
+        selectedSeats.textContent =
+            "None";
+
+        totalPrice.textContent =
+            "0";
+
+        return;
+
+    }
+
+
+    selectedSeats.textContent =
+        selectedSeatList.join(", ");
+
+
+    const total =
+        selectedSeatList.length *
+        currentMovie.price;
+
+
+    totalPrice.textContent =
+        total.toLocaleString("en-IN");
+
+}
+
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+document
+    .getElementById("closeModal")
+    .addEventListener(
+        "click",
+        closeBooking
+    );
+
+
+bookingModal.addEventListener(
+    "click",
+    function(e) {
+
+        if (
+            e.target ===
+            bookingModal
+        ) {
+
+            closeBooking();
+
+        }
+
+    }
+);
+
+
+function closeBooking() {
+
+    bookingModal.classList.remove(
+        "show"
+    );
+
+}
+
+
+
+/* =========================================================
+   CONFIRM BOOKING
+========================================================= */
+
+document
+    .getElementById("confirmBooking")
+    .addEventListener(
+        "click",
+        function() {
+
+            if (
+                selectedSeatList.length === 0
+            ) {
+
+                alert(
+                    "Please select at least one seat."
+                );
+
+                return;
+
+            }
+
+
+            const bookingId =
+                "CB" +
+                Date.now()
+                    .toString()
+                    .slice(-8);
+
+
+            document.getElementById(
+                "bookingId"
+            ).textContent =
+                bookingId;
+
+
+            document.getElementById(
+                "bookingArea"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "successMessage"
+            ).style.display =
+                "block";
+
+        }
+    );
+
+
+
+/* =========================================================
+   FEATURED BOOKING
+========================================================= */
+
+document
+    .getElementById("featuredBook")
+    .addEventListener(
+        "click",
+        function() {
+
+            openBooking(1);
+
+        }
+    );
+
+
+
+/* =========================================================
+   DATE BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(".date")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                document
+                    .querySelectorAll(".date")
+                    .forEach(
+                        btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                    );
+
+
+                this.classList.add(
+                    "active"
+                );
 
             }
         );
@@ -2947,152 +3931,42 @@ document
 
 
 
-/* =====================================================
-   SEARCH
-===================================================== */
-
-const searchPanel =
-    document.getElementById("searchPanel");
-
-const searchInput =
-    document.getElementById("searchInput");
-
+/* =========================================================
+   SHOWTIME BUTTONS
+========================================================= */
 
 document
-    .getElementById("searchButton")
-    .addEventListener(
-        "click",
-        () => {
+    .querySelectorAll(".time")
+    .forEach(button => {
 
-            searchPanel.classList.add("show");
+        button.addEventListener(
+            "click",
+            function() {
 
-            searchInput.focus();
-
-        }
-    );
-
-
-document
-    .getElementById("closeSearch")
-    .addEventListener(
-        "click",
-        () => {
-
-            searchPanel.classList.remove("show");
-
-        }
-    );
+                document
+                    .querySelectorAll(".time")
+                    .forEach(
+                        btn =>
+                        btn.classList.remove(
+                            "selected"
+                        )
+                    );
 
 
-searchPanel.addEventListener(
-    "click",
-    function(e) {
+                this.classList.add(
+                    "selected"
+                );
 
-        if (e.target === searchPanel) {
-
-            searchPanel.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-);
-
-
-searchInput.addEventListener(
-    "input",
-    function() {
-
-        const query =
-            this.value.toLowerCase().trim();
-
-
-        if (!query) {
-
-            renderProducts(PRODUCTS);
-
-            return;
-
-        }
-
-
-        const results =
-            PRODUCTS.filter(product =>
-
-                product.name
-                    .toLowerCase()
-                    .includes(query)
-
-                ||
-
-                product.category
-                    .toLowerCase()
-                    .includes(query)
-
-            );
-
-
-        renderProducts(results);
-
-        searchPanel.classList.remove(
-            "show"
+            }
         );
 
-
-        document
-            .getElementById("products")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-
-    }
-);
+    });
 
 
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-const mobileButton =
-    document.getElementById(
-        "mobileMenuBtn"
-    );
-
-const mobileNav =
-    document.getElementById(
-        "mobileNav"
-    );
-
-
-mobileButton.addEventListener(
-    "click",
-    function() {
-
-        if (
-            mobileNav.style.display ===
-            "block"
-        ) {
-
-            mobileNav.style.display =
-                "none";
-
-        } else {
-
-            mobileNav.style.display =
-                "block";
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
+/* =========================================================
    NEWSLETTER
-===================================================== */
+========================================================= */
 
 document
     .getElementById("newsletterForm")
@@ -3120,10 +3994,11 @@ document
 
 
             message.textContent =
-                "✓ Thank you! You're now on the LUXE list.";
+                "✓ Thanks! Movie updates are now coming your way.";
+
 
             message.style.color =
-                "#5d8b65";
+                "#65c982";
 
 
             this.reset();
@@ -3133,27 +4008,52 @@ document
 
 
 
-/* =====================================================
-   DEAL BUTTON
-===================================================== */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
 document
-    .getElementById("dealButton")
+    .getElementById("mobileMenu")
     .addEventListener(
         "click",
         function() {
 
-            const product =
-                PRODUCTS.find(
-                    p =>
-                    p.name ===
-                    "Satin Slip Dress"
+            const nav =
+                document.querySelector(
+                    ".nav"
                 );
 
 
-            if (product) {
+            if (
+                nav.style.display ===
+                "block"
+            ) {
 
-                addToCart(product.id);
+                nav.style.display =
+                    "none";
+
+            } else {
+
+                nav.style.display =
+                    "block";
+
+                nav.style.position =
+                    "absolute";
+
+                nav.style.top =
+                    "65px";
+
+                nav.style.left =
+                    "0";
+
+                nav.style.right =
+                    "0";
+
+                nav.style.background =
+                    "#101010";
+
+                nav.style.padding =
+                    "20px";
 
             }
 
@@ -3162,9 +4062,9 @@ document
 
 
 
-/* =====================================================
+/* =========================================================
    YEAR
-===================================================== */
+========================================================= */
 
 document.getElementById(
     "year"
@@ -3173,11 +4073,11 @@ document.getElementById(
 
 
 
-/* =====================================================
-   INITIAL LOAD
-===================================================== */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
-renderProducts(PRODUCTS);
+renderMovies(MOVIES);
 
 
 </script>
