@@ -1,14 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MobileHub - Buy Smartphones</title>
+    <title>FoodHub - Order Delicious Food</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
 
@@ -25,32 +28,32 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #f5f7fb;
+            background: #f8f9fb;
             color: #171717;
         }
 
         /* ================= HEADER ================= */
 
         header {
-            background: #111827;
-            color: white;
-            padding: 18px 7%;
+            background: #ffffff;
+            padding: 17px 7%;
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,.06);
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 26px;
             font-weight: 800;
-            color: #fff;
+            color: #222;
         }
 
         .logo span {
-            color: #6366f1;
+            color: #f97316;
         }
 
         nav {
@@ -59,25 +62,25 @@
         }
 
         nav a {
-            color: #d1d5db;
+            color: #555;
             text-decoration: none;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         nav a:hover {
-            color: white;
+            color: #f97316;
         }
 
         .header-actions {
             display: flex;
-            gap: 15px;
             align-items: center;
+            gap: 20px;
         }
 
         .header-actions i {
             cursor: pointer;
-            font-size: 18px;
+            font-size: 19px;
         }
 
         .cart-icon {
@@ -86,12 +89,12 @@
 
         .cart-count {
             position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #ef4444;
+            top: -11px;
+            right: -11px;
+            background: #f97316;
             color: white;
-            width: 18px;
-            height: 18px;
+            width: 19px;
+            height: 19px;
             border-radius: 50%;
             font-size: 10px;
             display: flex;
@@ -102,7 +105,7 @@
         /* ================= HERO ================= */
 
         .hero {
-            background: linear-gradient(120deg, #312e81, #4f46e5, #7c3aed);
+            background: linear-gradient(120deg, #ea580c, #f97316, #fb923c);
             color: white;
             padding: 70px 7%;
             display: flex;
@@ -112,20 +115,20 @@
         }
 
         .hero-content {
-            max-width: 600px;
+            max-width: 650px;
         }
 
         .hero h1 {
             font-size: 48px;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .hero p {
-            color: #e0e7ff;
+            color: #fff7ed;
             font-size: 17px;
-            margin-bottom: 30px;
             line-height: 1.7;
+            margin-bottom: 28px;
         }
 
         .search-box {
@@ -134,11 +137,11 @@
             display: flex;
             align-items: center;
             padding: 6px;
-            max-width: 600px;
+            max-width: 620px;
         }
 
         .search-box i {
-            color: #6b7280;
+            color: #777;
             margin-left: 15px;
         }
 
@@ -151,7 +154,7 @@
         }
 
         .search-box button {
-            background: #111827;
+            background: #222;
             color: white;
             border: none;
             padding: 14px 22px;
@@ -160,12 +163,12 @@
             font-weight: 600;
         }
 
-        .hero-phone {
-            font-size: 180px;
-            opacity: 0.2;
+        .hero-food {
+            font-size: 170px;
+            opacity: .22;
         }
 
-        /* ================= CATEGORY ================= */
+        /* ================= COMMON ================= */
 
         .container {
             width: 86%;
@@ -188,9 +191,16 @@
             font-size: 28px;
         }
 
+        #resultCount {
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ================= CATEGORIES ================= */
+
         .categories {
             display: flex;
-            gap: 15px;
+            gap: 14px;
             overflow-x: auto;
             padding-bottom: 10px;
         }
@@ -198,7 +208,7 @@
         .category {
             background: white;
             border: 1px solid #e5e7eb;
-            padding: 13px 24px;
+            padding: 13px 23px;
             border-radius: 30px;
             cursor: pointer;
             white-space: nowrap;
@@ -208,12 +218,12 @@
 
         .category:hover,
         .category.active {
-            background: #4f46e5;
+            background: #f97316;
             color: white;
-            border-color: #4f46e5;
+            border-color: #f97316;
         }
 
-        /* ================= PRODUCTS ================= */
+        /* ================= FOOD GRID ================= */
 
         .product-grid {
             display: grid;
@@ -232,7 +242,7 @@
 
         .product-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 15px 35px rgba(0,0,0,.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,.09);
         }
 
         .wishlist {
@@ -244,7 +254,7 @@
             border-radius: 50%;
             border: none;
             background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,.12);
             cursor: pointer;
             z-index: 2;
         }
@@ -254,32 +264,33 @@
         }
 
         .product-image {
-            height: 270px;
-            background: #f8fafc;
+            height: 220px;
+            background: #fff7ed;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 25px;
+            padding: 12px;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 12px;
             transition: .3s;
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.06);
+            transform: scale(1.05);
         }
 
         .product-info {
             padding: 20px;
         }
 
-        .brand {
-            color: #6366f1;
-            font-size: 12px;
+        .category-name {
+            color: #f97316;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
         }
@@ -290,16 +301,16 @@
             margin: 7px 0;
         }
 
-        .specs {
-            color: #6b7280;
+        .description {
+            color: #777;
             font-size: 12px;
-            margin-bottom: 15px;
             line-height: 1.6;
+            margin-bottom: 12px;
         }
 
         .rating {
             font-size: 13px;
-            margin-bottom: 12px;
+            margin-bottom: 13px;
         }
 
         .rating i {
@@ -318,14 +329,14 @@
         }
 
         .old-price {
-            color: #9ca3af;
+            color: #aaa;
             text-decoration: line-through;
             font-size: 12px;
             margin-left: 5px;
         }
 
         .buy-btn {
-            background: #4f46e5;
+            background: #f97316;
             color: white;
             border: none;
             padding: 11px 15px;
@@ -335,7 +346,7 @@
         }
 
         .buy-btn:hover {
-            background: #3730a3;
+            background: #ea580c;
         }
 
         /* ================= FEATURES ================= */
@@ -355,7 +366,7 @@
 
         .feature i {
             font-size: 28px;
-            color: #4f46e5;
+            color: #f97316;
             margin-bottom: 15px;
         }
 
@@ -365,7 +376,7 @@
         }
 
         .feature p {
-            color: #6b7280;
+            color: #777;
             font-size: 12px;
         }
 
@@ -389,7 +400,7 @@
         .modal-content {
             background: white;
             width: 100%;
-            max-width: 550px;
+            max-width: 580px;
             border-radius: 20px;
             padding: 30px;
             position: relative;
@@ -403,7 +414,7 @@
             top: 18px;
             font-size: 25px;
             cursor: pointer;
-            color: #6b7280;
+            color: #777;
         }
 
         .modal-title {
@@ -412,35 +423,84 @@
         }
 
         .modal-subtitle {
-            color: #6b7280;
+            color: #777;
             font-size: 13px;
             margin-bottom: 25px;
         }
 
-        .order-product {
+        /* ================= CART ITEMS ================= */
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
             display: flex;
-            gap: 20px;
             align-items: center;
-            background: #f8fafc;
-            padding: 15px;
+            gap: 14px;
+            background: #fff7ed;
+            padding: 12px;
             border-radius: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
         }
 
-        .order-product img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
+        .cart-item img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 9px;
         }
 
-        .order-product h3 {
-            margin-bottom: 5px;
+        .cart-item-info {
+            flex: 1;
         }
 
-        .order-product p {
-            color: #6366f1;
+        .cart-item-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            color: #f97316;
+            font-size: 13px;
             font-weight: 700;
         }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity button {
+            width: 27px;
+            height: 27px;
+            border: none;
+            border-radius: 6px;
+            background: #f97316;
+            color: white;
+            cursor: pointer;
+        }
+
+        .quantity span {
+            font-weight: 700;
+            min-width: 15px;
+            text-align: center;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+
+        .empty-cart i {
+            font-size: 45px;
+            margin-bottom: 12px;
+            color: #ddd;
+        }
+
+        /* ================= FORM ================= */
 
         .form-group {
             margin-bottom: 17px;
@@ -464,7 +524,7 @@
 
         .form-group input:focus,
         .form-group select:focus {
-            border-color: #6366f1;
+            border-color: #f97316;
         }
 
         .summary {
@@ -492,7 +552,7 @@
             width: 100%;
             padding: 15px;
             border: none;
-            background: #4f46e5;
+            background: #f97316;
             color: white;
             border-radius: 10px;
             font-weight: 700;
@@ -500,13 +560,13 @@
         }
 
         .confirm-btn:hover {
-            background: #3730a3;
+            background: #ea580c;
         }
 
         /* ================= FOOTER ================= */
 
         footer {
-            background: #111827;
+            background: #171717;
             color: white;
             padding: 50px 7%;
             margin-top: 30px;
@@ -524,18 +584,22 @@
 
         footer p,
         footer a {
-            color: #9ca3af;
+            color: #aaa;
             font-size: 13px;
             line-height: 2;
             text-decoration: none;
             display: block;
         }
 
+        footer a:hover {
+            color: #f97316;
+        }
+
         .copyright {
-            border-top: 1px solid #374151;
+            border-top: 1px solid #333;
             margin-top: 35px;
             padding-top: 20px;
-            color: #9ca3af;
+            color: #888;
             font-size: 12px;
         }
 
@@ -551,7 +615,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .hero-phone {
+            .hero-food {
                 display: none;
             }
         }
@@ -584,7 +648,7 @@
             }
 
             .product-image {
-                height: 200px;
+                height: 180px;
             }
 
             .product-info {
@@ -620,7 +684,7 @@
             }
 
             .product-image {
-                height: 280px;
+                height: 250px;
             }
 
             .footer-grid {
@@ -629,6 +693,7 @@
         }
 
     </style>
+
 </head>
 
 <body>
@@ -638,23 +703,29 @@
 <header>
 
     <div class="logo">
-        Mobile<span>Hub</span>
+        Food<span>Hub</span>
     </div>
 
     <nav>
         <a href="#">Home</a>
-        <a href="#mobiles">Mobiles</a>
+        <a href="#menu">Menu</a>
         <a href="#offers">Offers</a>
         <a href="#about">About</a>
     </nav>
 
     <div class="header-actions">
 
-        <i class="fa-regular fa-user" onclick="showLogin()"></i>
+        <i class="fa-regular fa-user"
+           onclick="showLogin()"></i>
 
-        <div class="cart-icon">
+        <div class="cart-icon"
+             onclick="openCart()">
+
             <i class="fa-solid fa-cart-shopping"></i>
-            <span class="cart-count" id="cartCount">0</span>
+
+            <span class="cart-count"
+                  id="cartCount">0</span>
+
         </div>
 
     </div>
@@ -669,13 +740,13 @@
     <div class="hero-content">
 
         <h1>
-            Find Your<br>
-            Perfect Smartphone
+            Delicious Food,<br>
+            Delivered Fast
         </h1>
 
         <p>
-            Discover the latest smartphones from top brands
-            with amazing prices and fast delivery.
+            Order your favourite meals from the best restaurants
+            and get them delivered straight to your doorstep.
         </p>
 
         <div class="search-box">
@@ -685,7 +756,7 @@
             <input
                     type="text"
                     id="searchInput"
-                    placeholder="Search iPhone, Samsung, OnePlus..."
+                    placeholder="Search pizza, burger, biryani..."
                     onkeyup="searchProducts()">
 
             <button onclick="searchProducts()">
@@ -696,8 +767,8 @@
 
     </div>
 
-    <div class="hero-phone">
-        <i class="fa-solid fa-mobile-screen-button"></i>
+    <div class="hero-food">
+        <i class="fa-solid fa-bowl-food"></i>
     </div>
 
 </section>
@@ -710,44 +781,51 @@
     <div class="container">
 
         <div class="section-title">
-            <h2>Shop by Brand</h2>
+
+            <h2>Explore Categories</h2>
+
         </div>
 
         <div class="categories">
 
             <div class="category active"
-                 onclick="filterBrand('All', this)">
+                 onclick="filterCategory('All', this)">
                 All
             </div>
 
             <div class="category"
-                 onclick="filterBrand('Apple', this)">
-                Apple
+                 onclick="filterCategory('Pizza', this)">
+                🍕 Pizza
             </div>
 
             <div class="category"
-                 onclick="filterBrand('Samsung', this)">
-                Samsung
+                 onclick="filterCategory('Burger', this)">
+                🍔 Burgers
             </div>
 
             <div class="category"
-                 onclick="filterBrand('OnePlus', this)">
-                OnePlus
+                 onclick="filterCategory('Biryani', this)">
+                🍛 Biryani
             </div>
 
             <div class="category"
-                 onclick="filterBrand('Google', this)">
-                Google
+                 onclick="filterCategory('Indian', this)">
+                🍱 Indian
             </div>
 
             <div class="category"
-                 onclick="filterBrand('Xiaomi', this)">
-                Xiaomi
+                 onclick="filterCategory('Chinese', this)">
+                🥡 Chinese
             </div>
 
             <div class="category"
-                 onclick="filterBrand('Vivo', this)">
-                Vivo
+                 onclick="filterCategory('Dessert', this)">
+                🍰 Desserts
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Drinks', this)">
+                🥤 Drinks
             </div>
 
         </div>
@@ -757,21 +835,24 @@
 </section>
 
 
-<!-- ================= PRODUCTS ================= -->
+<!-- ================= FOOD MENU ================= -->
 
-<section class="section" id="mobiles">
+<section class="section"
+         id="menu">
 
     <div class="container">
 
         <div class="section-title">
 
-            <h2>Latest Mobiles</h2>
+            <h2>Popular Food</h2>
 
             <span id="resultCount"></span>
 
         </div>
 
-        <div class="product-grid" id="productGrid"></div>
+        <div class="product-grid"
+             id="productGrid">
+        </div>
 
     </div>
 
@@ -780,34 +861,59 @@
 
 <!-- ================= FEATURES ================= -->
 
-<section class="section">
+<section class="section"
+         id="offers">
 
     <div class="container">
 
         <div class="features">
 
             <div class="feature">
-                <i class="fa-solid fa-truck-fast"></i>
+
+                <i class="fa-solid fa-motorcycle"></i>
+
                 <h3>Fast Delivery</h3>
-                <p>Get your smartphone delivered quickly.</p>
+
+                <p>
+                    Hot and fresh food delivered quickly.
+                </p>
+
             </div>
 
             <div class="feature">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>Secure Payment</h3>
-                <p>100% secure and protected transactions.</p>
+
+                <i class="fa-solid fa-utensils"></i>
+
+                <h3>Best Restaurants</h3>
+
+                <p>
+                    Delicious food from trusted restaurants.
+                </p>
+
             </div>
 
             <div class="feature">
-                <i class="fa-solid fa-rotate-left"></i>
-                <h3>Easy Returns</h3>
-                <p>Simple and hassle-free return policy.</p>
+
+                <i class="fa-solid fa-tag"></i>
+
+                <h3>Great Offers</h3>
+
+                <p>
+                    Enjoy exciting deals and discounts.
+                </p>
+
             </div>
 
             <div class="feature">
+
                 <i class="fa-solid fa-headset"></i>
+
                 <h3>24/7 Support</h3>
-                <p>Our support team is always available.</p>
+
+                <p>
+                    Our support team is always available.
+                </p>
+
             </div>
 
         </div>
@@ -817,181 +923,174 @@
 </section>
 
 
-<!-- ================= BOOKING / ORDER MODAL ================= -->
+<!-- ================= CART / CHECKOUT MODAL ================= -->
 
-<div class="modal" id="bookingModal">
+<div class="modal"
+     id="cartModal">
 
     <div class="modal-content">
 
-        <span class="close" onclick="closeModal()">
+        <span class="close"
+              onclick="closeCart()">
             &times;
         </span>
 
         <h2 class="modal-title">
-            Complete Your Order
+            Your Order
         </h2>
 
         <p class="modal-subtitle">
-            Enter your delivery details to book this mobile.
+            Review your items and enter your delivery details.
         </p>
 
+        <div id="cartItems"
+             class="cart-items">
+        </div>
 
-        <div class="order-product">
 
-            <img id="modalImage" src="" alt="Mobile">
+        <!-- CUSTOMER DETAILS -->
 
-            <div>
+        <div id="checkoutSection">
 
-                <h3 id="modalProductName">
-                    Mobile
-                </h3>
+            <div class="form-group">
 
-                <p id="modalProductPrice">
-                    ₹0
-                </p>
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter your name">
 
             </div>
 
-        </div>
 
+            <div class="form-group">
 
-        <div class="form-group">
+                <label>
+                    Mobile Number
+                </label>
 
-            <label>
-                Full Name
-            </label>
-
-            <input
-                    type="text"
-                    id="customerName"
-                    placeholder="Enter your name">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Mobile Number
-            </label>
-
-            <input
-                    type="tel"
-                    id="customerPhone"
-                    placeholder="Enter mobile number">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Email Address
-            </label>
-
-            <input
-                    type="email"
-                    id="customerEmail"
-                    placeholder="Enter email">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Delivery Address
-            </label>
-
-            <input
-                    type="text"
-                    id="customerAddress"
-                    placeholder="House No, Street, City">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Payment Method
-            </label>
-
-            <select id="paymentMethod">
-
-                <option value="UPI">
-                    UPI
-                </option>
-
-                <option value="CARD">
-                    Credit / Debit Card
-                </option>
-
-                <option value="COD">
-                    Cash on Delivery
-                </option>
-
-                <option value="NETBANKING">
-                    Net Banking
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="summary">
-
-            <div class="summary-row">
-
-                <span>Product</span>
-
-                <span id="summaryProduct">
-                    ₹0
-                </span>
+                <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="Enter mobile number">
 
             </div>
 
-            <div class="summary-row">
 
-                <span>Delivery</span>
+            <div class="form-group">
 
-                <span>
-                    FREE
-                </span>
+                <label>
+                    Email Address
+                </label>
 
-            </div>
-
-            <div class="summary-row">
-
-                <span>Discount</span>
-
-                <span>
-                    ₹0
-                </span>
+                <input
+                        type="email"
+                        id="customerEmail"
+                        placeholder="Enter email">
 
             </div>
 
-            <div class="summary-row summary-total">
 
-                <span>Total</span>
+            <div class="form-group">
 
-                <span id="summaryTotal">
-                    ₹0
-                </span>
+                <label>
+                    Delivery Address
+                </label>
+
+                <input
+                        type="text"
+                        id="customerAddress"
+                        placeholder="House No, Street, City">
 
             </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Payment Method
+                </label>
+
+                <select id="paymentMethod">
+
+                    <option value="UPI">
+                        UPI
+                    </option>
+
+                    <option value="CARD">
+                        Credit / Debit Card
+                    </option>
+
+                    <option value="COD">
+                        Cash on Delivery
+                    </option>
+
+                    <option value="NETBANKING">
+                        Net Banking
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="summary">
+
+                <div class="summary-row">
+
+                    <span>Subtotal</span>
+
+                    <span id="summarySubtotal">
+                        ₹0
+                    </span>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Delivery Fee</span>
+
+                    <span id="deliveryFee">
+                        ₹40
+                    </span>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Discount</span>
+
+                    <span id="discount">
+                        ₹0
+                    </span>
+
+                </div>
+
+                <div class="summary-row summary-total">
+
+                    <span>Total</span>
+
+                    <span id="summaryTotal">
+                        ₹0
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button class="confirm-btn"
+                    onclick="confirmOrder()">
+
+                <i class="fa-solid fa-lock"></i>
+                Place Order
+
+            </button>
 
         </div>
-
-
-        <button class="confirm-btn"
-                onclick="confirmOrder()">
-
-            <i class="fa-solid fa-lock"></i>
-            Confirm Booking
-
-        </button>
 
     </div>
 
@@ -1007,12 +1106,12 @@
         <div>
 
             <h3>
-                MobileHub
+                FoodHub
             </h3>
 
             <p>
-                Your trusted destination for the latest
-                smartphones at the best prices.
+                Your favourite destination for delicious food,
+                great prices and fast delivery.
             </p>
 
         </div>
@@ -1023,10 +1122,21 @@
                 Quick Links
             </h3>
 
-            <a href="#">Home</a>
-            <a href="#mobiles">Mobiles</a>
-            <a href="#">Offers</a>
-            <a href="#">Contact</a>
+            <a href="#">
+                Home
+            </a>
+
+            <a href="#menu">
+                Menu
+            </a>
+
+            <a href="#offers">
+                Offers
+            </a>
+
+            <a href="#about">
+                Contact
+            </a>
 
         </div>
 
@@ -1036,10 +1146,21 @@
                 Customer Care
             </h3>
 
-            <a href="#">Help Center</a>
-            <a href="#">Returns</a>
-            <a href="#">Shipping</a>
-            <a href="#">Warranty</a>
+            <a href="#">
+                Help Center
+            </a>
+
+            <a href="#">
+                Orders
+            </a>
+
+            <a href="#">
+                Delivery
+            </a>
+
+            <a href="#">
+                Refunds
+            </a>
 
         </div>
 
@@ -1069,7 +1190,9 @@
     </div>
 
     <div class="copyright">
-        © 2026 MobileHub. All rights reserved.
+
+        © 2026 FoodHub. All rights reserved.
+
     </div>
 
 </footer>
@@ -1077,137 +1200,203 @@
 
 <script>
 
-    /* ================= PRODUCT DATA ================= */
+    /* ================= FOOD DATA ================= */
 
     const products = [
 
         {
             id: 1,
-            brand: "Apple",
-            name: "iPhone 16 Pro",
-            price: 119999,
-            oldPrice: 129999,
+            category: "Pizza",
+            name: "Margherita Pizza",
+            price: 299,
+            oldPrice: 349,
             rating: 4.8,
-            specs: "256GB • 48MP Camera • A18 Pro",
-            image: "https://images.unsplash.com/photo-1592286927505-2fd7b3e1f8c5?auto=format&fit=crop&w=600&q=80"
+            description: "Fresh mozzarella, tomato sauce and basil.",
+            image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80"
         },
 
         {
             id: 2,
-            brand: "Samsung",
-            name: "Galaxy S25 Ultra",
-            price: 129999,
-            oldPrice: 139999,
+            category: "Pizza",
+            name: "Pepperoni Pizza",
+            price: 399,
+            oldPrice: 449,
             rating: 4.9,
-            specs: "256GB • 200MP Camera • Snapdragon",
-            image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80"
+            description: "Loaded with pepperoni and melted cheese.",
+            image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80"
         },
 
         {
             id: 3,
-            brand: "OnePlus",
-            name: "OnePlus 13",
-            price: 69999,
-            oldPrice: 74999,
+            category: "Burger",
+            name: "Classic Chicken Burger",
+            price: 249,
+            oldPrice: 299,
             rating: 4.7,
-            specs: "256GB • 50MP Camera • 6000mAh",
-            image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80"
+            description: "Crispy chicken, lettuce, cheese and special sauce.",
+            image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
         },
 
         {
             id: 4,
-            brand: "Google",
-            name: "Pixel 9 Pro",
-            price: 109999,
-            oldPrice: 119999,
-            rating: 4.8,
-            specs: "256GB • AI Camera • Tensor G4",
-            image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80"
+            category: "Burger",
+            name: "Cheese Burger",
+            price: 219,
+            oldPrice: 269,
+            rating: 4.6,
+            description: "Juicy patty with cheddar cheese and fresh vegetables.",
+            image: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80"
         },
 
         {
             id: 5,
-            brand: "Xiaomi",
-            name: "Xiaomi 15 Ultra",
-            price: 89999,
-            oldPrice: 94999,
-            rating: 4.6,
-            specs: "512GB • Leica Camera • 90W Charging",
-            image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+            category: "Biryani",
+            name: "Chicken Biryani",
+            price: 299,
+            oldPrice: 349,
+            rating: 4.9,
+            description: "Aromatic basmati rice cooked with tender chicken.",
+            image: "https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=600&q=80"
         },
 
         {
             id: 6,
-            brand: "Vivo",
-            name: "Vivo X200 Pro",
-            price: 79999,
-            oldPrice: 84999,
-            rating: 4.7,
-            specs: "512GB • Zeiss Camera • 6000mAh",
-            image: "https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=600&q=80"
+            category: "Biryani",
+            name: "Mutton Biryani",
+            price: 399,
+            oldPrice: 449,
+            rating: 4.8,
+            description: "Traditional biryani with tender mutton and spices.",
+            image: "https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&fit=crop&w=600&q=80"
         },
 
         {
             id: 7,
-            brand: "Apple",
-            name: "iPhone 16",
-            price: 79999,
-            oldPrice: 84999,
+            category: "Indian",
+            name: "Paneer Butter Masala",
+            price: 279,
+            oldPrice: 319,
             rating: 4.7,
-            specs: "128GB • 48MP Camera • A18 Chip",
-            image: "https://images.unsplash.com/photo-1592286927505-2fd7b3e1f8c5?auto=format&fit=crop&w=600&q=80"
+            description: "Soft paneer cooked in creamy tomato gravy.",
+            image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80"
         },
 
         {
             id: 8,
-            brand: "Samsung",
-            name: "Galaxy S25",
-            price: 84999,
-            oldPrice: 89999,
+            category: "Indian",
+            name: "Masala Dosa",
+            price: 149,
+            oldPrice: 179,
+            rating: 4.8,
+            description: "Crispy dosa served with potato masala and chutney.",
+            image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 9,
+            category: "Chinese",
+            name: "Veg Hakka Noodles",
+            price: 199,
+            oldPrice: 229,
             rating: 4.6,
-            specs: "256GB • 50MP Camera • AMOLED",
-            image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80"
+            description: "Stir-fried noodles with fresh vegetables.",
+            image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 10,
+            category: "Chinese",
+            name: "Chicken Fried Rice",
+            price: 249,
+            oldPrice: 289,
+            rating: 4.7,
+            description: "Flavourful fried rice with chicken and vegetables.",
+            image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 11,
+            category: "Dessert",
+            name: "Chocolate Cake",
+            price: 179,
+            oldPrice: 219,
+            rating: 4.9,
+            description: "Rich and creamy chocolate cake.",
+            image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 12,
+            category: "Drinks",
+            name: "Fresh Mango Shake",
+            price: 129,
+            oldPrice: 159,
+            rating: 4.8,
+            description: "Refreshing mango shake made with fresh mangoes.",
+            image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&q=80"
         }
 
     ];
 
 
-    let selectedBrand = "All";
-    let selectedProduct = null;
-    let cartCount = 0;
+    /* ================= VARIABLES ================= */
+
+    let selectedCategory = "All";
+
+    let cart = [];
 
 
     /* ================= RENDER PRODUCTS ================= */
 
     function renderProducts() {
 
-        const grid = document.getElementById("productGrid");
+        const grid =
+            document.getElementById("productGrid");
 
         const search =
             document.getElementById("searchInput")
                 .value
                 .toLowerCase();
 
-        const filteredProducts = products.filter(product => {
+        const filteredProducts =
+            products.filter(product => {
 
-            const brandMatch =
-                selectedBrand === "All" ||
-                product.brand === selectedBrand;
+                const categoryMatch =
+                    selectedCategory === "All" ||
+                    product.category === selectedCategory;
 
-            const searchMatch =
-                product.name.toLowerCase().includes(search) ||
-                product.brand.toLowerCase().includes(search);
+                const searchMatch =
+                    product.name.toLowerCase().includes(search) ||
+                    product.category.toLowerCase().includes(search) ||
+                    product.description.toLowerCase().includes(search);
 
-            return brandMatch && searchMatch;
+                return categoryMatch && searchMatch;
 
-        });
+            });
 
 
         document.getElementById("resultCount").innerText =
-            filteredProducts.length + " products";
+            filteredProducts.length + " items";
 
 
         grid.innerHTML = "";
+
+
+        if (filteredProducts.length === 0) {
+
+            grid.innerHTML = `
+                <div style="grid-column:1/-1;text-align:center;padding:50px;color:#777">
+                    <i class="fa-solid fa-face-sad-tear"
+                       style="font-size:45px;margin-bottom:15px"></i>
+
+                    <h3>No food found</h3>
+
+                    <p>Try searching for something else.</p>
+                </div>
+            `;
+
+            return;
+        }
 
 
         filteredProducts.forEach(product => {
@@ -1217,11 +1406,12 @@
                 <div class="product-card">
 
                     <button class="wishlist"
-                            onclick="addWishlist()">
+                            onclick="addWishlist('${product.name}')">
 
                         <i class="fa-regular fa-heart"></i>
 
                     </button>
+
 
                     <div class="product-image">
 
@@ -1230,19 +1420,23 @@
 
                     </div>
 
+
                     <div class="product-info">
 
-                        <div class="brand">
-                            ${product.brand}
+                        <div class="category-name">
+                            ${product.category}
                         </div>
+
 
                         <div class="product-name">
                             ${product.name}
                         </div>
 
-                        <div class="specs">
-                            ${product.specs}
+
+                        <div class="description">
+                            ${product.description}
                         </div>
+
 
                         <div class="rating">
 
@@ -1255,6 +1449,7 @@
                             </span>
 
                         </div>
+
 
                         <div class="price-row">
 
@@ -1270,10 +1465,12 @@
 
                             </div>
 
-                            <button class="buy-btn"
-                                    onclick="openBooking(${product.id})">
 
-                                Buy
+                            <button class="buy-btn"
+                                    onclick="addToCart(${product.id})">
+
+                                <i class="fa-solid fa-cart-plus"></i>
+                                Add
 
                             </button>
 
@@ -1290,16 +1487,21 @@
     }
 
 
-    /* ================= BRAND FILTER ================= */
+    /* ================= CATEGORY FILTER ================= */
 
-    function filterBrand(brand, element) {
+    function filterCategory(category, element) {
 
-        selectedBrand = brand;
+        selectedCategory = category;
+
 
         document.querySelectorAll(".category")
-            .forEach(item => item.classList.remove("active"));
+            .forEach(item =>
+                item.classList.remove("active")
+            );
+
 
         element.classList.add("active");
+
 
         renderProducts();
 
@@ -1315,43 +1517,257 @@
     }
 
 
-    /* ================= OPEN BOOKING ================= */
+    /* ================= ADD TO CART ================= */
 
-    function openBooking(id) {
+    function addToCart(id) {
 
-        selectedProduct =
-            products.find(product => product.id === id);
-
-
-        document.getElementById("modalImage").src =
-            selectedProduct.image;
-
-        document.getElementById("modalProductName").innerText =
-            selectedProduct.name;
-
-        document.getElementById("modalProductPrice").innerText =
-            "₹" + selectedProduct.price.toLocaleString("en-IN");
+        const product =
+            products.find(product =>
+                product.id === id
+            );
 
 
-        document.getElementById("summaryProduct").innerText =
-            "₹" + selectedProduct.price.toLocaleString("en-IN");
+        const existing =
+            cart.find(item =>
+                item.id === id
+            );
 
-        document.getElementById("summaryTotal").innerText =
-            "₹" + selectedProduct.price.toLocaleString("en-IN");
+
+        if (existing) {
+
+            existing.quantity++;
+
+        } else {
+
+            cart.push({
+
+                ...product,
+
+                quantity: 1
+
+            });
+
+        }
 
 
-        document.getElementById("bookingModal")
+        updateCartCount();
+
+
+        alert(product.name + " added to cart!");
+
+    }
+
+
+    /* ================= CART COUNT ================= */
+
+    function updateCartCount() {
+
+        const total =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.quantity,
+                0
+            );
+
+
+        document.getElementById("cartCount")
+            .innerText = total;
+
+    }
+
+
+    /* ================= OPEN CART ================= */
+
+    function openCart() {
+
+        renderCart();
+
+        document.getElementById("cartModal")
             .classList.add("show");
 
     }
 
 
-    /* ================= CLOSE MODAL ================= */
+    /* ================= CLOSE CART ================= */
 
-    function closeModal() {
+    function closeCart() {
 
-        document.getElementById("bookingModal")
+        document.getElementById("cartModal")
             .classList.remove("show");
+
+    }
+
+
+    /* ================= RENDER CART ================= */
+
+    function renderCart() {
+
+        const cartItems =
+            document.getElementById("cartItems");
+
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML = `
+
+                <div class="empty-cart">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <h3>Your cart is empty</h3>
+
+                    <p>Add some delicious food to continue.</p>
+
+                </div>
+
+            `;
+
+
+            document.getElementById("checkoutSection")
+                .style.display = "none";
+
+            return;
+
+        }
+
+
+        document.getElementById("checkoutSection")
+            .style.display = "block";
+
+
+        cartItems.innerHTML = "";
+
+
+        cart.forEach(item => {
+
+            cartItems.innerHTML += `
+
+                <div class="cart-item">
+
+                    <img src="${item.image}"
+                         alt="${item.name}">
+
+
+                    <div class="cart-item-info">
+
+                        <h4>
+                            ${item.name}
+                        </h4>
+
+                        <span class="cart-item-price">
+                            ₹${item.price.toLocaleString("en-IN")}
+                        </span>
+
+                    </div>
+
+
+                    <div class="quantity">
+
+                        <button onclick="changeQuantity(${item.id}, -1)">
+                            -
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button onclick="changeQuantity(${item.id}, 1)">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+
+        updateSummary();
+
+    }
+
+
+    /* ================= CHANGE QUANTITY ================= */
+
+    function changeQuantity(id, change) {
+
+        const item =
+            cart.find(item =>
+                item.id === id
+            );
+
+
+        if (!item) return;
+
+
+        item.quantity += change;
+
+
+        if (item.quantity <= 0) {
+
+            cart =
+                cart.filter(item =>
+                    item.id !== id
+                );
+
+        }
+
+
+        updateCartCount();
+
+        renderCart();
+
+    }
+
+
+    /* ================= SUMMARY ================= */
+
+    function updateSummary() {
+
+        const subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.price * item.quantity,
+                0
+            );
+
+
+        const delivery =
+            subtotal >= 499 ? 0 : 40;
+
+
+        const discount =
+            subtotal >= 999 ? 100 : 0;
+
+
+        const total =
+            subtotal +
+            delivery -
+            discount;
+
+
+        document.getElementById("summarySubtotal")
+            .innerText =
+            "₹" + subtotal.toLocaleString("en-IN");
+
+
+        document.getElementById("deliveryFee")
+            .innerText =
+            delivery === 0
+                ? "FREE"
+                : "₹" + delivery;
+
+
+        document.getElementById("discount")
+            .innerText =
+            "₹" + discount.toLocaleString("en-IN");
+
+
+        document.getElementById("summaryTotal")
+            .innerText =
+            "₹" + total.toLocaleString("en-IN");
 
     }
 
@@ -1361,59 +1777,128 @@
     function confirmOrder() {
 
         const name =
-            document.getElementById("customerName").value.trim();
+            document.getElementById("customerName")
+                .value.trim();
+
 
         const phone =
-            document.getElementById("customerPhone").value.trim();
+            document.getElementById("customerPhone")
+                .value.trim();
+
 
         const email =
-            document.getElementById("customerEmail").value.trim();
+            document.getElementById("customerEmail")
+                .value.trim();
+
 
         const address =
-            document.getElementById("customerAddress").value.trim();
+            document.getElementById("customerAddress")
+                .value.trim();
 
 
-        if (!name || !phone || !email || !address) {
+        const payment =
+            document.getElementById("paymentMethod")
+                .value;
 
-            alert("Please fill all delivery details.");
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty.");
 
             return;
+
+        }
+
+
+        if (!name ||
+            !phone ||
+            !email ||
+            !address) {
+
+            alert(
+                "Please fill all delivery details."
+            );
+
+            return;
+
         }
 
 
         if (phone.length < 10) {
 
-            alert("Please enter a valid mobile number.");
+            alert(
+                "Please enter a valid mobile number."
+            );
 
             return;
+
         }
 
 
+        const subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.price * item.quantity,
+                0
+            );
+
+
+        const delivery =
+            subtotal >= 499 ? 0 : 40;
+
+
+        const discount =
+            subtotal >= 999 ? 100 : 0;
+
+
+        const total =
+            subtotal +
+            delivery -
+            discount;
+
+
         alert(
-            "Order booked successfully!\\n\\n" +
-            "Product: " + selectedProduct.name + "\\n" +
-            "Customer: " + name + "\\n" +
+
+            "Order placed successfully! 🎉\n\n" +
+
+            "Customer: " + name + "\n" +
+
+            "Items: " + cart.length + "\n" +
+
+            "Payment: " + payment + "\n" +
+
             "Total: ₹" +
-            selectedProduct.price.toLocaleString("en-IN")
+            total.toLocaleString("en-IN") +
+
+            "\n\nThank you for ordering from FoodHub!"
+
         );
 
 
-        cartCount++;
-
-        document.getElementById("cartCount")
-            .innerText = cartCount;
+        cart = [];
 
 
-        closeModal();
+        updateCartCount();
+
+
+        closeCart();
+
+
+        document.getElementById("customerName").value = "";
+        document.getElementById("customerPhone").value = "";
+        document.getElementById("customerEmail").value = "";
+        document.getElementById("customerAddress").value = "";
 
     }
 
 
     /* ================= WISHLIST ================= */
 
-    function addWishlist() {
+    function addWishlist(name) {
 
-        alert("Mobile added to wishlist ❤️");
+        alert(
+            name + " added to wishlist ❤️"
+        );
 
     }
 
@@ -1422,18 +1907,22 @@
 
     function showLogin() {
 
-        alert("Login page can be connected here.");
+        alert(
+            "Login page can be connected here."
+        );
 
     }
 
 
-    /* ================= CLOSE MODAL ON OUTSIDE CLICK ================= */
+    /* ================= CLOSE MODAL ================= */
 
-    document.getElementById("bookingModal")
+    document.getElementById("cartModal")
         .addEventListener("click", function(event) {
 
             if (event.target === this) {
-                closeModal();
+
+                closeCart();
+
             }
 
         });
@@ -1446,4 +1935,5 @@
 </script>
 
 </body>
+
 </html>
