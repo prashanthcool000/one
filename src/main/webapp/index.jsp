@@ -1,4 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+```jsp
+<%@ page language="java"
+    contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,906 +11,1891 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
 
-    <title>StyleHub - Shop Dresses</title>
+    <title>CineBook — Movie Ticket Booking</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
+    <!-- Font Awesome -->
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
-    <style>
+<style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #faf8f9;
-            color: #222;
-        }
+:root {
 
+    --black: #101010;
+    --dark: #181818;
+    --dark2: #222222;
 
-        /* ================= HEADER ================= */
+    --white: #ffffff;
 
-        header {
-            background: #ffffff;
-            padding: 18px 7%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    --red: #e50914;
+    --red-dark: #b20710;
 
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+    --gold: #f4b942;
 
-            box-shadow: 0 2px 15px rgba(0,0,0,.06);
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
-        }
+    --gray: #8c8c8c;
 
-        .logo span {
-            color: #db2777;
-        }
+    --light: #f5f5f5;
 
-        nav {
-            display: flex;
-            gap: 28px;
-        }
+    --border: #e5e5e5;
 
-        nav a {
-            color: #555;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-        }
+    --container: 1250px;
 
-        nav a:hover {
-            color: #db2777;
-        }
+    --radius: 14px;
+}
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
 
-        .header-actions i {
-            cursor: pointer;
-            font-size: 19px;
-        }
+* {
 
-        .cart-icon {
-            position: relative;
-        }
+    margin: 0;
 
-        .cart-count {
-            position: absolute;
-            top: -11px;
-            right: -11px;
+    padding: 0;
 
-            width: 19px;
-            height: 19px;
+    box-sizing: border-box;
+}
 
-            border-radius: 50%;
 
-            background: #db2777;
-            color: white;
+html {
 
-            font-size: 10px;
+    scroll-behavior: smooth;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
+body {
 
-        /* ================= HERO ================= */
+    font-family: "DM Sans", sans-serif;
 
-        .hero {
-            background:
-                linear-gradient(
-                    120deg,
-                    #831843,
-                    #be185d,
-                    #ec4899
-                );
+    background: var(--white);
 
-            color: white;
+    color: var(--black);
 
-            padding: 75px 7%;
+    line-height: 1.5;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+    overflow-x: hidden;
+}
 
-            gap: 40px;
-        }
 
-        .hero-content {
-            max-width: 650px;
-        }
+a {
 
-        .hero h1 {
-            font-size: 50px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
+    text-decoration: none;
 
-        .hero p {
-            color: #fce7f3;
-            font-size: 17px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
+    color: inherit;
+}
 
-        .search-box {
-            background: white;
 
-            border-radius: 12px;
+button,
+input,
+select {
 
-            display: flex;
-            align-items: center;
+    font-family: inherit;
+}
 
-            padding: 6px;
 
-            max-width: 620px;
-        }
+.container {
 
-        .search-box i {
-            color: #777;
-            margin-left: 15px;
-        }
+    width: 100%;
 
-        .search-box input {
-            border: none;
-            outline: none;
+    max-width: var(--container);
 
-            flex: 1;
+    margin: auto;
 
-            padding: 15px;
+    padding: 0 24px;
+}
 
-            font-size: 15px;
-        }
 
-        .search-box button {
-            background: #222;
-            color: white;
+/* =========================================================
+   TOP BAR
+========================================================= */
 
-            border: none;
+.topbar {
 
-            padding: 14px 22px;
+    background: var(--black);
 
-            border-radius: 9px;
+    color: white;
 
-            cursor: pointer;
+    padding: 8px;
 
-            font-weight: 600;
-        }
+    text-align: center;
 
-        .hero-dress {
-            font-size: 180px;
-            opacity: .2;
-        }
+    font-size: 12px;
 
+    letter-spacing: .4px;
+}
 
-        /* ================= COMMON ================= */
 
-        .container {
-            width: 86%;
-            max-width: 1400px;
-            margin: auto;
-        }
+.topbar i {
 
-        .section {
-            padding: 55px 0;
-        }
+    color: var(--gold);
 
-        .section-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+    margin-right: 6px;
+}
 
-            margin-bottom: 28px;
-        }
 
-        .section-title h2 {
-            font-size: 28px;
-        }
+/* =========================================================
+   HEADER
+========================================================= */
 
-        #resultCount {
-            color: #777;
-            font-size: 13px;
-        }
+header {
 
+    position: sticky;
 
-        /* ================= CATEGORIES ================= */
+    top: 0;
 
-        .categories {
-            display: flex;
-            gap: 14px;
+    z-index: 1000;
 
-            overflow-x: auto;
+    background: rgba(16,16,16,.96);
 
-            padding-bottom: 10px;
-        }
+    backdrop-filter: blur(12px);
 
-        .category {
-            background: white;
+    border-bottom: 1px solid #2d2d2d;
 
-            border: 1px solid #e5e7eb;
+    color: white;
+}
 
-            padding: 13px 23px;
 
-            border-radius: 30px;
+.header {
 
-            cursor: pointer;
+    height: 76px;
 
-            white-space: nowrap;
+    display: flex;
 
-            font-weight: 600;
+    align-items: center;
 
-            transition: .2s;
-        }
+    justify-content: space-between;
 
-        .category:hover,
-        .category.active {
-            background: #db2777;
-            color: white;
-            border-color: #db2777;
-        }
+    gap: 30px;
+}
 
 
-        /* ================= PRODUCTS ================= */
+.logo {
 
-        .product-grid {
-            display: grid;
+    font-family: "Playfair Display", serif;
 
-            grid-template-columns:
-                repeat(4, 1fr);
+    font-size: 30px;
 
-            gap: 25px;
-        }
+    font-weight: 700;
 
-        .product-card {
-            background: white;
+    letter-spacing: 1px;
+}
 
-            border-radius: 18px;
 
-            overflow: hidden;
+.logo span {
 
-            border: 1px solid #e5e7eb;
+    color: var(--red);
+}
 
-            transition: .3s;
 
-            position: relative;
-        }
+.nav ul {
 
-        .product-card:hover {
-            transform: translateY(-6px);
+    display: flex;
 
-            box-shadow:
-                0 15px 35px
-                rgba(0,0,0,.09);
-        }
+    list-style: none;
 
-        .wishlist {
-            position: absolute;
+    gap: 30px;
+}
 
-            right: 15px;
-            top: 15px;
 
-            width: 38px;
-            height: 38px;
+.nav a {
 
-            border-radius: 50%;
+    font-size: 14px;
 
-            border: none;
+    color: #ddd;
 
-            background: white;
+    transition: .2s;
+}
 
-            box-shadow:
-                0 4px 15px
-                rgba(0,0,0,.12);
 
-            cursor: pointer;
+.nav a:hover {
 
-            z-index: 2;
-        }
+    color: white;
+}
 
-        .wishlist:hover {
-            color: #e11d48;
-        }
 
-        .product-image {
-            height: 330px;
+.header-actions {
 
-            background: #fdf2f8;
+    display: flex;
 
-            display: flex;
+    align-items: center;
 
-            align-items: center;
-            justify-content: center;
+    gap: 18px;
+}
 
-            padding: 12px;
-        }
 
-        .product-image img {
-            width: 100%;
-            height: 100%;
+.header-icon {
 
-            object-fit: cover;
+    color: white;
 
-            border-radius: 12px;
+    background: transparent;
 
-            transition: .3s;
-        }
+    border: 0;
 
-        .product-card:hover
-        .product-image img {
-            transform: scale(1.04);
-        }
+    cursor: pointer;
 
-        .product-info {
-            padding: 20px;
-        }
+    font-size: 16px;
 
-        .category-name {
-            color: #db2777;
+    position: relative;
+}
 
-            font-size: 11px;
 
-            font-weight: 700;
+.location {
 
-            text-transform: uppercase;
-        }
+    display: flex;
 
-        .product-name {
-            font-size: 18px;
+    align-items: center;
 
-            font-weight: 700;
+    gap: 7px;
 
-            margin: 7px 0;
-        }
+    color: #ddd;
 
-        .description {
-            color: #777;
+    font-size: 13px;
+}
 
-            font-size: 12px;
 
-            line-height: 1.6;
+.location i {
 
-            margin-bottom: 12px;
-        }
+    color: var(--red);
+}
 
-        .rating {
-            font-size: 13px;
 
-            margin-bottom: 13px;
-        }
+.mobile-menu {
 
-        .rating i {
-            color: #f59e0b;
-        }
+    display: none;
 
-        .price-row {
-            display: flex;
+    background: transparent;
 
-            justify-content:
-                space-between;
+    border: 0;
 
-            align-items: center;
-        }
+    color: white;
 
-        .price {
-            font-size: 20px;
+    font-size: 20px;
 
-            font-weight: 800;
-        }
+    cursor: pointer;
+}
 
-        .old-price {
-            color: #aaa;
 
-            text-decoration:
-                line-through;
+/* =========================================================
+   HERO
+========================================================= */
 
-            font-size: 12px;
+.hero {
 
-            margin-left: 5px;
-        }
+    min-height: 610px;
 
-        .buy-btn {
-            background: #db2777;
+    background:
 
-            color: white;
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.92),
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.2)
+        ),
 
-            border: none;
+        url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=90")
+        center/cover;
 
-            padding: 11px 15px;
+    display: flex;
 
-            border-radius: 9px;
+    align-items: center;
 
-            cursor: pointer;
+    color: white;
+}
 
-            font-weight: 600;
-        }
 
-        .buy-btn:hover {
-            background: #be185d;
-        }
+.hero-content {
 
+    max-width: 650px;
+}
 
-        /* ================= FEATURES ================= */
 
-        .features {
-            display: grid;
+.hero-label {
 
-            grid-template-columns:
-                repeat(4, 1fr);
+    color: #ffb4b4;
 
-            gap: 20px;
-        }
+    font-size: 12px;
 
-        .feature {
-            background: white;
+    text-transform: uppercase;
 
-            padding: 25px;
+    letter-spacing: 3px;
 
-            border-radius: 15px;
+    font-weight: 700;
 
-            text-align: center;
-        }
+    margin-bottom: 18px;
+}
 
-        .feature i {
-            font-size: 28px;
 
-            color: #db2777;
+.hero h1 {
 
-            margin-bottom: 15px;
-        }
+    font-family: "Playfair Display", serif;
 
-        .feature h3 {
-            font-size: 15px;
+    font-size: clamp(48px, 7vw, 80px);
 
-            margin-bottom: 7px;
-        }
+    line-height: 1.05;
 
-        .feature p {
-            color: #777;
+    margin-bottom: 20px;
+}
 
-            font-size: 12px;
-        }
 
+.hero h1 span {
 
-        /* ================= MODAL ================= */
+    color: #ff3942;
+}
 
-        .modal {
-            display: none;
 
-            position: fixed;
+.hero p {
 
-            inset: 0;
+    color: #ddd;
 
-            background:
-                rgba(0,0,0,.65);
+    max-width: 560px;
 
-            z-index: 2000;
+    font-size: 16px;
 
-            align-items: center;
+    margin-bottom: 30px;
+}
 
-            justify-content: center;
 
-            padding: 20px;
-        }
+.hero-buttons {
 
-        .modal.show {
-            display: flex;
-        }
+    display: flex;
 
-        .modal-content {
-            background: white;
+    gap: 12px;
 
-            width: 100%;
+    flex-wrap: wrap;
+}
 
-            max-width: 580px;
 
-            border-radius: 20px;
+.btn {
 
-            padding: 30px;
+    border: 0;
 
-            position: relative;
+    padding: 14px 24px;
 
-            max-height: 90vh;
+    cursor: pointer;
 
-            overflow-y: auto;
-        }
+    font-weight: 700;
 
-        .close {
-            position: absolute;
+    display: inline-flex;
 
-            right: 20px;
-            top: 18px;
+    align-items: center;
 
-            font-size: 25px;
+    justify-content: center;
 
-            cursor: pointer;
+    gap: 9px;
 
-            color: #777;
-        }
+    transition: .25s;
+}
 
-        .modal-title {
-            font-size: 24px;
 
-            margin-bottom: 5px;
-        }
+.btn-red {
 
-        .modal-subtitle {
-            color: #777;
+    background: var(--red);
 
-            font-size: 13px;
+    color: white;
+}
 
-            margin-bottom: 25px;
-        }
 
+.btn-red:hover {
 
-        /* ================= CART ================= */
+    background: var(--red-dark);
 
-        .cart-item {
-            display: flex;
+    transform: translateY(-2px);
+}
 
-            align-items: center;
 
-            gap: 14px;
+.btn-outline {
 
-            background: #fdf2f8;
+    background: transparent;
 
-            padding: 12px;
+    color: white;
 
-            border-radius: 12px;
+    border: 1px solid #777;
+}
 
-            margin-bottom: 10px;
-        }
 
-        .cart-item img {
-            width: 65px;
-            height: 75px;
+.btn-outline:hover {
 
-            object-fit: cover;
+    background: white;
 
-            border-radius: 9px;
-        }
+    color: black;
+}
 
-        .cart-item-info {
-            flex: 1;
-        }
 
-        .cart-item-info h4 {
-            font-size: 14px;
+/* =========================================================
+   BOOKING SEARCH
+========================================================= */
 
-            margin-bottom: 4px;
-        }
+.booking-search {
 
-        .cart-item-price {
-            color: #db2777;
+    margin-top: -45px;
 
-            font-size: 13px;
+    position: relative;
 
-            font-weight: 700;
-        }
+    z-index: 10;
+}
 
-        .quantity {
-            display: flex;
 
-            align-items: center;
+.search-box {
 
-            gap: 8px;
-        }
+    background: white;
 
-        .quantity button {
-            width: 27px;
-            height: 27px;
+    padding: 22px;
 
-            border: none;
+    box-shadow: 0 15px 50px rgba(0,0,0,.15);
 
-            border-radius: 6px;
+    display: grid;
 
-            background: #db2777;
+    grid-template-columns: 1.5fr 1fr 1fr auto;
 
-            color: white;
+    gap: 12px;
 
-            cursor: pointer;
-        }
+    border-radius: 12px;
+}
 
-        .quantity span {
-            font-weight: 700;
 
-            min-width: 15px;
+.search-field {
 
-            text-align: center;
-        }
+    border: 1px solid var(--border);
 
-        .empty-cart {
-            text-align: center;
+    padding: 13px 15px;
 
-            padding: 30px;
+    display: flex;
 
-            color: #888;
-        }
+    align-items: center;
 
-        .empty-cart i {
-            font-size: 45px;
+    gap: 10px;
 
-            margin-bottom: 12px;
+    background: #fafafa;
+}
 
-            color: #ddd;
-        }
 
+.search-field i {
 
-        /* ================= FORM ================= */
+    color: var(--red);
+}
 
-        .form-group {
-            margin-bottom: 17px;
-        }
 
-        .form-group label {
-            display: block;
+.search-field input,
+.search-field select {
 
-            font-size: 13px;
+    border: 0;
 
-            font-weight: 600;
+    outline: none;
 
-            margin-bottom: 7px;
-        }
+    background: transparent;
 
-        .form-group input,
-        .form-group select {
-            width: 100%;
+    width: 100%;
 
-            padding: 13px;
+    font-size: 14px;
+}
 
-            border: 1px solid #d1d5db;
 
-            border-radius: 8px;
+.search-submit {
 
-            outline: none;
-        }
+    background: var(--red);
 
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: #db2777;
-        }
+    color: white;
 
+    border: 0;
 
-        /* ================= SUMMARY ================= */
+    padding: 0 26px;
 
-        .summary {
-            background: #f8fafc;
+    cursor: pointer;
 
-            padding: 18px;
+    font-weight: 700;
 
-            border-radius: 12px;
+    border-radius: 5px;
+}
 
-            margin: 20px 0;
-        }
 
-        .summary-row {
-            display: flex;
+/* =========================================================
+   SECTION
+========================================================= */
 
-            justify-content:
-                space-between;
+.section {
 
-            margin-bottom: 10px;
+    padding: 85px 0;
+}
 
-            font-size: 14px;
-        }
 
-        .summary-total {
-            border-top:
-                1px solid #ddd;
+.section-header {
 
-            padding-top: 12px;
+    display: flex;
 
-            font-weight: 800;
+    align-items: end;
 
-            font-size: 18px;
-        }
+    justify-content: space-between;
 
-        .confirm-btn {
-            width: 100%;
+    margin-bottom: 35px;
 
-            padding: 15px;
+    gap: 20px;
+}
 
-            border: none;
 
-            background: #db2777;
+.eyebrow {
 
-            color: white;
+    color: var(--red);
 
-            border-radius: 10px;
+    text-transform: uppercase;
 
-            font-weight: 700;
+    font-size: 11px;
 
-            cursor: pointer;
-        }
+    font-weight: 700;
 
-        .confirm-btn:hover {
-            background: #be185d;
-        }
+    letter-spacing: 3px;
 
+    margin-bottom: 7px;
+}
 
-        /* ================= FOOTER ================= */
 
-        footer {
-            background: #171717;
+.section-title {
 
-            color: white;
+    font-family: "Playfair Display", serif;
 
-            padding: 50px 7%;
+    font-size: 40px;
 
-            margin-top: 30px;
-        }
+    line-height: 1.1;
+}
 
-        .footer-grid {
-            display: grid;
 
-            grid-template-columns:
-                2fr 1fr 1fr 1fr;
+.section-description {
 
-            gap: 40px;
-        }
+    color: var(--gray);
 
-        footer h3 {
-            margin-bottom: 15px;
-        }
+    font-size: 14px;
 
-        footer p,
-        footer a {
-            color: #aaa;
+    margin-top: 8px;
+}
 
-            font-size: 13px;
 
-            line-height: 2;
+.view-all {
 
-            text-decoration: none;
+    color: var(--red);
 
-            display: block;
-        }
+    font-size: 13px;
 
-        footer a:hover {
-            color: #db2777;
-        }
+    font-weight: 700;
+}
 
-        .copyright {
-            border-top:
-                1px solid #333;
 
-            margin-top: 35px;
+/* =========================================================
+   MOVIE FILTER
+========================================================= */
 
-            padding-top: 20px;
+.movie-filters {
 
-            color: #888;
+    display: flex;
 
-            font-size: 12px;
-        }
+    gap: 8px;
 
+    flex-wrap: wrap;
 
-        /* ================= RESPONSIVE ================= */
+    margin-bottom: 30px;
+}
 
-        @media(max-width:1000px) {
 
-            .product-grid {
-                grid-template-columns:
-                    repeat(3,1fr);
-            }
+.filter {
 
-            .features {
-                grid-template-columns:
-                    repeat(2,1fr);
-            }
+    border: 1px solid var(--border);
 
-            .hero-dress {
-                display: none;
-            }
+    background: white;
 
-        }
+    padding: 9px 18px;
 
+    border-radius: 30px;
 
-        @media(max-width:700px) {
+    cursor: pointer;
 
-            header {
-                padding: 15px 5%;
-            }
+    font-size: 12px;
 
-            nav {
-                display: none;
-            }
+    transition: .2s;
+}
 
-            .hero {
-                padding: 45px 5%;
-            }
 
-            .hero h1 {
-                font-size: 36px;
-            }
+.filter:hover,
+.filter.active {
 
-            .container {
-                width: 90%;
-            }
+    background: var(--red);
 
-            .product-grid {
-                grid-template-columns:
-                    repeat(2,1fr);
+    border-color: var(--red);
 
-                gap: 15px;
-            }
+    color: white;
+}
 
-            .product-image {
-                height: 250px;
-            }
 
-            .product-info {
-                padding: 14px;
-            }
+/* =========================================================
+   MOVIE GRID
+========================================================= */
 
-            .product-name {
-                font-size: 15px;
-            }
+.movie-grid {
 
-            .price {
-                font-size: 16px;
-            }
+    display: grid;
 
-            .buy-btn {
-                padding: 8px 10px;
+    grid-template-columns: repeat(4,1fr);
 
-                font-size: 11px;
-            }
+    gap: 22px;
+}
 
-            .features {
-                grid-template-columns: 1fr;
-            }
 
-            .footer-grid {
-                grid-template-columns:
-                    1fr 1fr;
-            }
+.movie-card {
 
-        }
+    background: white;
 
+    border-radius: 12px;
 
-        @media(max-width:450px) {
+    overflow: hidden;
 
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
+    border: 1px solid var(--border);
 
-            .product-image {
-                height: 350px;
-            }
+    transition: .3s;
 
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
+    position: relative;
+}
 
-        }
 
-    </style>
+.movie-card:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow: 0 20px 45px rgba(0,0,0,.12);
+}
+
+
+.movie-poster {
+
+    aspect-ratio: 2 / 3;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background: #ddd;
+}
+
+
+.movie-poster img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .45s;
+}
+
+
+.movie-card:hover .movie-poster img {
+
+    transform: scale(1.05);
+}
+
+
+.movie-badge {
+
+    position: absolute;
+
+    top: 12px;
+
+    left: 12px;
+
+    background: var(--red);
+
+    color: white;
+
+    padding: 6px 9px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    z-index: 2;
+
+    text-transform: uppercase;
+}
+
+
+.movie-rating {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 12px;
+
+    background: rgba(0,0,0,.8);
+
+    color: #ffc107;
+
+    padding: 6px 8px;
+
+    font-size: 11px;
+
+    border-radius: 5px;
+}
+
+
+.movie-info {
+
+    padding: 16px;
+}
+
+
+.movie-name {
+
+    font-weight: 700;
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
+}
+
+
+.movie-meta {
+
+    color: var(--gray);
+
+    font-size: 12px;
+
+    margin-bottom: 14px;
+}
+
+
+.movie-meta span {
+
+    margin-right: 7px;
+}
+
+
+.movie-actions {
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.book-btn {
+
+    flex: 1;
+
+    background: var(--black);
+
+    color: white;
+
+    border: 0;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    font-size: 12px;
+}
+
+
+.book-btn:hover {
+
+    background: var(--red);
+}
+
+
+.info-btn {
+
+    width: 40px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   SHOWTIMES
+========================================================= */
+
+.showtimes-section {
+
+    background: #f7f7f7;
+}
+
+
+.showtime-layout {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.5fr;
+
+    gap: 35px;
+
+    align-items: center;
+}
+
+
+.showtime-poster {
+
+    height: 500px;
+
+    overflow: hidden;
+}
+
+
+.showtime-poster img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.showtime-content h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 48px;
+
+    margin-bottom: 10px;
+}
+
+
+.movie-info-line {
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+
+.show-date {
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+.dates {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+
+.date {
+
+    min-width: 65px;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    padding: 9px;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+
+.date strong {
+
+    display: block;
+
+    font-size: 16px;
+}
+
+
+.date span {
+
+    font-size: 10px;
+
+    color: var(--gray);
+}
+
+
+.date.active {
+
+    background: var(--red);
+
+    border-color: var(--red);
+
+    color: white;
+}
+
+
+.date.active span {
+
+    color: white;
+}
+
+
+.cinema-name {
+
+    font-weight: 700;
+
+    font-size: 15px;
+
+    margin-bottom: 10px;
+}
+
+
+.showtimes {
+
+    display: flex;
+
+    gap: 9px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+
+.time {
+
+    border: 1px solid #bbb;
+
+    background: white;
+
+    padding: 10px 15px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.time:hover,
+.time.selected {
+
+    border-color: var(--red);
+
+    color: var(--red);
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    border-top: 1px solid var(--border);
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.feature {
+
+    padding: 30px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    border-right: 1px solid var(--border);
+}
+
+
+.feature:last-child {
+
+    border-right: 0;
+}
+
+
+.feature i {
+
+    color: var(--red);
+
+    font-size: 22px;
+}
+
+
+.feature h4 {
+
+    font-size: 13px;
+
+    margin-bottom: 2px;
+}
+
+
+.feature p {
+
+    font-size: 11px;
+
+    color: var(--gray);
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
+
+.steps {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 20px;
+}
+
+
+.step {
+
+    border: 1px solid var(--border);
+
+    padding: 35px;
+
+    text-align: center;
+}
+
+
+.step-number {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin: auto;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #fff0f0;
+
+    color: var(--red);
+
+    font-weight: 700;
+
+    margin-bottom: 18px;
+}
+
+
+.step i {
+
+    font-size: 28px;
+
+    color: var(--red);
+
+    margin-bottom: 12px;
+}
+
+
+.step h3 {
+
+    font-size: 17px;
+
+    margin-bottom: 7px;
+}
+
+
+.step p {
+
+    color: var(--gray);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.newsletter {
+
+    background: var(--black);
+
+    color: white;
+
+    padding: 70px 20px;
+
+    text-align: center;
+}
+
+
+.newsletter h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 42px;
+
+    margin-bottom: 10px;
+}
+
+
+.newsletter p {
+
+    color: #aaa;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+.newsletter-form {
+
+    max-width: 500px;
+
+    margin: auto;
+
+    display: flex;
+}
+
+
+.newsletter-form input {
+
+    flex: 1;
+
+    padding: 14px;
+
+    border: 0;
+
+    outline: none;
+}
+
+
+.newsletter-form button {
+
+    background: var(--red);
+
+    color: white;
+
+    border: 0;
+
+    padding: 0 25px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    background: #090909;
+
+    color: white;
+
+    padding: 65px 0 25px;
+}
+
+
+.footer-grid {
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+
+    gap: 45px;
+
+    padding-bottom: 40px;
+
+    border-bottom: 1px solid #292929;
+}
+
+
+.footer-logo {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+
+    margin-bottom: 13px;
+}
+
+
+.footer-logo span {
+
+    color: var(--red);
+}
+
+
+.footer-about {
+
+    color: #888;
+
+    max-width: 330px;
+
+    font-size: 13px;
+}
+
+
+.footer-title {
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 17px;
+}
+
+
+.footer-links {
+
+    list-style: none;
+}
+
+
+.footer-links li {
+
+    color: #888;
+
+    font-size: 13px;
+
+    margin-bottom: 9px;
+}
+
+
+.footer-links li:hover {
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.social {
+
+    display: flex;
+
+    gap: 9px;
+
+    margin-top: 20px;
+}
+
+
+.social a {
+
+    width: 35px;
+
+    height: 35px;
+
+    border: 1px solid #444;
+
+    border-radius: 50%;
+
+    display: grid;
+
+    place-items: center;
+}
+
+
+.copyright {
+
+    text-align: center;
+
+    color: #666;
+
+    padding-top: 23px;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BOOKING MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.75);
+
+    z-index: 3000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.modal.show {
+
+    display: flex;
+}
+
+
+.booking-modal {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    position: relative;
+}
+
+
+.close-modal {
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 20px;
+
+    width: 35px;
+
+    height: 35px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #f3f3f3;
+
+    cursor: pointer;
+}
+
+
+.booking-header {
+
+    margin-bottom: 25px;
+
+    padding-right: 40px;
+}
+
+
+.booking-header h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 34px;
+}
+
+
+.booking-header p {
+
+    color: var(--gray);
+
+    font-size: 13px;
+}
+
+
+/* SEAT SCREEN */
+
+.screen {
+
+    margin: 10px auto 30px;
+
+    max-width: 500px;
+
+    text-align: center;
+}
+
+
+.screen-line {
+
+    height: 8px;
+
+    background: #ddd;
+
+    border-radius: 50%;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+
+    margin-bottom: 8px;
+}
+
+
+.screen span {
+
+    color: #999;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+.seat-layout {
+
+    max-width: 520px;
+
+    margin: auto;
+}
+
+
+.seat-row {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+}
+
+
+.seat {
+
+    width: 32px;
+
+    height: 28px;
+
+    border: 0;
+
+    border-radius: 6px 6px 3px 3px;
+
+    background: #ddd;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+
+.seat:hover {
+
+    background: #bbb;
+}
+
+
+.seat.selected {
+
+    background: var(--red);
+
+    color: white;
+}
+
+
+.seat.booked {
+
+    background: #333;
+
+    color: white;
+
+    cursor: not-allowed;
+}
+
+
+.seat-space {
+
+    width: 18px;
+}
+
+
+/* BOOKING SUMMARY */
+
+.booking-summary {
+
+    margin-top: 30px;
+
+    border-top: 1px solid var(--border);
+
+    padding-top: 25px;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 20px;
+
+    align-items: end;
+}
+
+
+.summary-details h3 {
+
+    margin-bottom: 8px;
+}
+
+
+.summary-details p {
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+
+.total {
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+.confirm-btn {
+
+    background: var(--red);
+
+    color: white;
+
+    border: 0;
+
+    padding: 13px 25px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.success-message {
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    display: none;
+}
+
+
+.success-message i {
+
+    font-size: 55px;
+
+    color: #28a745;
+
+    margin-bottom: 18px;
+}
+
+
+.success-message h2 {
+
+    font-family: "Playfair Display", serif;
+
+    margin-bottom: 8px;
+}
+
+
+.success-message p {
+
+    color: var(--gray);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px) {
+
+    .nav {
+
+        display: none;
+    }
+
+    .mobile-menu {
+
+        display: block;
+    }
+
+    .movie-grid {
+
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .search-box {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .search-submit {
+
+        padding: 13px;
+    }
+
+    .showtime-layout {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .features {
+
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .feature:nth-child(2) {
+
+        border-right: 0;
+    }
+
+    .footer-grid {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media(max-width:700px) {
+
+    .header {
+
+        height: 65px;
+    }
+
+    .logo {
+
+        font-size: 25px;
+    }
+
+    .location {
+
+        display: none;
+    }
+
+    .hero {
+
+        min-height: 580px;
+    }
+
+    .hero h1 {
+
+        font-size: 49px;
+    }
+
+    .booking-search {
+
+        margin-top: -25px;
+    }
+
+    .search-box {
+
+        grid-template-columns: 1fr;
+
+        padding: 15px;
+    }
+
+    .section {
+
+        padding: 60px 0;
+    }
+
+    .section-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .section-title {
+
+        font-size: 34px;
+    }
+
+    .movie-grid {
+
+        grid-template-columns: repeat(2,1fr);
+
+        gap: 14px;
+    }
+
+    .movie-info {
+
+        padding: 12px;
+    }
+
+    .movie-name {
+
+        font-size: 14px;
+    }
+
+    .showtime-layout {
+
+        grid-template-columns: 1fr;
+    }
+
+    .showtime-poster {
+
+        height: 400px;
+    }
+
+    .showtime-content h2 {
+
+        font-size: 38px;
+    }
+
+    .steps {
+
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .newsletter-form input {
+
+        padding: 14px;
+    }
+
+    .newsletter-form button {
+
+        padding: 14px;
+    }
+
+}
+
+
+@media(max-width:480px) {
+
+    .container {
+
+        padding: 0 15px;
+    }
+
+    .header-actions {
+
+        gap: 11px;
+    }
+
+    .header-actions .desktop-only {
+
+        display: none;
+    }
+
+    .hero {
+
+        background-position: 62% center;
+    }
+
+    .hero h1 {
+
+        font-size: 42px;
+    }
+
+    .movie-grid {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .movie-poster {
+
+        aspect-ratio: 2 / 2.8;
+    }
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+
+        border-right: 0;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .booking-modal {
+
+        padding: 20px 15px;
+    }
+
+    .seat {
+
+        width: 27px;
+
+        height: 25px;
+
+        font-size: 8px;
+    }
+
+    .seat-row {
+
+        gap: 4px;
+    }
+
+    .booking-summary {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -915,53 +1903,118 @@
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
+
+<div class="topbar">
+
+    <i class="fa-solid fa-ticket"></i>
+
+    Book your favorite movies instantly —
+    <strong>Fast, Easy & Secure</strong>
+
+</div>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header>
 
-    <div class="logo">
-        Style<span>Hub</span>
-    </div>
+    <div class="container header">
 
 
-    <nav>
+        <button class="mobile-menu"
+                id="mobileMenu">
 
-        <a href="#">
-            Home
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <a href="index.jsp"
+           class="logo">
+
+            Cine<span>Book.</span>
+
         </a>
 
-        <a href="#dresses">
-            Dresses
-        </a>
 
-        <a href="#offers">
-            Offers
-        </a>
+        <nav class="nav">
 
-        <a href="#about">
-            About
-        </a>
+            <ul>
 
-    </nav>
+                <li>
+                    <a href="index.jsp">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#movies">
+                        Movies
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#showtimes">
+                        Showtimes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#how">
+                        How It Works
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#offers">
+                        Offers
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
 
 
-    <div class="header-actions">
-
-        <i class="fa-regular fa-user"
-           onclick="showLogin()">
-        </i>
+        <div class="header-actions">
 
 
-        <div class="cart-icon"
-             onclick="openCart()">
+            <div class="location desktop-only">
 
-            <i class="fa-solid fa-bag-shopping">
-            </i>
+                <i class="fa-solid fa-location-dot"></i>
 
-            <span class="cart-count"
-                  id="cartCount">
-                0
-            </span>
+                Hyderabad
+
+            </div>
+
+
+            <button class="header-icon">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </button>
+
+
+            <a href="login.jsp"
+               class="header-icon">
+
+                <i class="fa-regular fa-user"></i>
+
+            </a>
+
+
+            <a href="mybookings.jsp"
+               class="header-icon">
+
+                <i class="fa-solid fa-ticket"></i>
+
+            </a>
 
         </div>
 
@@ -971,106 +2024,234 @@
 
 
 
-<!-- ================= HERO ================= -->
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="container">
 
-        <h1>
-            Fashion That<br>
-            Feels Like You
-        </h1>
+        <div class="hero-content">
 
-        <p>
-            Discover beautiful dresses for every occasion.
-            Shop the latest styles at amazing prices.
-        </p>
+            <div class="hero-label">
 
+                Your Cinema Experience
+
+            </div>
+
+
+            <h1>
+
+                Lights.
+                <span>Camera.</span>
+                Action.
+
+            </h1>
+
+
+            <p>
+
+                Discover the latest blockbusters, choose your
+                favorite seats and book movie tickets in seconds.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#movies"
+                   class="btn btn-red">
+
+                    Browse Movies
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+
+                <a href="#showtimes"
+                   class="btn btn-outline">
+
+                    Today's Shows
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SEARCH
+========================================================= -->
+
+<section class="booking-search">
+
+    <div class="container">
 
         <div class="search-box">
 
-            <i class="fa-solid fa-magnifying-glass">
-            </i>
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search dresses, gowns, sarees..."
-                onkeyup="searchProducts()">
+            <div class="search-field">
+
+                <i class="fa-solid fa-film"></i>
+
+                <input
+                    type="text"
+                    id="movieSearch"
+                    placeholder="Search movie...">
+
+            </div>
 
 
-            <button onclick="searchProducts()">
-                Search
+            <div class="search-field">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <select id="citySelect">
+
+                    <option>Hyderabad</option>
+
+                    <option>Bengaluru</option>
+
+                    <option>Chennai</option>
+
+                    <option>Mumbai</option>
+
+                    <option>Delhi</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="search-field">
+
+                <i class="fa-regular fa-calendar"></i>
+
+                <input
+                    type="date"
+                    id="dateSelect">
+
+            </div>
+
+
+            <button
+                class="search-submit"
+                id="searchMovies">
+
+                Search Movies
+
             </button>
 
         </div>
 
     </div>
 
-
-    <div class="hero-dress">
-
-        <i class="fa-solid fa-person-dress">
-        </i>
-
-    </div>
-
 </section>
 
 
 
-<!-- ================= CATEGORIES ================= -->
+<!-- =========================================================
+     MOVIES
+========================================================= -->
 
-<section class="section">
+<section class="section"
+         id="movies">
 
     <div class="container">
 
-        <div class="section-title">
 
-            <h2>
-                Shop by Category
-            </h2>
+        <div class="section-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    Now Showing
+                </div>
+
+                <h2 class="section-title">
+                    Movies You'll Love
+                </h2>
+
+                <p class="section-description">
+                    Catch the latest releases on the big screen.
+                </p>
+
+            </div>
+
+
+            <a href="#movies"
+               class="view-all">
+
+                View All Movies →
+
+            </a>
 
         </div>
 
 
-        <div class="categories">
+        <div class="movie-filters">
 
-            <div class="category active"
-                 onclick="filterCategory('All',this)">
+            <button
+                class="filter active"
+                data-genre="All">
+
                 All
-            </div>
 
-            <div class="category"
-                 onclick="filterCategory('Casual',this)">
-                👗 Casual
-            </div>
+            </button>
 
-            <div class="category"
-                 onclick="filterCategory('Party',this)">
-                ✨ Party Wear
-            </div>
+            <button
+                class="filter"
+                data-genre="Action">
 
-            <div class="category"
-                 onclick="filterCategory('Gown',this)">
-                💃 Gowns
-            </div>
+                Action
 
-            <div class="category"
-                 onclick="filterCategory('Saree',this)">
-                🥻 Sarees
-            </div>
+            </button>
 
-            <div class="category"
-                 onclick="filterCategory('Kurti',this)">
-                🌸 Kurtis
-            </div>
+            <button
+                class="filter"
+                data-genre="Drama">
 
-            <div class="category"
-                 onclick="filterCategory('Wedding',this)">
-                💍 Wedding
-            </div>
+                Drama
+
+            </button>
+
+            <button
+                class="filter"
+                data-genre="Comedy">
+
+                Comedy
+
+            </button>
+
+            <button
+                class="filter"
+                data-genre="Romance">
+
+                Romance
+
+            </button>
+
+            <button
+                class="filter"
+                data-genre="Thriller">
+
+                Thriller
+
+            </button>
+
+        </div>
+
+
+        <div class="movie-grid"
+             id="movieGrid">
 
         </div>
 
@@ -1080,27 +2261,159 @@
 
 
 
-<!-- ================= PRODUCTS ================= -->
+<!-- =========================================================
+     SHOWTIMES
+========================================================= -->
 
-<section class="section"
-         id="dresses">
+<section class="section showtimes-section"
+         id="showtimes">
 
     <div class="container">
 
-        <div class="section-title">
-
-            <h2>
-                Trending Dresses
-            </h2>
-
-            <span id="resultCount">
-            </span>
-
-        </div>
+        <div class="showtime-layout">
 
 
-        <div class="product-grid"
-             id="productGrid">
+            <div class="showtime-poster">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85"
+                    alt="Featured movie">
+
+            </div>
+
+
+            <div class="showtime-content">
+
+                <div class="eyebrow">
+                    Featured Movie
+                </div>
+
+
+                <h2>
+                    The Last Horizon
+                </h2>
+
+
+                <div class="movie-info-line">
+
+                    ⭐ 4.8 &nbsp; • &nbsp;
+                    Action / Sci-Fi &nbsp; • &nbsp;
+                    2h 24m &nbsp; • &nbsp;
+                    U/A
+
+                </div>
+
+
+                <p class="section-description"
+                   style="margin-bottom:25px;">
+
+                    A legendary journey begins when a team
+                    of explorers discovers a mysterious world
+                    beyond the edge of known space.
+
+                </p>
+
+
+                <div class="show-date">
+                    Select Date
+                </div>
+
+
+                <div class="dates">
+
+
+                    <button class="date active">
+
+                        <strong>02</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+
+                    <button class="date">
+
+                        <strong>03</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+
+                    <button class="date">
+
+                        <strong>04</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+
+                    <button class="date">
+
+                        <strong>05</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+
+                    <button class="date">
+
+                        <strong>06</strong>
+
+                        <span>SEP</span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="cinema-name">
+
+                    PVR ICON — Hyderabad
+
+                </div>
+
+
+                <div class="showtimes">
+
+
+                    <button class="time">
+                        10:30 AM
+                    </button>
+
+                    <button class="time">
+                        01:15 PM
+                    </button>
+
+                    <button class="time selected">
+                        04:30 PM
+                    </button>
+
+                    <button class="time">
+                        07:45 PM
+                    </button>
+
+                    <button class="time">
+                        10:30 PM
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="btn btn-red"
+                    id="featuredBook">
+
+                    Book Tickets
+
+                    <i class="fa-solid fa-ticket"></i>
+
+                </button>
+
+            </div>
+
         </div>
 
     </div>
@@ -1109,82 +2422,228 @@
 
 
 
-<!-- ================= FEATURES ================= -->
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section class="container">
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-ticket"></i>
+
+            <div>
+
+                <h4>Instant Booking</h4>
+
+                <p>Book your seats in seconds</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-couch"></i>
+
+            <div>
+
+                <h4>Choose Your Seat</h4>
+
+                <p>Select your favorite seats</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+
+                <h4>Secure Payment</h4>
+
+                <p>100% safe transactions</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+            <div>
+
+                <h4>Digital Tickets</h4>
+
+                <p>Tickets delivered instantly</p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HOW IT WORKS
+========================================================= -->
 
 <section class="section"
+         id="how">
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    Simple Process
+                </div>
+
+                <h2 class="section-title">
+                    Book in 3 Easy Steps
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <i class="fa-solid fa-film"></i>
+
+                <h3>
+                    Choose a Movie
+                </h3>
+
+                <p>
+                    Browse the latest movies and
+                    select the one you want to watch.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <i class="fa-solid fa-chair"></i>
+
+                <h3>
+                    Pick Your Seats
+                </h3>
+
+                <p>
+                    Select your preferred showtime
+                    and choose your seats.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <i class="fa-solid fa-ticket"></i>
+
+                <h3>
+                    Confirm Booking
+                </h3>
+
+                <p>
+                    Complete payment and receive
+                    your digital movie tickets.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     NEWSLETTER
+========================================================= -->
+
+<section class="newsletter"
          id="offers">
 
     <div class="container">
 
-        <div class="features">
+        <div class="eyebrow"
+             style="color:#ff5a61;">
+
+            Exclusive Offers
+
+        </div>
 
 
-            <div class="feature">
-
-                <i class="fa-solid fa-truck-fast">
-                </i>
-
-                <h3>
-                    Fast Delivery
-                </h3>
-
-                <p>
-                    Quick and reliable delivery
-                    to your doorstep.
-                </p>
-
-            </div>
+        <h2>
+            Never Miss a Movie.
+        </h2>
 
 
-            <div class="feature">
-
-                <i class="fa-solid fa-shirt">
-                </i>
-
-                <h3>
-                    Premium Quality
-                </h3>
-
-                <p>
-                    Carefully selected fashion
-                    for every occasion.
-                </p>
-
-            </div>
+        <p>
+            Subscribe and get movie updates,
+            early access and exclusive offers.
+        </p>
 
 
-            <div class="feature">
+        <form
+            class="newsletter-form"
+            id="newsletterForm">
 
-                <i class="fa-solid fa-tags">
-                </i>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required>
 
-                <h3>
-                    Best Offers
-                </h3>
+            <button type="submit">
 
-                <p>
-                    Enjoy exciting discounts
-                    on trending styles.
-                </p>
+                Subscribe
 
-            </div>
+            </button>
+
+        </form>
 
 
-            <div class="feature">
-
-                <i class="fa-solid fa-rotate-left">
-                </i>
-
-                <h3>
-                    Easy Returns
-                </h3>
-
-                <p>
-                    Simple and hassle-free
-                    return policy.
-                </p>
-
-            </div>
+        <div id="newsletterMessage"
+             style="margin-top:12px;font-size:13px;">
 
         </div>
 
@@ -1194,336 +2653,148 @@
 
 
 
-<!-- ================= CART MODAL ================= -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-<div class="modal"
-     id="cartModal">
+<footer>
 
-
-    <div class="modal-content">
-
-
-        <span class="close"
-              onclick="closeCart()">
-
-            &times;
-
-        </span>
+    <div class="container">
 
 
-        <h2 class="modal-title">
-            Shopping Bag
-        </h2>
+        <div class="footer-grid">
 
 
-        <p class="modal-subtitle">
-            Review your items before placing your order.
-        </p>
+            <div>
 
+                <div class="footer-logo">
 
-        <div id="cartItems">
-        </div>
-
-
-        <div id="checkoutSection">
-
-
-            <div class="form-group">
-
-                <label>
-                    Full Name
-                </label>
-
-                <input
-                    type="text"
-                    id="customerName"
-                    placeholder="Enter your name">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Mobile Number
-                </label>
-
-                <input
-                    type="tel"
-                    id="customerPhone"
-                    placeholder="Enter mobile number">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Email Address
-                </label>
-
-                <input
-                    type="email"
-                    id="customerEmail"
-                    placeholder="Enter email">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Delivery Address
-                </label>
-
-                <input
-                    type="text"
-                    id="customerAddress"
-                    placeholder="House No, Street, City">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Size
-                </label>
-
-                <select id="dressSize">
-
-                    <option value="S">
-                        Small (S)
-                    </option>
-
-                    <option value="M">
-                        Medium (M)
-                    </option>
-
-                    <option value="L">
-                        Large (L)
-                    </option>
-
-                    <option value="XL">
-                        Extra Large (XL)
-                    </option>
-
-                    <option value="XXL">
-                        XXL
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Payment Method
-                </label>
-
-                <select id="paymentMethod">
-
-                    <option value="UPI">
-                        UPI
-                    </option>
-
-                    <option value="CARD">
-                        Credit / Debit Card
-                    </option>
-
-                    <option value="COD">
-                        Cash on Delivery
-                    </option>
-
-                    <option value="NETBANKING">
-                        Net Banking
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="summary">
-
-                <div class="summary-row">
-
-                    <span>
-                        Subtotal
-                    </span>
-
-                    <span id="summarySubtotal">
-                        ₹0
-                    </span>
+                    Cine<span>Book.</span>
 
                 </div>
 
 
-                <div class="summary-row">
+                <p class="footer-about">
 
-                    <span>
-                        Delivery
-                    </span>
+                    Your simple and convenient destination
+                    for booking movie tickets online.
+                    Find movies, select seats and enjoy
+                    the show.
 
-                    <span id="deliveryFee">
-                        ₹49
-                    </span>
-
-                </div>
+                </p>
 
 
-                <div class="summary-row">
+                <div class="social">
 
-                    <span>
-                        Discount
-                    </span>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
 
-                    <span id="discount">
-                        ₹0
-                    </span>
+                    <a href="#">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
 
-                </div>
+                    <a href="#">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
 
-
-                <div class="summary-row summary-total">
-
-                    <span>
-                        Total
-                    </span>
-
-                    <span id="summaryTotal">
-                        ₹0
-                    </span>
+                    <a href="#">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
 
                 </div>
 
             </div>
 
 
-            <button class="confirm-btn"
-                    onclick="confirmOrder()">
+            <div>
 
-                <i class="fa-solid fa-lock">
-                </i>
+                <div class="footer-title">
+                    Movies
+                </div>
 
-                Place Order
+                <ul class="footer-links">
 
-            </button>
+                    <li>Now Showing</li>
 
-        </div>
+                    <li>Coming Soon</li>
 
-    </div>
+                    <li>Popular Movies</li>
 
-</div>
+                    <li>Top Rated</li>
 
+                </ul>
 
-
-<!-- ================= FOOTER ================= -->
-
-<footer id="about">
+            </div>
 
 
-    <div class="footer-grid">
+            <div>
+
+                <div class="footer-title">
+                    Support
+                </div>
+
+                <ul class="footer-links">
+
+                    <li>Help Center</li>
+
+                    <li>Contact Us</li>
+
+                    <li>Cancellation</li>
+
+                    <li>Refund Policy</li>
+
+                </ul>
+
+            </div>
 
 
-        <div>
+            <div>
 
-            <h3>
-                StyleHub
-            </h3>
+                <div class="footer-title">
+                    Account
+                </div>
 
-            <p>
-                Your destination for stylish dresses,
-                modern fashion and affordable prices.
-            </p>
+                <ul class="footer-links">
 
-        </div>
+                    <li>
+                        <a href="login.jsp">
+                            Login
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="register.jsp">
+                            Register
+                        </a>
+                    </li>
 
-        <div>
+                    <li>
+                        <a href="mybookings.jsp">
+                            My Bookings
+                        </a>
+                    </li>
 
-            <h3>
-                Quick Links
-            </h3>
+                    <li>
+                        <a href="profile.jsp">
+                            Profile
+                        </a>
+                    </li>
 
-            <a href="#">
-                Home
-            </a>
+                </ul>
 
-            <a href="#dresses">
-                Dresses
-            </a>
+            </div>
 
-            <a href="#offers">
-                Offers
-            </a>
-
-            <a href="#about">
-                Contact
-            </a>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Customer Care
-            </h3>
-
-            <a href="#">
-                Help Center
-            </a>
-
-            <a href="#">
-                Orders
-            </a>
-
-            <a href="#">
-                Shipping
-            </a>
-
-            <a href="#">
-                Returns
-            </a>
 
         </div>
 
 
-        <div>
+        <div class="copyright">
 
-            <h3>
-                Follow Us
-            </h3>
-
-            <a href="#">
-                <i class="fa-brands fa-instagram">
-                </i>
-                Instagram
-            </a>
-
-            <a href="#">
-                <i class="fa-brands fa-facebook">
-                </i>
-                Facebook
-            </a>
-
-            <a href="#">
-                <i class="fa-brands fa-pinterest">
-                </i>
-                Pinterest
-            </a>
+            © <span id="year"></span>
+            CineBook. All Rights Reserved.
 
         </div>
-
-    </div>
-
-
-    <div class="copyright">
-
-        © 2026 StyleHub. All rights reserved.
 
     </div>
 
@@ -1531,976 +2802,618 @@
 
 
 
-<script>
+<!-- =========================================================
+     BOOKING MODAL
+========================================================= -->
+
+<div class="modal"
+     id="bookingModal">
 
 
-    /* ================= DRESS DATA ================= */
-
-    const products = [
-
-        {
-            id: 1,
-            category: "Casual",
-            name: "Floral Summer Dress",
-            price: 899,
-            oldPrice: 1299,
-            rating: 4.8,
-            description:
-                "Beautiful floral dress perfect for casual outings.",
-            image:
-                "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80"
-        },
+    <div class="booking-modal">
 
 
-        {
-            id: 2,
-            category: "Party",
-            name: "Elegant Party Dress",
-            price: 1499,
-            oldPrice: 1999,
-            rating: 4.9,
-            description:
-                "Stylish party dress with a modern elegant look.",
-            image:
-                "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80"
-        },
+        <button
+            class="close-modal"
+            id="closeModal">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
 
 
-        {
-            id: 3,
-            category: "Gown",
-            name: "Evening Maxi Gown",
-            price: 2199,
-            oldPrice: 2799,
-            rating: 4.7,
-            description:
-                "Premium evening gown designed for special occasions.",
-            image:
-                "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80"
-        },
+        <!-- BOOKING AREA -->
+
+        <div id="bookingArea">
 
 
-        {
-            id: 4,
-            category: "Saree",
-            name: "Designer Silk Saree",
-            price: 2499,
-            oldPrice: 3299,
-            rating: 4.8,
-            description:
-                "Traditional designer saree with a premium finish.",
-            image:
-                "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"
-        },
+            <div class="booking-header">
+
+                <h2 id="bookingMovie">
+                    Movie Name
+                </h2>
+
+                <p id="bookingInfo">
+                    Select your seats
+                </p>
+
+            </div>
 
 
-        {
-            id: 5,
-            category: "Kurti",
-            name: "Printed Cotton Kurti",
-            price: 699,
-            oldPrice: 999,
-            rating: 4.6,
-            description:
-                "Comfortable cotton kurti for everyday wear.",
-            image:
-                "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80"
-        },
+            <!-- SCREEN -->
+
+            <div class="screen">
+
+                <div class="screen-line"></div>
+
+                <span>
+                    SCREEN
+                </span>
+
+            </div>
 
 
-        {
-            id: 6,
-            category: "Wedding",
-            name: "Bridal Lehenga",
-            price: 5999,
-            oldPrice: 7499,
-            rating: 4.9,
-            description:
-                "Luxury bridal lehenga for your special day.",
-            image:
-                "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=600&q=80"
-        },
+            <!-- SEATS -->
+
+            <div class="seat-layout"
+                 id="seatLayout">
+
+            </div>
 
 
-        {
-            id: 7,
-            category: "Casual",
-            name: "Denim Shirt Dress",
-            price: 999,
-            oldPrice: 1399,
-            rating: 4.7,
-            description:
-                "Trendy denim shirt dress with a relaxed fit.",
-            image:
-                "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=600&q=80"
-        },
+            <!-- SUMMARY -->
+
+            <div class="booking-summary">
 
 
-        {
-            id: 8,
-            category: "Party",
-            name: "Satin Cocktail Dress",
-            price: 1799,
-            oldPrice: 2299,
-            rating: 4.8,
-            description:
-                "Elegant satin dress for parties and celebrations.",
-            image:
-                "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"
-        },
-
-
-        {
-            id: 9,
-            category: "Gown",
-            name: "Princess Style Gown",
-            price: 2899,
-            oldPrice: 3499,
-            rating: 4.9,
-            description:
-                "Beautiful flowing gown with a princess silhouette.",
-            image:
-                "https://images.unsplash.com/photo-1566479179817-c0f5d7d8f8f7?auto=format&fit=crop&w=600&q=80"
-        },
-
-
-        {
-            id: 10,
-            category: "Saree",
-            name: "Embroidered Saree",
-            price: 1999,
-            oldPrice: 2599,
-            rating: 4.7,
-            description:
-                "Elegant embroidered saree for festive occasions.",
-            image:
-                "https://images.unsplash.com/photo-1610030469668-8e9f641aaf1b?auto=format&fit=crop&w=600&q=80"
-        },
-
-
-        {
-            id: 11,
-            category: "Kurti",
-            name: "Anarkali Kurti",
-            price: 1199,
-            oldPrice: 1599,
-            rating: 4.8,
-            description:
-                "Beautiful Anarkali style kurti with a graceful fit.",
-            image:
-                "https://images.unsplash.com/photo-1597983073493-88cd35cf93e7?auto=format&fit=crop&w=600&q=80"
-        },
-
-
-        {
-            id: 12,
-            category: "Wedding",
-            name: "Embroidered Bridal Dress",
-            price: 4499,
-            oldPrice: 5999,
-            rating: 4.9,
-            description:
-                "Premium embroidered dress for weddings and receptions.",
-            image:
-                "https://images.unsplash.com/photo-1594552072238-5c1a0f1f2d4b?auto=format&fit=crop&w=600&q=80"
-        }
-
-    ];
-
-
-    /* ================= VARIABLES ================= */
-
-    let selectedCategory = "All";
-
-    let cart = [];
-
-
-    /* ================= RENDER PRODUCTS ================= */
-
-    function renderProducts() {
-
-        const grid =
-            document.getElementById("productGrid");
-
-
-        const search =
-            document.getElementById("searchInput")
-                .value
-                .toLowerCase();
-
-
-        const filteredProducts =
-            products.filter(product => {
-
-
-                const categoryMatch =
-                    selectedCategory === "All" ||
-                    product.category === selectedCategory;
-
-
-                const searchMatch =
-                    product.name
-                        .toLowerCase()
-                        .includes(search)
-
-                    ||
-
-                    product.category
-                        .toLowerCase()
-                        .includes(search)
-
-                    ||
-
-                    product.description
-                        .toLowerCase()
-                        .includes(search);
-
-
-                return categoryMatch &&
-                       searchMatch;
-
-            });
-
-
-        document.getElementById("resultCount")
-            .innerText =
-            filteredProducts.length + " dresses";
-
-
-        grid.innerHTML = "";
-
-
-        if (filteredProducts.length === 0) {
-
-            grid.innerHTML = `
-
-                <div style="
-                    grid-column:1/-1;
-                    text-align:center;
-                    padding:50px;
-                    color:#777;
-                ">
-
-                    <i class="fa-solid fa-face-sad-tear"
-                       style="
-                       font-size:45px;
-                       margin-bottom:15px;
-                       ">
-                    </i>
+                <div class="summary-details">
 
                     <h3>
-                        No dresses found
+                        Booking Summary
                     </h3>
 
                     <p>
-                        Try another search.
+                        Seats:
+                        <strong id="selectedSeats">
+                            None
+                        </strong>
+                    </p>
+
+                    <p>
+                        Ticket Price:
+                        ₹<span id="ticketPrice">
+                            250
+                        </span>
                     </p>
 
                 </div>
 
-            `;
 
-            return;
-        }
+                <div>
 
+                    <div class="total">
 
-        filteredProducts.forEach(product => {
+                        ₹<span id="totalPrice">
+                            0
+                        </span>
 
-
-            grid.innerHTML += `
-
-                <div class="product-card">
+                    </div>
 
 
-                    <button class="wishlist"
-                            onclick="
-                            addWishlist('${product.name}')
-                            ">
+                    <button
+                        class="confirm-btn"
+                        id="confirmBooking">
 
-                        <i class="
-                            fa-regular
-                            fa-heart
-                        ">
-                        </i>
+                        Confirm Booking
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SUCCESS -->
+
+        <div class="success-message"
+             id="successMessage">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h2>
+                Booking Confirmed!
+            </h2>
+
+            <p>
+                Your movie tickets have been booked successfully.
+            </p>
+
+            <p style="margin-top:10px;">
+                Booking ID:
+                <strong id="bookingId"></strong>
+            </p>
+
+            <button
+                class="btn btn-red"
+                style="margin-top:25px;"
+                onclick="location.href='mybookings.jsp'">
+
+                View My Bookings
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   MOVIE DATA
+========================================================= */
+
+const MOVIES = [
+
+    {
+        id: 1,
+
+        name: "The Last Horizon",
+
+        genre: "Action",
+
+        duration: "2h 24m",
+
+        rating: 4.8,
+
+        language: "English",
+
+        price: 250,
+
+        badge: "Featured",
+
+        image:
+        "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=85"
+
+    },
+
+
+    {
+        id: 2,
+
+        name: "Midnight Echo",
+
+        genre: "Thriller",
+
+        duration: "2h 08m",
+
+        rating: 4.6,
+
+        language: "English",
+
+        price: 220,
+
+        badge: "New",
+
+        image:
+        "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=85"
+
+    },
+
+
+    {
+        id: 3,
+
+        name: "Love in Paris",
+
+        genre: "Romance",
+
+        duration: "2h 15m",
+
+        rating: 4.7,
+
+        language: "Hindi",
+
+        price: 200,
+
+        badge: "Popular",
+
+        image:
+        "https://images.unsplash.com/photo-1518929458119-e5bf444c30f4?auto=format&fit=crop&w=700&q=85"
+
+    },
+
+
+    {
+        id: 4,
+
+        name: "Laugh Out Loud",
+
+        genre: "Comedy",
+
+        duration: "1h 52m",
+
+        rating: 4.4,
+
+        language: "Telugu",
+
+        price: 180,
+
+        badge: "Comedy",
+
+        image:
+        "https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&w=700&q=85"
+
+    },
+
+
+    {
+        id: 5,
+
+        name: "Shadow Protocol",
+
+        genre: "Action",
+
+        duration: "2h 31m",
+
+        rating: 4.9,
+
+        language: "English",
+
+        price: 280,
+
+        badge: "Blockbuster",
+
+        image:
+        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=85"
+
+    },
+
+
+    {
+        id: 6,
+
+        name: "The Forgotten Road",
+
+        genre: "Drama",
+
+        duration: "2h 02m",
+
+        rating: 4.5,
+
+        language: "Hindi",
+
+        price: 190,
+
+        badge: "",
+
+        image:
+        "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=85"
+
+    },
+
+
+    {
+        id: 7,
+
+        name: "City Lights",
+
+        genre: "Romance",
+
+        duration: "2h 10m",
+
+        rating: 4.3,
+
+        language: "Telugu",
+
+        price: 180,
+
+        badge: "Trending",
+
+        image:
+        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=700&q=85"
+
+    },
+
+
+    {
+        id: 8,
+
+        name: "Final Mission",
+
+        genre: "Action",
+
+        duration: "2h 18m",
+
+        rating: 4.7,
+
+        language: "English",
+
+        price: 250,
+
+        badge: "Hit",
+
+        image:
+        "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?auto=format&fit=crop&w=700&q=85"
+
+    }
+
+];
+
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const movieGrid =
+    document.getElementById("movieGrid");
+
+const bookingModal =
+    document.getElementById("bookingModal");
+
+const bookingMovie =
+    document.getElementById("bookingMovie");
+
+const bookingInfo =
+    document.getElementById("bookingInfo");
+
+const seatLayout =
+    document.getElementById("seatLayout");
+
+const selectedSeats =
+    document.getElementById("selectedSeats");
+
+const totalPrice =
+    document.getElementById("totalPrice");
+
+const ticketPrice =
+    document.getElementById("ticketPrice");
+
+
+
+/* =========================================================
+   RENDER MOVIES
+========================================================= */
+
+function renderMovies(movies) {
+
+    movieGrid.innerHTML = "";
+
+
+    if (movies.length === 0) {
+
+        movieGrid.innerHTML = `
+
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:60px;
+                color:#888;
+            ">
+
+                <i class="fa-solid fa-film"
+                   style="
+                   font-size:35px;
+                   margin-bottom:15px;
+                "></i>
+
+                <h3>No movies found</h3>
+
+                <p>
+                    Try another search or genre.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    movies.forEach(movie => {
+
+        const card =
+            document.createElement("article");
+
+
+        card.className =
+            "movie-card";
+
+
+        card.innerHTML = `
+
+            <div class="movie-poster">
+
+                ${
+                    movie.badge
+                    ?
+                    `
+                    <div class="movie-badge">
+                        ${movie.badge}
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+
+                <div class="movie-rating">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    ${movie.rating}
+
+                </div>
+
+
+                <img
+                    src="${movie.image}"
+                    alt="${movie.name}"
+                    loading="lazy">
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <div class="movie-name">
+                    ${movie.name}
+                </div>
+
+
+                <div class="movie-meta">
+
+                    <span>
+                        ${movie.genre}
+                    </span>
+
+                    •
+
+                    <span>
+                        ${movie.duration}
+                    </span>
+
+                    •
+
+                    <span>
+                        ${movie.language}
+                    </span>
+
+                </div>
+
+
+                <div class="movie-actions">
+
+                    <button
+                        class="book-btn"
+                        data-id="${movie.id}">
+
+                        <i class="fa-solid fa-ticket"></i>
+
+                        Book Tickets
 
                     </button>
 
 
-                    <div class="product-image">
+                    <button
+                        class="info-btn"
+                        title="Movie information">
 
-                        <img
-                            src="${product.image}"
-                            alt="${product.name}">
+                        <i class="fa-solid fa-info"></i>
 
-                    </div>
-
-
-                    <div class="product-info">
-
-
-                        <div class="category-name">
-
-                            ${product.category}
-
-                        </div>
-
-
-                        <div class="product-name">
-
-                            ${product.name}
-
-                        </div>
-
-
-                        <div class="description">
-
-                            ${product.description}
-
-                        </div>
-
-
-                        <div class="rating">
-
-                            <i class="
-                                fa-solid
-                                fa-star
-                            ">
-                            </i>
-
-                            ${product.rating}
-
-                            <span>
-                                Excellent
-                            </span>
-
-                        </div>
-
-
-                        <div class="price-row">
-
-
-                            <div>
-
-                                <span class="price">
-
-                                    ₹${product.price
-                                    .toLocaleString("en-IN")}
-
-                                </span>
-
-
-                                <span class="old-price">
-
-                                    ₹${product.oldPrice
-                                    .toLocaleString("en-IN")}
-
-                                </span>
-
-                            </div>
-
-
-                            <button class="buy-btn"
-                                    onclick="
-                                    addToCart(${product.id})
-                                    ">
-
-                                <i class="
-                                    fa-solid
-                                    fa-bag-shopping
-                                ">
-                                </i>
-
-                                Add
-
-                            </button>
-
-                        </div>
-
-                    </div>
+                    </button>
 
                 </div>
 
-            `;
+            </div>
+
+        `;
+
+
+        movieGrid.appendChild(card);
+
+    });
+
+
+    document
+        .querySelectorAll(".book-btn")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    openBooking(
+                        Number(this.dataset.id)
+                    );
+
+                }
+            );
 
         });
 
-    }
+}
 
 
-    /* ================= CATEGORY FILTER ================= */
 
-    function filterCategory(
-        category,
-        element
-    ) {
+/* =========================================================
+   FILTER
+========================================================= */
 
-        selectedCategory = category;
+document
+    .querySelectorAll(".filter")
+    .forEach(button => {
 
+        button.addEventListener(
+            "click",
+            function() {
 
-        document.querySelectorAll(".category")
-            .forEach(item =>
-                item.classList.remove("active")
-            );
-
-
-        element.classList.add("active");
-
-
-        renderProducts();
-
-    }
+                document
+                    .querySelectorAll(".filter")
+                    .forEach(btn =>
+                        btn.classList.remove("active")
+                    );
 
 
-    /* ================= SEARCH ================= */
-
-    function searchProducts() {
-
-        renderProducts();
-
-    }
+                this.classList.add("active");
 
 
-    /* ================= ADD TO CART ================= */
-
-    function addToCart(id) {
-
-
-        const product =
-            products.find(
-                product =>
-                    product.id === id
-            );
+                const genre =
+                    this.dataset.genre;
 
 
-        const existing =
-            cart.find(
-                item =>
-                    item.id === id
-            );
+                if (genre === "All") {
 
+                    renderMovies(MOVIES);
 
-        if (existing) {
+                } else {
 
-            existing.quantity++;
+                    renderMovies(
+                        MOVIES.filter(
+                            movie =>
+                            movie.genre === genre
+                        )
+                    );
 
-        }
+                }
 
-        else {
-
-            cart.push({
-
-                ...product,
-
-                quantity: 1
-
-            });
-
-        }
-
-
-        updateCartCount();
-
-
-        alert(
-            product.name +
-            " added to your bag!"
+            }
         );
 
-    }
+    });
 
 
-    /* ================= CART COUNT ================= */
 
-    function updateCartCount() {
+/* =========================================================
+   SEARCH
+========================================================= */
 
-
-        const total =
-            cart.reduce(
-                (sum,item) =>
-                    sum + item.quantity,
-                0
-            );
-
-
-        document.getElementById(
-            "cartCount"
-        ).innerText = total;
-
-    }
-
-
-    /* ================= OPEN CART ================= */
-
-    function openCart() {
-
-
-        renderCart();
-
-
-        document.getElementById(
-            "cartModal"
-        ).classList.add("show");
-
-    }
-
-
-    /* ================= CLOSE CART ================= */
-
-    function closeCart() {
-
-
-        document.getElementById(
-            "cartModal"
-        ).classList.remove("show");
-
-    }
-
-
-    /* ================= RENDER CART ================= */
-
-    function renderCart() {
-
-
-        const cartItems =
-            document.getElementById(
-                "cartItems"
-            );
-
-
-        if (cart.length === 0) {
-
-
-            cartItems.innerHTML = `
-
-                <div class="empty-cart">
-
-                    <i class="
-                        fa-solid
-                        fa-bag-shopping
-                    ">
-                    </i>
-
-                    <h3>
-                        Your bag is empty
-                    </h3>
-
-                    <p>
-                        Add some beautiful dresses
-                        to continue shopping.
-                    </p>
-
-                </div>
-
-            `;
-
-
-            document.getElementById(
-                "checkoutSection"
-            ).style.display = "none";
-
-
-            return;
-
-        }
-
-
-        document.getElementById(
-            "checkoutSection"
-        ).style.display = "block";
-
-
-        cartItems.innerHTML = "";
-
-
-        cart.forEach(item => {
-
-
-            cartItems.innerHTML += `
-
-                <div class="cart-item">
-
-
-                    <img
-                        src="${item.image}"
-                        alt="${item.name}">
-
-
-                    <div class="
-                        cart-item-info
-                    ">
-
-                        <h4>
-                            ${item.name}
-                        </h4>
-
-                        <span class="
-                            cart-item-price
-                        ">
-
-                            ₹${item.price
-                            .toLocaleString("en-IN")}
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="quantity">
-
-
-                        <button
-                            onclick="
-                            changeQuantity(
-                                ${item.id},
-                                -1
-                            )">
-
-                            -
-
-                        </button>
-
-
-                        <span>
-
-                            ${item.quantity}
-
-                        </span>
-
-
-                        <button
-                            onclick="
-                            changeQuantity(
-                                ${item.id},
-                                1
-                            )">
-
-                            +
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        });
-
-
-        updateSummary();
-
-    }
-
-
-    /* ================= QUANTITY ================= */
-
-    function changeQuantity(
-        id,
-        change
-    ) {
-
-
-        const item =
-            cart.find(
-                item =>
-                    item.id === id
-            );
-
-
-        if (!item)
-            return;
-
-
-        item.quantity += change;
-
-
-        if (item.quantity <= 0) {
-
-            cart =
-                cart.filter(
-                    item =>
-                        item.id !== id
-                );
-
-        }
-
-
-        updateCartCount();
-
-
-        renderCart();
-
-    }
-
-
-    /* ================= SUMMARY ================= */
-
-    function updateSummary() {
-
-
-        const subtotal =
-            cart.reduce(
-                (sum,item) =>
-                    sum +
-                    item.price *
-                    item.quantity,
-                0
-            );
-
-
-        const delivery =
-            subtotal >= 1499
-                ? 0
-                : 49;
-
-
-        const discount =
-            subtotal >= 2999
-                ? 300
-                : subtotal >= 1999
-                    ? 150
-                    : 0;
-
-
-        const total =
-            subtotal +
-            delivery -
-            discount;
-
-
-        document.getElementById(
-            "summarySubtotal"
-        ).innerText =
-            "₹" +
-            subtotal.toLocaleString("en-IN");
-
-
-        document.getElementById(
-            "deliveryFee"
-        ).innerText =
-            delivery === 0
-                ? "FREE"
-                : "₹" + delivery;
-
-
-        document.getElementById(
-            "discount"
-        ).innerText =
-            "₹" +
-            discount.toLocaleString("en-IN");
-
-
-        document.getElementById(
-            "summaryTotal"
-        ).innerText =
-            "₹" +
-            total.toLocaleString("en-IN");
-
-    }
-
-
-    /* ================= CONFIRM ORDER ================= */
-
-    function confirmOrder() {
-
-
-        const name =
-            document.getElementById(
-                "customerName"
-            ).value.trim();
-
-
-        const phone =
-            document.getElementById(
-                "customerPhone"
-            ).value.trim();
-
-
-        const email =
-            document.getElementById(
-                "customerEmail"
-            ).value.trim();
-
-
-        const address =
-            document.getElementById(
-                "customerAddress"
-            ).value.trim();
-
-
-        const size =
-            document.getElementById(
-                "dressSize"
-            ).value;
-
-
-        const payment =
-            document.getElementById(
-                "paymentMethod"
-            ).value;
-
-
-        if (cart.length === 0) {
-
-            alert(
-                "Your shopping bag is empty."
-            );
-
-            return;
-
-        }
-
-
-        if (
-            !name ||
-            !phone ||
-            !email ||
-            !address
-        ) {
-
-            alert(
-                "Please fill all delivery details."
-            );
-
-            return;
-
-        }
-
-
-        if (phone.length < 10) {
-
-            alert(
-                "Please enter a valid mobile number."
-            );
-
-            return;
-
-        }
-
-
-        const subtotal =
-            cart.reduce(
-                (sum,item) =>
-                    sum +
-                    item.price *
-                    item.quantity,
-                0
-            );
-
-
-        const delivery =
-            subtotal >= 1499
-                ? 0
-                : 49;
-
-
-        const discount =
-            subtotal >= 2999
-                ? 300
-                : subtotal >= 1999
-                    ? 150
-                    : 0;
-
-
-        const total =
-            subtotal +
-            delivery -
-            discount;
-
-
-        alert(
-
-            "Order placed successfully! 🎉\n\n" +
-
-            "Customer: " +
-            name +
-            "\n" +
-
-            "Size: " +
-            size +
-            "\n" +
-
-            "Payment: " +
-            payment +
-            "\n" +
-
-            "Total: ₹" +
-            total.toLocaleString("en-IN") +
-
-            "\n\n" +
-
-            "Thank you for shopping with StyleHub!"
-
-        );
-
-
-        cart = [];
-
-
-        updateCartCount();
-
-
-        closeCart();
-
-
-        document.getElementById(
-            "customerName"
-        ).value = "";
-
-
-        document.getElementById(
-            "customerPhone"
-        ).value = "";
-
-
-        document.getElementById(
-            "customerEmail"
-        ).value = "";
-
-
-        document.getElementById(
-            "customerAddress"
-        ).value = "";
-
-    }
-
-
-    /* ================= WISHLIST ================= */
-
-    function addWishlist(name) {
-
-        alert(
-            name +
-            " added to wishlist ❤️"
-        );
-
-    }
-
-
-    /* ================= LOGIN ================= */
-
-    function showLogin() {
-
-        alert(
-            "Login page can be connected here."
-        );
-
-    }
-
-
-    /* ================= CLOSE MODAL ================= */
-
-    document.getElementById(
-        "cartModal"
-    ).addEventListener(
+document
+    .getElementById("searchMovies")
+    .addEventListener(
         "click",
-        function(event) {
+        searchMovies
+    );
 
-            if (
-                event.target === this
-            ) {
 
-                closeCart();
+document
+    .getElementById("movieSearch")
+    .addEventListener(
+        "keydown",
+        function(e) {
+
+            if (e.key === "Enter") {
+
+                searchMovies();
 
             }
 
@@ -2508,13 +3421,668 @@
     );
 
 
-    /* ================= INITIAL LOAD ================= */
+function searchMovies() {
 
-    renderProducts();
+    const query =
+        document
+        .getElementById("movieSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    if (!query) {
+
+        renderMovies(MOVIES);
+
+    } else {
+
+        renderMovies(
+
+            MOVIES.filter(movie =>
+
+                movie.name
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                movie.genre
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                movie.language
+                    .toLowerCase()
+                    .includes(query)
+
+            )
+
+        );
+
+    }
+
+
+    document
+        .getElementById("movies")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+/* =========================================================
+   BOOKING
+========================================================= */
+
+let currentMovie = null;
+
+let selectedSeatList = [];
+
+const SEAT_PRICE = 250;
+
+
+function openBooking(movieId) {
+
+    currentMovie =
+        MOVIES.find(
+            movie =>
+            movie.id === movieId
+        );
+
+
+    if (!currentMovie) return;
+
+
+    selectedSeatList = [];
+
+
+    bookingMovie.textContent =
+        currentMovie.name;
+
+
+    bookingInfo.textContent =
+        currentMovie.genre +
+        " • " +
+        currentMovie.duration +
+        " • " +
+        currentMovie.language;
+
+
+    ticketPrice.textContent =
+        currentMovie.price;
+
+
+    totalPrice.textContent = "0";
+
+
+    selectedSeats.textContent =
+        "None";
+
+
+    generateSeats();
+
+
+    document
+        .getElementById("bookingArea")
+        .style.display = "block";
+
+
+    document
+        .getElementById("successMessage")
+        .style.display = "none";
+
+
+    bookingModal.classList.add("show");
+
+}
+
+
+
+function generateSeats() {
+
+    seatLayout.innerHTML = "";
+
+
+    const rows = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+    ];
+
+
+    rows.forEach(
+        (row, rowIndex) => {
+
+            const rowElement =
+                document.createElement(
+                    "div"
+                );
+
+
+            rowElement.className =
+                "seat-row";
+
+
+            for (
+                let seatNumber = 1;
+                seatNumber <= 10;
+                seatNumber++
+            ) {
+
+                if (seatNumber === 6) {
+
+                    const space =
+                        document.createElement(
+                            "div"
+                        );
+
+                    space.className =
+                        "seat-space";
+
+                    rowElement.appendChild(
+                        space
+                    );
+
+                }
+
+
+                const seat =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                const seatId =
+                    row + seatNumber;
+
+
+                seat.className =
+                    "seat";
+
+
+                seat.textContent =
+                    seatNumber;
+
+
+                seat.dataset.seat =
+                    seatId;
+
+
+                /*
+                    Demo booked seats
+                */
+
+                if (
+                    (
+                        rowIndex === 0 &&
+                        seatNumber === 3
+                    )
+
+                    ||
+
+                    (
+                        rowIndex === 0 &&
+                        seatNumber === 4
+                    )
+
+                    ||
+
+                    (
+                        rowIndex === 2 &&
+                        seatNumber === 7
+                    )
+
+                    ||
+
+                    (
+                        rowIndex === 4 &&
+                        seatNumber === 2
+                    )
+
+                    ||
+
+                    (
+                        rowIndex === 5 &&
+                        seatNumber === 8
+                    )
+                ) {
+
+                    seat.classList.add(
+                        "booked"
+                    );
+
+                    seat.disabled = true;
+
+                }
+
+
+                seat.addEventListener(
+                    "click",
+                    function() {
+
+                        toggleSeat(
+                            this
+                        );
+
+                    }
+                );
+
+
+                rowElement.appendChild(
+                    seat
+                );
+
+            }
+
+
+            seatLayout.appendChild(
+                rowElement
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   SEAT SELECTION
+========================================================= */
+
+function toggleSeat(seat) {
+
+    const seatId =
+        seat.dataset.seat;
+
+
+    if (
+        seat.classList.contains(
+            "selected"
+        )
+    ) {
+
+        seat.classList.remove(
+            "selected"
+        );
+
+
+        selectedSeatList =
+            selectedSeatList.filter(
+                id => id !== seatId
+            );
+
+    } else {
+
+        if (
+            selectedSeatList.length >= 6
+        ) {
+
+            alert(
+                "You can select maximum 6 seats."
+            );
+
+            return;
+
+        }
+
+
+        seat.classList.add(
+            "selected"
+        );
+
+
+        selectedSeatList.push(
+            seatId
+        );
+
+    }
+
+
+    updateBookingSummary();
+
+}
+
+
+
+/* =========================================================
+   BOOKING SUMMARY
+========================================================= */
+
+function updateBookingSummary() {
+
+    if (
+        selectedSeatList.length === 0
+    ) {
+
+        selectedSeats.textContent =
+            "None";
+
+        totalPrice.textContent =
+            "0";
+
+        return;
+
+    }
+
+
+    selectedSeats.textContent =
+        selectedSeatList.join(", ");
+
+
+    const total =
+        selectedSeatList.length *
+        currentMovie.price;
+
+
+    totalPrice.textContent =
+        total.toLocaleString("en-IN");
+
+}
+
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+document
+    .getElementById("closeModal")
+    .addEventListener(
+        "click",
+        closeBooking
+    );
+
+
+bookingModal.addEventListener(
+    "click",
+    function(e) {
+
+        if (
+            e.target ===
+            bookingModal
+        ) {
+
+            closeBooking();
+
+        }
+
+    }
+);
+
+
+function closeBooking() {
+
+    bookingModal.classList.remove(
+        "show"
+    );
+
+}
+
+
+
+/* =========================================================
+   CONFIRM BOOKING
+========================================================= */
+
+document
+    .getElementById("confirmBooking")
+    .addEventListener(
+        "click",
+        function() {
+
+            if (
+                selectedSeatList.length === 0
+            ) {
+
+                alert(
+                    "Please select at least one seat."
+                );
+
+                return;
+
+            }
+
+
+            const bookingId =
+                "CB" +
+                Date.now()
+                    .toString()
+                    .slice(-8);
+
+
+            document.getElementById(
+                "bookingId"
+            ).textContent =
+                bookingId;
+
+
+            document.getElementById(
+                "bookingArea"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "successMessage"
+            ).style.display =
+                "block";
+
+        }
+    );
+
+
+
+/* =========================================================
+   FEATURED BOOKING
+========================================================= */
+
+document
+    .getElementById("featuredBook")
+    .addEventListener(
+        "click",
+        function() {
+
+            openBooking(1);
+
+        }
+    );
+
+
+
+/* =========================================================
+   DATE BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(".date")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                document
+                    .querySelectorAll(".date")
+                    .forEach(
+                        btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                    );
+
+
+                this.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+    });
+
+
+
+/* =========================================================
+   SHOWTIME BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(".time")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                document
+                    .querySelectorAll(".time")
+                    .forEach(
+                        btn =>
+                        btn.classList.remove(
+                            "selected"
+                        )
+                    );
+
+
+                this.classList.add(
+                    "selected"
+                );
+
+            }
+        );
+
+    });
+
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+document
+    .getElementById("newsletterForm")
+    .addEventListener(
+        "submit",
+        function(e) {
+
+            e.preventDefault();
+
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            const message =
+                document.getElementById(
+                    "newsletterMessage"
+                );
+
+
+            if (!email) return;
+
+
+            message.textContent =
+                "✓ Thanks! Movie updates are now coming your way.";
+
+
+            message.style.color =
+                "#65c982";
+
+
+            this.reset();
+
+        }
+    );
+
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+document
+    .getElementById("mobileMenu")
+    .addEventListener(
+        "click",
+        function() {
+
+            const nav =
+                document.querySelector(
+                    ".nav"
+                );
+
+
+            if (
+                nav.style.display ===
+                "block"
+            ) {
+
+                nav.style.display =
+                    "none";
+
+            } else {
+
+                nav.style.display =
+                    "block";
+
+                nav.style.position =
+                    "absolute";
+
+                nav.style.top =
+                    "65px";
+
+                nav.style.left =
+                    "0";
+
+                nav.style.right =
+                    "0";
+
+                nav.style.background =
+                    "#101010";
+
+                nav.style.padding =
+                    "20px";
+
+            }
+
+        }
+    );
+
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+document.getElementById(
+    "year"
+).textContent =
+    new Date().getFullYear();
+
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderMovies(MOVIES);
+
 
 </script>
-
 
 </body>
 
 </html>
+```
