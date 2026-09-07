@@ -1,2020 +1,730 @@
-```jsp
-<%@ page language="java"
-    contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>FoodHub - Order Delicious Food</title>
 
-    <title>CineBook — Movie Ticket Booking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect"
-        href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
-<style>
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-:root {
-
-    --black: #101010;
-    --dark: #181818;
-    --dark2: #222222;
-
-    --white: #ffffff;
-
-    --red: #e50914;
-    --red-dark: #b20710;
-
-    --gold: #f4b942;
-
-    --gray: #8c8c8c;
-
-    --light: #f5f5f5;
-
-    --border: #e5e5e5;
-
-    --container: 1250px;
-
-    --radius: 14px;
-}
-
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-}
-
-
-html {
-
-    scroll-behavior: smooth;
-}
-
-
-body {
-
-    font-family: "DM Sans", sans-serif;
-
-    background: var(--white);
-
-    color: var(--black);
-
-    line-height: 1.5;
-
-    overflow-x: hidden;
-}
-
-
-a {
-
-    text-decoration: none;
-
-    color: inherit;
-}
-
-
-button,
-input,
-select {
-
-    font-family: inherit;
-}
-
-
-.container {
-
-    width: 100%;
-
-    max-width: var(--container);
-
-    margin: auto;
-
-    padding: 0 24px;
-}
-
-
-/* =========================================================
-   TOP BAR
-========================================================= */
-
-.topbar {
-
-    background: var(--black);
-
-    color: white;
-
-    padding: 8px;
-
-    text-align: center;
-
-    font-size: 12px;
-
-    letter-spacing: .4px;
-}
-
-
-.topbar i {
-
-    color: var(--gold);
-
-    margin-right: 6px;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    background: rgba(16,16,16,.96);
-
-    backdrop-filter: blur(12px);
-
-    border-bottom: 1px solid #2d2d2d;
-
-    color: white;
-}
-
-
-.header {
-
-    height: 76px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 30px;
-}
-
-
-.logo {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 30px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
-
-
-.logo span {
-
-    color: var(--red);
-}
-
-
-.nav ul {
-
-    display: flex;
-
-    list-style: none;
-
-    gap: 30px;
-}
-
-
-.nav a {
-
-    font-size: 14px;
-
-    color: #ddd;
-
-    transition: .2s;
-}
-
-
-.nav a:hover {
-
-    color: white;
-}
-
-
-.header-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-}
-
-
-.header-icon {
-
-    color: white;
-
-    background: transparent;
-
-    border: 0;
-
-    cursor: pointer;
-
-    font-size: 16px;
-
-    position: relative;
-}
-
-
-.location {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    color: #ddd;
-
-    font-size: 13px;
-}
-
-
-.location i {
-
-    color: var(--red);
-}
-
-
-.mobile-menu {
-
-    display: none;
-
-    background: transparent;
-
-    border: 0;
-
-    color: white;
-
-    font-size: 20px;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-
-    min-height: 610px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.92),
-            rgba(0,0,0,.35),
-            rgba(0,0,0,.2)
-        ),
-
-        url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=90")
-        center/cover;
-
-    display: flex;
-
-    align-items: center;
-
-    color: white;
-}
-
-
-.hero-content {
-
-    max-width: 650px;
-}
-
-
-.hero-label {
-
-    color: #ffb4b4;
-
-    font-size: 12px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 3px;
-
-    font-weight: 700;
-
-    margin-bottom: 18px;
-}
-
-
-.hero h1 {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(48px, 7vw, 80px);
-
-    line-height: 1.05;
-
-    margin-bottom: 20px;
-}
-
-
-.hero h1 span {
-
-    color: #ff3942;
-}
-
-
-.hero p {
-
-    color: #ddd;
-
-    max-width: 560px;
-
-    font-size: 16px;
-
-    margin-bottom: 30px;
-}
-
-
-.hero-buttons {
-
-    display: flex;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-}
-
-
-.btn {
-
-    border: 0;
-
-    padding: 14px 24px;
-
-    cursor: pointer;
-
-    font-weight: 700;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 9px;
-
-    transition: .25s;
-}
-
-
-.btn-red {
-
-    background: var(--red);
-
-    color: white;
-}
-
-
-.btn-red:hover {
-
-    background: var(--red-dark);
-
-    transform: translateY(-2px);
-}
-
-
-.btn-outline {
-
-    background: transparent;
-
-    color: white;
-
-    border: 1px solid #777;
-}
-
-
-.btn-outline:hover {
-
-    background: white;
-
-    color: black;
-}
-
-
-/* =========================================================
-   BOOKING SEARCH
-========================================================= */
-
-.booking-search {
-
-    margin-top: -45px;
-
-    position: relative;
-
-    z-index: 10;
-}
-
-
-.search-box {
-
-    background: white;
-
-    padding: 22px;
-
-    box-shadow: 0 15px 50px rgba(0,0,0,.15);
-
-    display: grid;
-
-    grid-template-columns: 1.5fr 1fr 1fr auto;
-
-    gap: 12px;
-
-    border-radius: 12px;
-}
-
-
-.search-field {
-
-    border: 1px solid var(--border);
-
-    padding: 13px 15px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    background: #fafafa;
-}
-
-
-.search-field i {
-
-    color: var(--red);
-}
-
-
-.search-field input,
-.search-field select {
-
-    border: 0;
-
-    outline: none;
-
-    background: transparent;
-
-    width: 100%;
-
-    font-size: 14px;
-}
-
-
-.search-submit {
-
-    background: var(--red);
-
-    color: white;
-
-    border: 0;
-
-    padding: 0 26px;
-
-    cursor: pointer;
-
-    font-weight: 700;
-
-    border-radius: 5px;
-}
-
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.section {
-
-    padding: 85px 0;
-}
-
-
-.section-header {
-
-    display: flex;
-
-    align-items: end;
-
-    justify-content: space-between;
-
-    margin-bottom: 35px;
-
-    gap: 20px;
-}
-
-
-.eyebrow {
-
-    color: var(--red);
-
-    text-transform: uppercase;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 7px;
-}
-
-
-.section-title {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 40px;
-
-    line-height: 1.1;
-}
-
-
-.section-description {
-
-    color: var(--gray);
-
-    font-size: 14px;
-
-    margin-top: 8px;
-}
-
-
-.view-all {
-
-    color: var(--red);
-
-    font-size: 13px;
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   MOVIE FILTER
-========================================================= */
-
-.movie-filters {
-
-    display: flex;
-
-    gap: 8px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 30px;
-}
-
-
-.filter {
-
-    border: 1px solid var(--border);
-
-    background: white;
-
-    padding: 9px 18px;
-
-    border-radius: 30px;
-
-    cursor: pointer;
-
-    font-size: 12px;
-
-    transition: .2s;
-}
-
-
-.filter:hover,
-.filter.active {
-
-    background: var(--red);
-
-    border-color: var(--red);
-
-    color: white;
-}
-
-
-/* =========================================================
-   MOVIE GRID
-========================================================= */
-
-.movie-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(4,1fr);
-
-    gap: 22px;
-}
-
-
-.movie-card {
-
-    background: white;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    border: 1px solid var(--border);
-
-    transition: .3s;
-
-    position: relative;
-}
-
-
-.movie-card:hover {
-
-    transform: translateY(-7px);
-
-    box-shadow: 0 20px 45px rgba(0,0,0,.12);
-}
-
-
-.movie-poster {
-
-    aspect-ratio: 2 / 3;
-
-    overflow: hidden;
-
-    position: relative;
-
-    background: #ddd;
-}
-
-
-.movie-poster img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: .45s;
-}
-
-
-.movie-card:hover .movie-poster img {
-
-    transform: scale(1.05);
-}
-
-
-.movie-badge {
-
-    position: absolute;
-
-    top: 12px;
-
-    left: 12px;
-
-    background: var(--red);
-
-    color: white;
-
-    padding: 6px 9px;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    z-index: 2;
-
-    text-transform: uppercase;
-}
-
-
-.movie-rating {
-
-    position: absolute;
-
-    top: 12px;
-
-    right: 12px;
-
-    background: rgba(0,0,0,.8);
-
-    color: #ffc107;
-
-    padding: 6px 8px;
-
-    font-size: 11px;
-
-    border-radius: 5px;
-}
-
-
-.movie-info {
-
-    padding: 16px;
-}
-
-
-.movie-name {
-
-    font-weight: 700;
-
-    font-size: 16px;
-
-    margin-bottom: 5px;
-}
-
-
-.movie-meta {
-
-    color: var(--gray);
-
-    font-size: 12px;
-
-    margin-bottom: 14px;
-}
-
-
-.movie-meta span {
-
-    margin-right: 7px;
-}
-
-
-.movie-actions {
-
-    display: flex;
-
-    gap: 8px;
-}
-
-
-.book-btn {
-
-    flex: 1;
-
-    background: var(--black);
-
-    color: white;
-
-    border: 0;
-
-    padding: 10px;
-
-    cursor: pointer;
-
-    font-weight: 700;
-
-    font-size: 12px;
-}
-
-
-.book-btn:hover {
-
-    background: var(--red);
-}
-
-
-.info-btn {
-
-    width: 40px;
-
-    background: white;
-
-    border: 1px solid var(--border);
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   SHOWTIMES
-========================================================= */
-
-.showtimes-section {
-
-    background: #f7f7f7;
-}
-
-
-.showtime-layout {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1.5fr;
-
-    gap: 35px;
-
-    align-items: center;
-}
-
-
-.showtime-poster {
-
-    height: 500px;
-
-    overflow: hidden;
-}
-
-
-.showtime-poster img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-}
-
-
-.showtime-content h2 {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 48px;
-
-    margin-bottom: 10px;
-}
-
-
-.movie-info-line {
-
-    color: var(--gray);
-
-    font-size: 13px;
-
-    margin-bottom: 20px;
-}
-
-
-.show-date {
-
-    font-size: 12px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-
-    font-weight: 700;
-
-    margin-bottom: 12px;
-}
-
-
-.dates {
-
-    display: flex;
-
-    gap: 8px;
-
-    margin-bottom: 25px;
-}
-
-
-.date {
-
-    min-width: 65px;
-
-    border: 1px solid var(--border);
-
-    background: white;
-
-    padding: 9px;
-
-    text-align: center;
-
-    cursor: pointer;
-}
-
-
-.date strong {
-
-    display: block;
-
-    font-size: 16px;
-}
-
-
-.date span {
-
-    font-size: 10px;
-
-    color: var(--gray);
-}
-
-
-.date.active {
-
-    background: var(--red);
-
-    border-color: var(--red);
-
-    color: white;
-}
-
-
-.date.active span {
-
-    color: white;
-}
-
-
-.cinema-name {
-
-    font-weight: 700;
-
-    font-size: 15px;
-
-    margin-bottom: 10px;
-}
-
-
-.showtimes {
-
-    display: flex;
-
-    gap: 9px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 25px;
-}
-
-
-.time {
-
-    border: 1px solid #bbb;
-
-    background: white;
-
-    padding: 10px 15px;
-
-    cursor: pointer;
-
-    font-size: 12px;
-
-    font-weight: 600;
-}
-
-
-.time:hover,
-.time.selected {
-
-    border-color: var(--red);
-
-    color: var(--red);
-}
-
-
-/* =========================================================
-   FEATURES
-========================================================= */
-
-.features {
-
-    display: grid;
-
-    grid-template-columns: repeat(4,1fr);
-
-    border-top: 1px solid var(--border);
-
-    border-bottom: 1px solid var(--border);
-}
-
-
-.feature {
-
-    padding: 30px 20px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    border-right: 1px solid var(--border);
-}
-
-
-.feature:last-child {
-
-    border-right: 0;
-}
-
-
-.feature i {
-
-    color: var(--red);
-
-    font-size: 22px;
-}
-
-
-.feature h4 {
-
-    font-size: 13px;
-
-    margin-bottom: 2px;
-}
-
-
-.feature p {
-
-    font-size: 11px;
-
-    color: var(--gray);
-}
-
-
-/* =========================================================
-   HOW IT WORKS
-========================================================= */
-
-.steps {
-
-    display: grid;
-
-    grid-template-columns: repeat(3,1fr);
-
-    gap: 20px;
-}
-
-
-.step {
-
-    border: 1px solid var(--border);
-
-    padding: 35px;
-
-    text-align: center;
-}
-
-
-.step-number {
-
-    width: 45px;
-
-    height: 45px;
-
-    margin: auto;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 50%;
-
-    background: #fff0f0;
-
-    color: var(--red);
-
-    font-weight: 700;
-
-    margin-bottom: 18px;
-}
-
-
-.step i {
-
-    font-size: 28px;
-
-    color: var(--red);
-
-    margin-bottom: 12px;
-}
-
-
-.step h3 {
-
-    font-size: 17px;
-
-    margin-bottom: 7px;
-}
-
-
-.step p {
-
-    color: var(--gray);
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   NEWSLETTER
-========================================================= */
-
-.newsletter {
-
-    background: var(--black);
-
-    color: white;
-
-    padding: 70px 20px;
-
-    text-align: center;
-}
-
-
-.newsletter h2 {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 42px;
-
-    margin-bottom: 10px;
-}
-
-
-.newsletter p {
-
-    color: #aaa;
-
-    font-size: 14px;
-
-    margin-bottom: 25px;
-}
-
-
-.newsletter-form {
-
-    max-width: 500px;
-
-    margin: auto;
-
-    display: flex;
-}
-
-
-.newsletter-form input {
-
-    flex: 1;
-
-    padding: 14px;
-
-    border: 0;
-
-    outline: none;
-}
-
-
-.newsletter-form button {
-
-    background: var(--red);
-
-    color: white;
-
-    border: 0;
-
-    padding: 0 25px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-
-    background: #090909;
-
-    color: white;
-
-    padding: 65px 0 25px;
-}
-
-
-.footer-grid {
-
-    display: grid;
-
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-
-    gap: 45px;
-
-    padding-bottom: 40px;
-
-    border-bottom: 1px solid #292929;
-}
-
-
-.footer-logo {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 30px;
-
-    margin-bottom: 13px;
-}
-
-
-.footer-logo span {
-
-    color: var(--red);
-}
-
-
-.footer-about {
-
-    color: #888;
-
-    max-width: 330px;
-
-    font-size: 13px;
-}
-
-
-.footer-title {
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    margin-bottom: 17px;
-}
-
-
-.footer-links {
-
-    list-style: none;
-}
-
-
-.footer-links li {
-
-    color: #888;
-
-    font-size: 13px;
-
-    margin-bottom: 9px;
-}
-
-
-.footer-links li:hover {
-
-    color: white;
-
-    cursor: pointer;
-}
-
-
-.social {
-
-    display: flex;
-
-    gap: 9px;
-
-    margin-top: 20px;
-}
-
-
-.social a {
-
-    width: 35px;
-
-    height: 35px;
-
-    border: 1px solid #444;
-
-    border-radius: 50%;
-
-    display: grid;
-
-    place-items: center;
-}
-
-
-.copyright {
-
-    text-align: center;
-
-    color: #666;
-
-    padding-top: 23px;
-
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   BOOKING MODAL
-========================================================= */
-
-.modal {
-
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0,0,0,.75);
-
-    z-index: 3000;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-}
-
-
-.modal.show {
-
-    display: flex;
-}
-
-
-.booking-modal {
-
-    width: 100%;
-
-    max-width: 900px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    background: white;
-
-    border-radius: 14px;
-
-    padding: 30px;
-
-    position: relative;
-}
-
-
-.close-modal {
-
-    position: absolute;
-
-    top: 18px;
-
-    right: 20px;
-
-    width: 35px;
-
-    height: 35px;
-
-    border: 0;
-
-    border-radius: 50%;
-
-    background: #f3f3f3;
-
-    cursor: pointer;
-}
-
-
-.booking-header {
-
-    margin-bottom: 25px;
-
-    padding-right: 40px;
-}
-
-
-.booking-header h2 {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 34px;
-}
-
-
-.booking-header p {
-
-    color: var(--gray);
-
-    font-size: 13px;
-}
-
-
-/* SEAT SCREEN */
-
-.screen {
-
-    margin: 10px auto 30px;
-
-    max-width: 500px;
-
-    text-align: center;
-}
-
-
-.screen-line {
-
-    height: 8px;
-
-    background: #ddd;
-
-    border-radius: 50%;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,.15);
-
-    margin-bottom: 8px;
-}
-
-
-.screen span {
-
-    color: #999;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-}
-
-
-.seat-layout {
-
-    max-width: 520px;
-
-    margin: auto;
-}
-
-
-.seat-row {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 7px;
-
-    margin-bottom: 8px;
-}
-
-
-.seat {
-
-    width: 32px;
-
-    height: 28px;
-
-    border: 0;
-
-    border-radius: 6px 6px 3px 3px;
-
-    background: #ddd;
-
-    font-size: 9px;
-
-    cursor: pointer;
-}
-
-
-.seat:hover {
-
-    background: #bbb;
-}
-
-
-.seat.selected {
-
-    background: var(--red);
-
-    color: white;
-}
-
-
-.seat.booked {
-
-    background: #333;
-
-    color: white;
-
-    cursor: not-allowed;
-}
-
-
-.seat-space {
-
-    width: 18px;
-}
-
-
-/* BOOKING SUMMARY */
-
-.booking-summary {
-
-    margin-top: 30px;
-
-    border-top: 1px solid var(--border);
-
-    padding-top: 25px;
-
-    display: grid;
-
-    grid-template-columns: 1fr auto;
-
-    gap: 20px;
-
-    align-items: end;
-}
-
-
-.summary-details h3 {
-
-    margin-bottom: 8px;
-}
-
-
-.summary-details p {
-
-    color: var(--gray);
-
-    font-size: 13px;
-
-    margin-bottom: 5px;
-}
-
-
-.total {
-
-    font-size: 25px;
-
-    font-weight: 700;
-
-    margin-bottom: 12px;
-}
-
-
-.confirm-btn {
-
-    background: var(--red);
-
-    color: white;
-
-    border: 0;
-
-    padding: 13px 25px;
-
-    cursor: pointer;
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   SUCCESS MESSAGE
-========================================================= */
-
-.success-message {
-
-    text-align: center;
-
-    padding: 50px 20px;
-
-    display: none;
-}
-
-
-.success-message i {
-
-    font-size: 55px;
-
-    color: #28a745;
-
-    margin-bottom: 18px;
-}
-
-
-.success-message h2 {
-
-    font-family: "Playfair Display", serif;
-
-    margin-bottom: 8px;
-}
-
-
-.success-message p {
-
-    color: var(--gray);
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:1050px) {
-
-    .nav {
-
-        display: none;
-    }
-
-    .mobile-menu {
-
-        display: block;
-    }
-
-    .movie-grid {
-
-        grid-template-columns: repeat(3,1fr);
-    }
-
-    .search-box {
-
-        grid-template-columns: 1fr 1fr;
-
-    }
-
-    .search-submit {
-
-        padding: 13px;
-    }
-
-    .showtime-layout {
-
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .features {
-
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .feature:nth-child(2) {
-
-        border-right: 0;
-    }
-
-    .footer-grid {
-
-        grid-template-columns: 1fr 1fr;
-    }
-
-}
-
-
-@media(max-width:700px) {
-
-    .header {
-
-        height: 65px;
-    }
-
-    .logo {
-
-        font-size: 25px;
-    }
-
-    .location {
-
-        display: none;
-    }
-
-    .hero {
-
-        min-height: 580px;
-    }
-
-    .hero h1 {
-
-        font-size: 49px;
-    }
-
-    .booking-search {
-
-        margin-top: -25px;
-    }
-
-    .search-box {
-
-        grid-template-columns: 1fr;
-
-        padding: 15px;
-    }
-
-    .section {
-
-        padding: 60px 0;
-    }
-
-    .section-header {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-    .section-title {
-
-        font-size: 34px;
-    }
-
-    .movie-grid {
-
-        grid-template-columns: repeat(2,1fr);
-
-        gap: 14px;
-    }
-
-    .movie-info {
-
-        padding: 12px;
-    }
-
-    .movie-name {
-
-        font-size: 14px;
-    }
-
-    .showtime-layout {
-
-        grid-template-columns: 1fr;
-    }
-
-    .showtime-poster {
-
-        height: 400px;
-    }
-
-    .showtime-content h2 {
-
-        font-size: 38px;
-    }
-
-    .steps {
-
-        grid-template-columns: 1fr;
-    }
-
-    .newsletter-form {
-
-        flex-direction: column;
-
-        gap: 8px;
-    }
-
-    .newsletter-form input {
-
-        padding: 14px;
-    }
-
-    .newsletter-form button {
-
-        padding: 14px;
-    }
-
-}
-
-
-@media(max-width:480px) {
-
-    .container {
-
-        padding: 0 15px;
-    }
-
-    .header-actions {
-
-        gap: 11px;
-    }
-
-    .header-actions .desktop-only {
-
-        display: none;
-    }
-
-    .hero {
-
-        background-position: 62% center;
-    }
-
-    .hero h1 {
-
-        font-size: 42px;
-    }
-
-    .movie-grid {
-
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .movie-poster {
-
-        aspect-ratio: 2 / 2.8;
-    }
-
-    .features {
-
-        grid-template-columns: 1fr;
-    }
-
-    .feature {
-
-        border-right: 0;
-
-        border-bottom: 1px solid var(--border);
-    }
-
-    .footer-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-    .booking-modal {
-
-        padding: 20px 15px;
-    }
-
-    .seat {
-
-        width: 27px;
-
-        height: 25px;
-
-        font-size: 8px;
-    }
-
-    .seat-row {
-
-        gap: 4px;
-    }
-
-    .booking-summary {
-
-        grid-template-columns: 1fr;
-    }
-
-}
-
-</style>
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fb;
+            color: #171717;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #ffffff;
+            padding: 17px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,.06);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: #222;
+        }
+
+        .logo span {
+            color: #f97316;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #f97316;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-actions i {
+            cursor: pointer;
+            font-size: 19px;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -11px;
+            right: -11px;
+            background: #f97316;
+            color: white;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(120deg, #ea580c, #f97316, #fb923c);
+            color: white;
+            padding: 70px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            color: #fff7ed;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 6px;
+            max-width: 620px;
+        }
+
+        .search-box i {
+            color: #777;
+            margin-left: 15px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 15px;
+            font-size: 15px;
+        }
+
+        .search-box button {
+            background: #222;
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .hero-food {
+            font-size: 170px;
+            opacity: .22;
+        }
+
+        /* ================= COMMON ================= */
+
+        .container {
+            width: 86%;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 55px 0;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+        }
+
+        #resultCount {
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .category {
+            background: white;
+            border: 1px solid #e5e7eb;
+            padding: 13px 23px;
+            border-radius: 30px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        .category:hover,
+        .category.active {
+            background: #f97316;
+            color: white;
+            border-color: #f97316;
+        }
+
+        /* ================= FOOD GRID ================= */
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            transition: .3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.09);
+        }
+
+        .wishlist {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,.12);
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .wishlist:hover {
+            color: #ef4444;
+        }
+
+        .product-image {
+            height: 220px;
+            background: #fff7ed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: .3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .category-name {
+            color: #f97316;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 7px 0;
+        }
+
+        .description {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .rating {
+            font-size: 13px;
+            margin-bottom: 13px;
+        }
+
+        .rating i {
+            color: #f59e0b;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .old-price {
+            color: #aaa;
+            text-decoration: line-through;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .buy-btn {
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 11px 15px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .buy-btn:hover {
+            background: #ea580c;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .feature i {
+            font-size: 28px;
+            color: #f97316;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .feature p {
+            color: #777;
+            font-size: 12px;
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.65);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 580px;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 18px;
+            font-size: 25px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .modal-subtitle {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        /* ================= CART ITEMS ================= */
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #fff7ed;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 9px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            color: #f97316;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity button {
+            width: 27px;
+            height: 27px;
+            border: none;
+            border-radius: 6px;
+            background: #f97316;
+            color: white;
+            cursor: pointer;
+        }
+
+        .quantity span {
+            font-weight: 700;
+            min-width: 15px;
+            text-align: center;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+
+        .empty-cart i {
+            font-size: 45px;
+            margin-bottom: 12px;
+            color: #ddd;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #f97316;
+        }
+
+        .summary {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .summary-total {
+            border-top: 1px solid #ddd;
+            padding-top: 12px;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: #f97316;
+            color: white;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .confirm-btn:hover {
+            background: #ea580c;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #171717;
+            color: white;
+            padding: 50px 7%;
+            margin-top: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer a {
+            color: #aaa;
+            font-size: 13px;
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+        }
+
+        footer a:hover {
+            color: #f97316;
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            margin-top: 35px;
+            padding-top: 20px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 1000px) {
+
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-food {
+                display: none;
+            }
+        }
+
+        @media(max-width: 700px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 45px 5%;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .product-image {
+                height: 180px;
+            }
+
+            .product-info {
+                padding: 14px;
+            }
+
+            .product-name {
+                font-size: 15px;
+            }
+
+            .price {
+                font-size: 16px;
+            }
+
+            .buy-btn {
+                padding: 8px 10px;
+                font-size: 11px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width: 450px) {
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 250px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
 
 </head>
 
-
 <body>
 
-
-<!-- =========================================================
-     TOP BAR
-========================================================= -->
-
-<div class="topbar">
-
-    <i class="fa-solid fa-ticket"></i>
-
-    Book your favorite movies instantly —
-    <strong>Fast, Easy & Secure</strong>
-
-</div>
-
-
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
-    <div class="container header">
+    <div class="logo">
+        Food<span>Hub</span>
+    </div>
 
+    <nav>
+        <a href="#">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#offers">Offers</a>
+        <a href="#about">About</a>
+    </nav>
 
-        <button class="mobile-menu"
-                id="mobileMenu">
+    <div class="header-actions">
 
-            <i class="fa-solid fa-bars"></i>
+        <i class="fa-regular fa-user"
+           onclick="showLogin()"></i>
 
-        </button>
+        <div class="cart-icon"
+             onclick="openCart()">
 
+            <i class="fa-solid fa-cart-shopping"></i>
 
-        <a href="index.jsp"
-           class="logo">
-
-            Cine<span>Book.</span>
-
-        </a>
-
-
-        <nav class="nav">
-
-            <ul>
-
-                <li>
-                    <a href="index.jsp">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#movies">
-                        Movies
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#showtimes">
-                        Showtimes
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#how">
-                        How It Works
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#offers">
-                        Offers
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-
-        <div class="header-actions">
-
-
-            <div class="location desktop-only">
-
-                <i class="fa-solid fa-location-dot"></i>
-
-                Hyderabad
-
-            </div>
-
-
-            <button class="header-icon">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-            </button>
-
-
-            <a href="login.jsp"
-               class="header-icon">
-
-                <i class="fa-regular fa-user"></i>
-
-            </a>
-
-
-            <a href="mybookings.jsp"
-               class="header-icon">
-
-                <i class="fa-solid fa-ticket"></i>
-
-            </a>
+            <span class="cart-count"
+                  id="cartCount">0</span>
 
         </div>
 
@@ -2023,59 +733,186 @@ footer {
 </header>
 
 
-
-<!-- =========================================================
-     HERO
-========================================================= -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
+    <div class="hero-content">
+
+        <h1>
+            Delicious Food,<br>
+            Delivered Fast
+        </h1>
+
+        <p>
+            Order your favourite meals from the best restaurants
+            and get them delivered straight to your doorstep.
+        </p>
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search pizza, burger, biryani..."
+                    onkeyup="searchProducts()">
+
+            <button onclick="searchProducts()">
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-food">
+        <i class="fa-solid fa-bowl-food"></i>
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="section">
+
     <div class="container">
 
-        <div class="hero-content">
+        <div class="section-title">
 
-            <div class="hero-label">
+            <h2>Explore Categories</h2>
 
-                Your Cinema Experience
+        </div>
+
+        <div class="categories">
+
+            <div class="category active"
+                 onclick="filterCategory('All', this)">
+                All
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Pizza', this)">
+                🍕 Pizza
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Burger', this)">
+                🍔 Burgers
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Biryani', this)">
+                🍛 Biryani
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Indian', this)">
+                🍱 Indian
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Chinese', this)">
+                🥡 Chinese
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Dessert', this)">
+                🍰 Desserts
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Drinks', this)">
+                🥤 Drinks
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOD MENU ================= -->
+
+<section class="section"
+         id="menu">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Popular Food</h2>
+
+            <span id="resultCount"></span>
+
+        </div>
+
+        <div class="product-grid"
+             id="productGrid">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section"
+         id="offers">
+
+    <div class="container">
+
+        <div class="features">
+
+            <div class="feature">
+
+                <i class="fa-solid fa-motorcycle"></i>
+
+                <h3>Fast Delivery</h3>
+
+                <p>
+                    Hot and fresh food delivered quickly.
+                </p>
 
             </div>
 
+            <div class="feature">
 
-            <h1>
+                <i class="fa-solid fa-utensils"></i>
 
-                Lights.
-                <span>Camera.</span>
-                Action.
+                <h3>Best Restaurants</h3>
 
-            </h1>
+                <p>
+                    Delicious food from trusted restaurants.
+                </p>
 
+            </div>
 
-            <p>
+            <div class="feature">
 
-                Discover the latest blockbusters, choose your
-                favorite seats and book movie tickets in seconds.
+                <i class="fa-solid fa-tag"></i>
 
-            </p>
+                <h3>Great Offers</h3>
 
+                <p>
+                    Enjoy exciting deals and discounts.
+                </p>
 
-            <div class="hero-buttons">
+            </div>
 
-                <a href="#movies"
-                   class="btn btn-red">
+            <div class="feature">
 
-                    Browse Movies
+                <i class="fa-solid fa-headset"></i>
 
-                    <i class="fa-solid fa-arrow-right"></i>
+                <h3>24/7 Support</h3>
 
-                </a>
-
-
-                <a href="#showtimes"
-                   class="btn btn-outline">
-
-                    Today's Shows
-
-                </a>
+                <p>
+                    Our support team is always available.
+                </p>
 
             </div>
 
@@ -2086,1648 +923,900 @@ footer {
 </section>
 
 
+<!-- ================= CART / CHECKOUT MODAL ================= -->
 
-<!-- =========================================================
-     SEARCH
-========================================================= -->
+<div class="modal"
+     id="cartModal">
 
-<section class="booking-search">
+    <div class="modal-content">
 
-    <div class="container">
+        <span class="close"
+              onclick="closeCart()">
+            &times;
+        </span>
 
-        <div class="search-box">
+        <h2 class="modal-title">
+            Your Order
+        </h2>
+
+        <p class="modal-subtitle">
+            Review your items and enter your delivery details.
+        </p>
+
+        <div id="cartItems"
+             class="cart-items">
+        </div>
 
 
-            <div class="search-field">
+        <!-- CUSTOMER DETAILS -->
 
-                <i class="fa-solid fa-film"></i>
+        <div id="checkoutSection">
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
 
                 <input
-                    type="text"
-                    id="movieSearch"
-                    placeholder="Search movie...">
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter your name">
 
             </div>
 
 
-            <div class="search-field">
+            <div class="form-group">
 
-                <i class="fa-solid fa-location-dot"></i>
+                <label>
+                    Mobile Number
+                </label>
 
-                <select id="citySelect">
+                <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="Enter mobile number">
 
-                    <option>Hyderabad</option>
+            </div>
 
-                    <option>Bengaluru</option>
 
-                    <option>Chennai</option>
+            <div class="form-group">
 
-                    <option>Mumbai</option>
+                <label>
+                    Email Address
+                </label>
 
-                    <option>Delhi</option>
+                <input
+                        type="email"
+                        id="customerEmail"
+                        placeholder="Enter email">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Delivery Address
+                </label>
+
+                <input
+                        type="text"
+                        id="customerAddress"
+                        placeholder="House No, Street, City">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Payment Method
+                </label>
+
+                <select id="paymentMethod">
+
+                    <option value="UPI">
+                        UPI
+                    </option>
+
+                    <option value="CARD">
+                        Credit / Debit Card
+                    </option>
+
+                    <option value="COD">
+                        Cash on Delivery
+                    </option>
+
+                    <option value="NETBANKING">
+                        Net Banking
+                    </option>
 
                 </select>
 
             </div>
 
 
-            <div class="search-field">
+            <div class="summary">
 
-                <i class="fa-regular fa-calendar"></i>
+                <div class="summary-row">
 
-                <input
-                    type="date"
-                    id="dateSelect">
+                    <span>Subtotal</span>
+
+                    <span id="summarySubtotal">
+                        ₹0
+                    </span>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Delivery Fee</span>
+
+                    <span id="deliveryFee">
+                        ₹40
+                    </span>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Discount</span>
+
+                    <span id="discount">
+                        ₹0
+                    </span>
+
+                </div>
+
+                <div class="summary-row summary-total">
+
+                    <span>Total</span>
+
+                    <span id="summaryTotal">
+                        ₹0
+                    </span>
+
+                </div>
 
             </div>
 
 
-            <button
-                class="search-submit"
-                id="searchMovies">
+            <button class="confirm-btn"
+                    onclick="confirmOrder()">
 
-                Search Movies
+                <i class="fa-solid fa-lock"></i>
+                Place Order
 
             </button>
 
         </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     MOVIES
-========================================================= -->
-
-<section class="section"
-         id="movies">
-
-    <div class="container">
-
-
-        <div class="section-header">
-
-            <div>
-
-                <div class="eyebrow">
-                    Now Showing
-                </div>
-
-                <h2 class="section-title">
-                    Movies You'll Love
-                </h2>
-
-                <p class="section-description">
-                    Catch the latest releases on the big screen.
-                </p>
-
-            </div>
-
-
-            <a href="#movies"
-               class="view-all">
-
-                View All Movies →
-
-            </a>
-
-        </div>
-
-
-        <div class="movie-filters">
-
-            <button
-                class="filter active"
-                data-genre="All">
-
-                All
-
-            </button>
-
-            <button
-                class="filter"
-                data-genre="Action">
-
-                Action
-
-            </button>
-
-            <button
-                class="filter"
-                data-genre="Drama">
-
-                Drama
-
-            </button>
-
-            <button
-                class="filter"
-                data-genre="Comedy">
-
-                Comedy
-
-            </button>
-
-            <button
-                class="filter"
-                data-genre="Romance">
-
-                Romance
-
-            </button>
-
-            <button
-                class="filter"
-                data-genre="Thriller">
-
-                Thriller
-
-            </button>
-
-        </div>
-
-
-        <div class="movie-grid"
-             id="movieGrid">
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SHOWTIMES
-========================================================= -->
-
-<section class="section showtimes-section"
-         id="showtimes">
-
-    <div class="container">
-
-        <div class="showtime-layout">
-
-
-            <div class="showtime-poster">
-
-                <img
-                    src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85"
-                    alt="Featured movie">
-
-            </div>
-
-
-            <div class="showtime-content">
-
-                <div class="eyebrow">
-                    Featured Movie
-                </div>
-
-
-                <h2>
-                    The Last Horizon
-                </h2>
-
-
-                <div class="movie-info-line">
-
-                    ⭐ 4.8 &nbsp; • &nbsp;
-                    Action / Sci-Fi &nbsp; • &nbsp;
-                    2h 24m &nbsp; • &nbsp;
-                    U/A
-
-                </div>
-
-
-                <p class="section-description"
-                   style="margin-bottom:25px;">
-
-                    A legendary journey begins when a team
-                    of explorers discovers a mysterious world
-                    beyond the edge of known space.
-
-                </p>
-
-
-                <div class="show-date">
-                    Select Date
-                </div>
-
-
-                <div class="dates">
-
-
-                    <button class="date active">
-
-                        <strong>02</strong>
-
-                        <span>SEP</span>
-
-                    </button>
-
-
-                    <button class="date">
-
-                        <strong>03</strong>
-
-                        <span>SEP</span>
-
-                    </button>
-
-
-                    <button class="date">
-
-                        <strong>04</strong>
-
-                        <span>SEP</span>
-
-                    </button>
-
-
-                    <button class="date">
-
-                        <strong>05</strong>
-
-                        <span>SEP</span>
-
-                    </button>
-
-
-                    <button class="date">
-
-                        <strong>06</strong>
-
-                        <span>SEP</span>
-
-                    </button>
-
-                </div>
-
-
-                <div class="cinema-name">
-
-                    PVR ICON — Hyderabad
-
-                </div>
-
-
-                <div class="showtimes">
-
-
-                    <button class="time">
-                        10:30 AM
-                    </button>
-
-                    <button class="time">
-                        01:15 PM
-                    </button>
-
-                    <button class="time selected">
-                        04:30 PM
-                    </button>
-
-                    <button class="time">
-                        07:45 PM
-                    </button>
-
-                    <button class="time">
-                        10:30 PM
-                    </button>
-
-                </div>
-
-
-                <button
-                    class="btn btn-red"
-                    id="featuredBook">
-
-                    Book Tickets
-
-                    <i class="fa-solid fa-ticket"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FEATURES
-========================================================= -->
-
-<section class="container">
-
-    <div class="features">
-
-
-        <div class="feature">
-
-            <i class="fa-solid fa-ticket"></i>
-
-            <div>
-
-                <h4>Instant Booking</h4>
-
-                <p>Book your seats in seconds</p>
-
-            </div>
-
-        </div>
-
-
-        <div class="feature">
-
-            <i class="fa-solid fa-couch"></i>
-
-            <div>
-
-                <h4>Choose Your Seat</h4>
-
-                <p>Select your favorite seats</p>
-
-            </div>
-
-        </div>
-
-
-        <div class="feature">
-
-            <i class="fa-solid fa-shield-halved"></i>
-
-            <div>
-
-                <h4>Secure Payment</h4>
-
-                <p>100% safe transactions</p>
-
-            </div>
-
-        </div>
-
-
-        <div class="feature">
-
-            <i class="fa-solid fa-mobile-screen-button"></i>
-
-            <div>
-
-                <h4>Digital Tickets</h4>
-
-                <p>Tickets delivered instantly</p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     HOW IT WORKS
-========================================================= -->
-
-<section class="section"
-         id="how">
-
-    <div class="container">
-
-
-        <div class="section-header">
-
-            <div>
-
-                <div class="eyebrow">
-                    Simple Process
-                </div>
-
-                <h2 class="section-title">
-                    Book in 3 Easy Steps
-                </h2>
-
-            </div>
-
-        </div>
-
-
-        <div class="steps">
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    01
-                </div>
-
-                <i class="fa-solid fa-film"></i>
-
-                <h3>
-                    Choose a Movie
-                </h3>
-
-                <p>
-                    Browse the latest movies and
-                    select the one you want to watch.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    02
-                </div>
-
-                <i class="fa-solid fa-chair"></i>
-
-                <h3>
-                    Pick Your Seats
-                </h3>
-
-                <p>
-                    Select your preferred showtime
-                    and choose your seats.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    03
-                </div>
-
-                <i class="fa-solid fa-ticket"></i>
-
-                <h3>
-                    Confirm Booking
-                </h3>
-
-                <p>
-                    Complete payment and receive
-                    your digital movie tickets.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     NEWSLETTER
-========================================================= -->
-
-<section class="newsletter"
-         id="offers">
-
-    <div class="container">
-
-        <div class="eyebrow"
-             style="color:#ff5a61;">
-
-            Exclusive Offers
-
-        </div>
-
-
-        <h2>
-            Never Miss a Movie.
-        </h2>
-
-
-        <p>
-            Subscribe and get movie updates,
-            early access and exclusive offers.
-        </p>
-
-
-        <form
-            class="newsletter-form"
-            id="newsletterForm">
-
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
-                required>
-
-            <button type="submit">
-
-                Subscribe
-
-            </button>
-
-        </form>
-
-
-        <div id="newsletterMessage"
-             style="margin-top:12px;font-size:13px;">
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <div class="container">
-
-
-        <div class="footer-grid">
-
-
-            <div>
-
-                <div class="footer-logo">
-
-                    Cine<span>Book.</span>
-
-                </div>
-
-
-                <p class="footer-about">
-
-                    Your simple and convenient destination
-                    for booking movie tickets online.
-                    Find movies, select seats and enjoy
-                    the show.
-
-                </p>
-
-
-                <div class="social">
-
-                    <a href="#">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div>
-
-                <div class="footer-title">
-                    Movies
-                </div>
-
-                <ul class="footer-links">
-
-                    <li>Now Showing</li>
-
-                    <li>Coming Soon</li>
-
-                    <li>Popular Movies</li>
-
-                    <li>Top Rated</li>
-
-                </ul>
-
-            </div>
-
-
-            <div>
-
-                <div class="footer-title">
-                    Support
-                </div>
-
-                <ul class="footer-links">
-
-                    <li>Help Center</li>
-
-                    <li>Contact Us</li>
-
-                    <li>Cancellation</li>
-
-                    <li>Refund Policy</li>
-
-                </ul>
-
-            </div>
-
-
-            <div>
-
-                <div class="footer-title">
-                    Account
-                </div>
-
-                <ul class="footer-links">
-
-                    <li>
-                        <a href="login.jsp">
-                            Login
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="register.jsp">
-                            Register
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="mybookings.jsp">
-                            My Bookings
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="profile.jsp">
-                            Profile
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="copyright">
-
-            © <span id="year"></span>
-            CineBook. All Rights Reserved.
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-
-<!-- =========================================================
-     BOOKING MODAL
-========================================================= -->
-
-<div class="modal"
-     id="bookingModal">
-
-
-    <div class="booking-modal">
-
-
-        <button
-            class="close-modal"
-            id="closeModal">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-
-        <!-- BOOKING AREA -->
-
-        <div id="bookingArea">
-
-
-            <div class="booking-header">
-
-                <h2 id="bookingMovie">
-                    Movie Name
-                </h2>
-
-                <p id="bookingInfo">
-                    Select your seats
-                </p>
-
-            </div>
-
-
-            <!-- SCREEN -->
-
-            <div class="screen">
-
-                <div class="screen-line"></div>
-
-                <span>
-                    SCREEN
-                </span>
-
-            </div>
-
-
-            <!-- SEATS -->
-
-            <div class="seat-layout"
-                 id="seatLayout">
-
-            </div>
-
-
-            <!-- SUMMARY -->
-
-            <div class="booking-summary">
-
-
-                <div class="summary-details">
-
-                    <h3>
-                        Booking Summary
-                    </h3>
-
-                    <p>
-                        Seats:
-                        <strong id="selectedSeats">
-                            None
-                        </strong>
-                    </p>
-
-                    <p>
-                        Ticket Price:
-                        ₹<span id="ticketPrice">
-                            250
-                        </span>
-                    </p>
-
-                </div>
-
-
-                <div>
-
-                    <div class="total">
-
-                        ₹<span id="totalPrice">
-                            0
-                        </span>
-
-                    </div>
-
-
-                    <button
-                        class="confirm-btn"
-                        id="confirmBooking">
-
-                        Confirm Booking
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- SUCCESS -->
-
-        <div class="success-message"
-             id="successMessage">
-
-            <i class="fa-solid fa-circle-check"></i>
-
-            <h2>
-                Booking Confirmed!
-            </h2>
-
-            <p>
-                Your movie tickets have been booked successfully.
-            </p>
-
-            <p style="margin-top:10px;">
-                Booking ID:
-                <strong id="bookingId"></strong>
-            </p>
-
-            <button
-                class="btn btn-red"
-                style="margin-top:25px;"
-                onclick="location.href='mybookings.jsp'">
-
-                View My Bookings
-
-            </button>
-
-        </div>
-
 
     </div>
 
 </div>
 
 
+<!-- ================= FOOTER ================= -->
+
+<footer id="about">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>
+                FoodHub
+            </h3>
+
+            <p>
+                Your favourite destination for delicious food,
+                great prices and fast delivery.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="#">
+                Home
+            </a>
+
+            <a href="#menu">
+                Menu
+            </a>
+
+            <a href="#offers">
+                Offers
+            </a>
+
+            <a href="#about">
+                Contact
+            </a>
+
+        </div>
+
+        <div>
+
+            <h3>
+                Customer Care
+            </h3>
+
+            <a href="#">
+                Help Center
+            </a>
+
+            <a href="#">
+                Orders
+            </a>
+
+            <a href="#">
+                Delivery
+            </a>
+
+            <a href="#">
+                Refunds
+            </a>
+
+        </div>
+
+        <div>
+
+            <h3>
+                Follow Us
+            </h3>
+
+            <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+                Instagram
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-facebook"></i>
+                Facebook
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-x-twitter"></i>
+                Twitter
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+
+        © 2026 FoodHub. All rights reserved.
+
+    </div>
+
+</footer>
+
 
 <script>
 
-/* =========================================================
-   MOVIE DATA
-========================================================= */
-
-const MOVIES = [
-
-    {
-        id: 1,
-
-        name: "The Last Horizon",
-
-        genre: "Action",
-
-        duration: "2h 24m",
-
-        rating: 4.8,
-
-        language: "English",
-
-        price: 250,
-
-        badge: "Featured",
-
-        image:
-        "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=85"
-
-    },
-
-
-    {
-        id: 2,
-
-        name: "Midnight Echo",
-
-        genre: "Thriller",
-
-        duration: "2h 08m",
-
-        rating: 4.6,
-
-        language: "English",
-
-        price: 220,
-
-        badge: "New",
-
-        image:
-        "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=85"
-
-    },
-
-
-    {
-        id: 3,
-
-        name: "Love in Paris",
-
-        genre: "Romance",
-
-        duration: "2h 15m",
-
-        rating: 4.7,
-
-        language: "Hindi",
-
-        price: 200,
-
-        badge: "Popular",
-
-        image:
-        "https://images.unsplash.com/photo-1518929458119-e5bf444c30f4?auto=format&fit=crop&w=700&q=85"
-
-    },
-
-
-    {
-        id: 4,
-
-        name: "Laugh Out Loud",
-
-        genre: "Comedy",
-
-        duration: "1h 52m",
-
-        rating: 4.4,
-
-        language: "Telugu",
-
-        price: 180,
-
-        badge: "Comedy",
-
-        image:
-        "https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&w=700&q=85"
-
-    },
-
-
-    {
-        id: 5,
-
-        name: "Shadow Protocol",
-
-        genre: "Action",
-
-        duration: "2h 31m",
-
-        rating: 4.9,
-
-        language: "English",
-
-        price: 280,
-
-        badge: "Blockbuster",
-
-        image:
-        "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=85"
-
-    },
-
-
-    {
-        id: 6,
-
-        name: "The Forgotten Road",
-
-        genre: "Drama",
-
-        duration: "2h 02m",
-
-        rating: 4.5,
-
-        language: "Hindi",
-
-        price: 190,
-
-        badge: "",
-
-        image:
-        "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=85"
-
-    },
-
-
-    {
-        id: 7,
-
-        name: "City Lights",
-
-        genre: "Romance",
-
-        duration: "2h 10m",
-
-        rating: 4.3,
-
-        language: "Telugu",
-
-        price: 180,
-
-        badge: "Trending",
-
-        image:
-        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=700&q=85"
-
-    },
-
-
-    {
-        id: 8,
-
-        name: "Final Mission",
-
-        genre: "Action",
-
-        duration: "2h 18m",
-
-        rating: 4.7,
-
-        language: "English",
-
-        price: 250,
-
-        badge: "Hit",
-
-        image:
-        "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?auto=format&fit=crop&w=700&q=85"
-
-    }
-
-];
-
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const movieGrid =
-    document.getElementById("movieGrid");
-
-const bookingModal =
-    document.getElementById("bookingModal");
-
-const bookingMovie =
-    document.getElementById("bookingMovie");
-
-const bookingInfo =
-    document.getElementById("bookingInfo");
-
-const seatLayout =
-    document.getElementById("seatLayout");
-
-const selectedSeats =
-    document.getElementById("selectedSeats");
-
-const totalPrice =
-    document.getElementById("totalPrice");
-
-const ticketPrice =
-    document.getElementById("ticketPrice");
-
-
-
-/* =========================================================
-   RENDER MOVIES
-========================================================= */
-
-function renderMovies(movies) {
-
-    movieGrid.innerHTML = "";
-
-
-    if (movies.length === 0) {
-
-        movieGrid.innerHTML = `
-
-            <div style="
-                grid-column:1/-1;
-                text-align:center;
-                padding:60px;
-                color:#888;
-            ">
-
-                <i class="fa-solid fa-film"
-                   style="
-                   font-size:35px;
-                   margin-bottom:15px;
-                "></i>
-
-                <h3>No movies found</h3>
-
-                <p>
-                    Try another search or genre.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    movies.forEach(movie => {
-
-        const card =
-            document.createElement("article");
-
-
-        card.className =
-            "movie-card";
-
-
-        card.innerHTML = `
-
-            <div class="movie-poster">
-
-                ${
-                    movie.badge
-                    ?
-                    `
-                    <div class="movie-badge">
-                        ${movie.badge}
-                    </div>
-                    `
-                    :
-                    ""
-                }
-
-
-                <div class="movie-rating">
-
-                    <i class="fa-solid fa-star"></i>
-
-                    ${movie.rating}
-
-                </div>
-
-
-                <img
-                    src="${movie.image}"
-                    alt="${movie.name}"
-                    loading="lazy">
-
-            </div>
-
-
-            <div class="movie-info">
-
-                <div class="movie-name">
-                    ${movie.name}
-                </div>
-
-
-                <div class="movie-meta">
-
-                    <span>
-                        ${movie.genre}
-                    </span>
-
-                    •
-
-                    <span>
-                        ${movie.duration}
-                    </span>
-
-                    •
-
-                    <span>
-                        ${movie.language}
-                    </span>
-
-                </div>
-
-
-                <div class="movie-actions">
-
-                    <button
-                        class="book-btn"
-                        data-id="${movie.id}">
-
-                        <i class="fa-solid fa-ticket"></i>
-
-                        Book Tickets
-
-                    </button>
-
-
-                    <button
-                        class="info-btn"
-                        title="Movie information">
-
-                        <i class="fa-solid fa-info"></i>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        `;
-
-
-        movieGrid.appendChild(card);
-
-    });
-
-
-    document
-        .querySelectorAll(".book-btn")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                function() {
-
-                    openBooking(
-                        Number(this.dataset.id)
-                    );
-
-                }
-            );
-
-        });
-
-}
-
-
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-document
-    .querySelectorAll(".filter")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            function() {
-
-                document
-                    .querySelectorAll(".filter")
-                    .forEach(btn =>
-                        btn.classList.remove("active")
-                    );
-
-
-                this.classList.add("active");
-
-
-                const genre =
-                    this.dataset.genre;
-
-
-                if (genre === "All") {
-
-                    renderMovies(MOVIES);
-
-                } else {
-
-                    renderMovies(
-                        MOVIES.filter(
-                            movie =>
-                            movie.genre === genre
-                        )
-                    );
-
-                }
-
-            }
-        );
-
-    });
-
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-document
-    .getElementById("searchMovies")
-    .addEventListener(
-        "click",
-        searchMovies
-    );
-
-
-document
-    .getElementById("movieSearch")
-    .addEventListener(
-        "keydown",
-        function(e) {
-
-            if (e.key === "Enter") {
-
-                searchMovies();
-
-            }
-
+    /* ================= FOOD DATA ================= */
+
+    const products = [
+
+        {
+            id: 1,
+            category: "Pizza",
+            name: "Margherita Pizza",
+            price: 299,
+            oldPrice: 349,
+            rating: 4.8,
+            description: "Fresh mozzarella, tomato sauce and basil.",
+            image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 2,
+            category: "Pizza",
+            name: "Pepperoni Pizza",
+            price: 399,
+            oldPrice: 449,
+            rating: 4.9,
+            description: "Loaded with pepperoni and melted cheese.",
+            image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 3,
+            category: "Burger",
+            name: "Classic Chicken Burger",
+            price: 249,
+            oldPrice: 299,
+            rating: 4.7,
+            description: "Crispy chicken, lettuce, cheese and special sauce.",
+            image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 4,
+            category: "Burger",
+            name: "Cheese Burger",
+            price: 219,
+            oldPrice: 269,
+            rating: 4.6,
+            description: "Juicy patty with cheddar cheese and fresh vegetables.",
+            image: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 5,
+            category: "Biryani",
+            name: "Chicken Biryani",
+            price: 299,
+            oldPrice: 349,
+            rating: 4.9,
+            description: "Aromatic basmati rice cooked with tender chicken.",
+            image: "https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 6,
+            category: "Biryani",
+            name: "Mutton Biryani",
+            price: 399,
+            oldPrice: 449,
+            rating: 4.8,
+            description: "Traditional biryani with tender mutton and spices.",
+            image: "https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 7,
+            category: "Indian",
+            name: "Paneer Butter Masala",
+            price: 279,
+            oldPrice: 319,
+            rating: 4.7,
+            description: "Soft paneer cooked in creamy tomato gravy.",
+            image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 8,
+            category: "Indian",
+            name: "Masala Dosa",
+            price: 149,
+            oldPrice: 179,
+            rating: 4.8,
+            description: "Crispy dosa served with potato masala and chutney.",
+            image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 9,
+            category: "Chinese",
+            name: "Veg Hakka Noodles",
+            price: 199,
+            oldPrice: 229,
+            rating: 4.6,
+            description: "Stir-fried noodles with fresh vegetables.",
+            image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 10,
+            category: "Chinese",
+            name: "Chicken Fried Rice",
+            price: 249,
+            oldPrice: 289,
+            rating: 4.7,
+            description: "Flavourful fried rice with chicken and vegetables.",
+            image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 11,
+            category: "Dessert",
+            name: "Chocolate Cake",
+            price: 179,
+            oldPrice: 219,
+            rating: 4.9,
+            description: "Rich and creamy chocolate cake.",
+            image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
+        },
+
+        {
+            id: 12,
+            category: "Drinks",
+            name: "Fresh Mango Shake",
+            price: 129,
+            oldPrice: 159,
+            rating: 4.8,
+            description: "Refreshing mango shake made with fresh mangoes.",
+            image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&q=80"
         }
-    );
 
-
-function searchMovies() {
-
-    const query =
-        document
-        .getElementById("movieSearch")
-        .value
-        .toLowerCase()
-        .trim();
-
-
-    if (!query) {
-
-        renderMovies(MOVIES);
-
-    } else {
-
-        renderMovies(
-
-            MOVIES.filter(movie =>
-
-                movie.name
-                    .toLowerCase()
-                    .includes(query)
-
-                ||
-
-                movie.genre
-                    .toLowerCase()
-                    .includes(query)
-
-                ||
-
-                movie.language
-                    .toLowerCase()
-                    .includes(query)
-
-            )
-
-        );
-
-    }
-
-
-    document
-        .getElementById("movies")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-}
-
-
-
-/* =========================================================
-   BOOKING
-========================================================= */
-
-let currentMovie = null;
-
-let selectedSeatList = [];
-
-const SEAT_PRICE = 250;
-
-
-function openBooking(movieId) {
-
-    currentMovie =
-        MOVIES.find(
-            movie =>
-            movie.id === movieId
-        );
-
-
-    if (!currentMovie) return;
-
-
-    selectedSeatList = [];
-
-
-    bookingMovie.textContent =
-        currentMovie.name;
-
-
-    bookingInfo.textContent =
-        currentMovie.genre +
-        " • " +
-        currentMovie.duration +
-        " • " +
-        currentMovie.language;
-
-
-    ticketPrice.textContent =
-        currentMovie.price;
-
-
-    totalPrice.textContent = "0";
-
-
-    selectedSeats.textContent =
-        "None";
-
-
-    generateSeats();
-
-
-    document
-        .getElementById("bookingArea")
-        .style.display = "block";
-
-
-    document
-        .getElementById("successMessage")
-        .style.display = "none";
-
-
-    bookingModal.classList.add("show");
-
-}
-
-
-
-function generateSeats() {
-
-    seatLayout.innerHTML = "";
-
-
-    const rows = [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "F",
-        "G"
     ];
 
 
-    rows.forEach(
-        (row, rowIndex) => {
+    /* ================= VARIABLES ================= */
 
-            const rowElement =
-                document.createElement(
-                    "div"
-                );
+    let selectedCategory = "All";
+
+    let cart = [];
 
 
-            rowElement.className =
-                "seat-row";
+    /* ================= RENDER PRODUCTS ================= */
+
+    function renderProducts() {
+
+        const grid =
+            document.getElementById("productGrid");
+
+        const search =
+            document.getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+        const filteredProducts =
+            products.filter(product => {
+
+                const categoryMatch =
+                    selectedCategory === "All" ||
+                    product.category === selectedCategory;
+
+                const searchMatch =
+                    product.name.toLowerCase().includes(search) ||
+                    product.category.toLowerCase().includes(search) ||
+                    product.description.toLowerCase().includes(search);
+
+                return categoryMatch && searchMatch;
+
+            });
 
 
-            for (
-                let seatNumber = 1;
-                seatNumber <= 10;
-                seatNumber++
-            ) {
-
-                if (seatNumber === 6) {
-
-                    const space =
-                        document.createElement(
-                            "div"
-                        );
-
-                    space.className =
-                        "seat-space";
-
-                    rowElement.appendChild(
-                        space
-                    );
-
-                }
+        document.getElementById("resultCount").innerText =
+            filteredProducts.length + " items";
 
 
-                const seat =
-                    document.createElement(
-                        "button"
-                    );
+        grid.innerHTML = "";
 
 
-                const seatId =
-                    row + seatNumber;
+        if (filteredProducts.length === 0) {
+
+            grid.innerHTML = `
+                <div style="grid-column:1/-1;text-align:center;padding:50px;color:#777">
+                    <i class="fa-solid fa-face-sad-tear"
+                       style="font-size:45px;margin-bottom:15px"></i>
+
+                    <h3>No food found</h3>
+
+                    <p>Try searching for something else.</p>
+                </div>
+            `;
+
+            return;
+        }
 
 
-                seat.className =
-                    "seat";
+        filteredProducts.forEach(product => {
+
+            grid.innerHTML += `
+
+                <div class="product-card">
+
+                    <button class="wishlist"
+                            onclick="addWishlist('${product.name}')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
 
 
-                seat.textContent =
-                    seatNumber;
+                    <div class="product-image">
+
+                        <img src="${product.image}"
+                             alt="${product.name}">
+
+                    </div>
 
 
-                seat.dataset.seat =
-                    seatId;
+                    <div class="product-info">
+
+                        <div class="category-name">
+                            ${product.category}
+                        </div>
 
 
-                /*
-                    Demo booked seats
-                */
-
-                if (
-                    (
-                        rowIndex === 0 &&
-                        seatNumber === 3
-                    )
-
-                    ||
-
-                    (
-                        rowIndex === 0 &&
-                        seatNumber === 4
-                    )
-
-                    ||
-
-                    (
-                        rowIndex === 2 &&
-                        seatNumber === 7
-                    )
-
-                    ||
-
-                    (
-                        rowIndex === 4 &&
-                        seatNumber === 2
-                    )
-
-                    ||
-
-                    (
-                        rowIndex === 5 &&
-                        seatNumber === 8
-                    )
-                ) {
-
-                    seat.classList.add(
-                        "booked"
-                    );
-
-                    seat.disabled = true;
-
-                }
+                        <div class="product-name">
+                            ${product.name}
+                        </div>
 
 
-                seat.addEventListener(
-                    "click",
-                    function() {
-
-                        toggleSeat(
-                            this
-                        );
-
-                    }
-                );
+                        <div class="description">
+                            ${product.description}
+                        </div>
 
 
-                rowElement.appendChild(
-                    seat
-                );
+                        <div class="rating">
 
-            }
+                            <i class="fa-solid fa-star"></i>
+
+                            ${product.rating}
+
+                            <span>
+                                Excellent
+                            </span>
+
+                        </div>
 
 
-            seatLayout.appendChild(
-                rowElement
+                        <div class="price-row">
+
+                            <div>
+
+                                <span class="price">
+                                    ₹${product.price.toLocaleString("en-IN")}
+                                </span>
+
+                                <span class="old-price">
+                                    ₹${product.oldPrice.toLocaleString("en-IN")}
+                                </span>
+
+                            </div>
+
+
+                            <button class="buy-btn"
+                                    onclick="addToCart(${product.id})">
+
+                                <i class="fa-solid fa-cart-plus"></i>
+                                Add
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+
+    /* ================= CATEGORY FILTER ================= */
+
+    function filterCategory(category, element) {
+
+        selectedCategory = category;
+
+
+        document.querySelectorAll(".category")
+            .forEach(item =>
+                item.classList.remove("active")
             );
+
+
+        element.classList.add("active");
+
+
+        renderProducts();
+
+    }
+
+
+    /* ================= SEARCH ================= */
+
+    function searchProducts() {
+
+        renderProducts();
+
+    }
+
+
+    /* ================= ADD TO CART ================= */
+
+    function addToCart(id) {
+
+        const product =
+            products.find(product =>
+                product.id === id
+            );
+
+
+        const existing =
+            cart.find(item =>
+                item.id === id
+            );
+
+
+        if (existing) {
+
+            existing.quantity++;
+
+        } else {
+
+            cart.push({
+
+                ...product,
+
+                quantity: 1
+
+            });
 
         }
-    );
-
-}
 
 
-
-/* =========================================================
-   SEAT SELECTION
-========================================================= */
-
-function toggleSeat(seat) {
-
-    const seatId =
-        seat.dataset.seat;
+        updateCartCount();
 
 
-    if (
-        seat.classList.contains(
-            "selected"
-        )
-    ) {
+        alert(product.name + " added to cart!");
 
-        seat.classList.remove(
-            "selected"
-        );
+    }
 
 
-        selectedSeatList =
-            selectedSeatList.filter(
-                id => id !== seatId
+    /* ================= CART COUNT ================= */
+
+    function updateCartCount() {
+
+        const total =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.quantity,
+                0
             );
 
-    } else {
 
-        if (
-            selectedSeatList.length >= 6
-        ) {
+        document.getElementById("cartCount")
+            .innerText = total;
+
+    }
+
+
+    /* ================= OPEN CART ================= */
+
+    function openCart() {
+
+        renderCart();
+
+        document.getElementById("cartModal")
+            .classList.add("show");
+
+    }
+
+
+    /* ================= CLOSE CART ================= */
+
+    function closeCart() {
+
+        document.getElementById("cartModal")
+            .classList.remove("show");
+
+    }
+
+
+    /* ================= RENDER CART ================= */
+
+    function renderCart() {
+
+        const cartItems =
+            document.getElementById("cartItems");
+
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML = `
+
+                <div class="empty-cart">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <h3>Your cart is empty</h3>
+
+                    <p>Add some delicious food to continue.</p>
+
+                </div>
+
+            `;
+
+
+            document.getElementById("checkoutSection")
+                .style.display = "none";
+
+            return;
+
+        }
+
+
+        document.getElementById("checkoutSection")
+            .style.display = "block";
+
+
+        cartItems.innerHTML = "";
+
+
+        cart.forEach(item => {
+
+            cartItems.innerHTML += `
+
+                <div class="cart-item">
+
+                    <img src="${item.image}"
+                         alt="${item.name}">
+
+
+                    <div class="cart-item-info">
+
+                        <h4>
+                            ${item.name}
+                        </h4>
+
+                        <span class="cart-item-price">
+                            ₹${item.price.toLocaleString("en-IN")}
+                        </span>
+
+                    </div>
+
+
+                    <div class="quantity">
+
+                        <button onclick="changeQuantity(${item.id}, -1)">
+                            -
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button onclick="changeQuantity(${item.id}, 1)">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+
+        updateSummary();
+
+    }
+
+
+    /* ================= CHANGE QUANTITY ================= */
+
+    function changeQuantity(id, change) {
+
+        const item =
+            cart.find(item =>
+                item.id === id
+            );
+
+
+        if (!item) return;
+
+
+        item.quantity += change;
+
+
+        if (item.quantity <= 0) {
+
+            cart =
+                cart.filter(item =>
+                    item.id !== id
+                );
+
+        }
+
+
+        updateCartCount();
+
+        renderCart();
+
+    }
+
+
+    /* ================= SUMMARY ================= */
+
+    function updateSummary() {
+
+        const subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.price * item.quantity,
+                0
+            );
+
+
+        const delivery =
+            subtotal >= 499 ? 0 : 40;
+
+
+        const discount =
+            subtotal >= 999 ? 100 : 0;
+
+
+        const total =
+            subtotal +
+            delivery -
+            discount;
+
+
+        document.getElementById("summarySubtotal")
+            .innerText =
+            "₹" + subtotal.toLocaleString("en-IN");
+
+
+        document.getElementById("deliveryFee")
+            .innerText =
+            delivery === 0
+                ? "FREE"
+                : "₹" + delivery;
+
+
+        document.getElementById("discount")
+            .innerText =
+            "₹" + discount.toLocaleString("en-IN");
+
+
+        document.getElementById("summaryTotal")
+            .innerText =
+            "₹" + total.toLocaleString("en-IN");
+
+    }
+
+
+    /* ================= CONFIRM ORDER ================= */
+
+    function confirmOrder() {
+
+        const name =
+            document.getElementById("customerName")
+                .value.trim();
+
+
+        const phone =
+            document.getElementById("customerPhone")
+                .value.trim();
+
+
+        const email =
+            document.getElementById("customerEmail")
+                .value.trim();
+
+
+        const address =
+            document.getElementById("customerAddress")
+                .value.trim();
+
+
+        const payment =
+            document.getElementById("paymentMethod")
+                .value;
+
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty.");
+
+            return;
+
+        }
+
+
+        if (!name ||
+            !phone ||
+            !email ||
+            !address) {
 
             alert(
-                "You can select maximum 6 seats."
+                "Please fill all delivery details."
             );
 
             return;
@@ -3735,354 +1824,116 @@ function toggleSeat(seat) {
         }
 
 
-        seat.classList.add(
-            "selected"
+        if (phone.length < 10) {
+
+            alert(
+                "Please enter a valid mobile number."
+            );
+
+            return;
+
+        }
+
+
+        const subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.price * item.quantity,
+                0
+            );
+
+
+        const delivery =
+            subtotal >= 499 ? 0 : 40;
+
+
+        const discount =
+            subtotal >= 999 ? 100 : 0;
+
+
+        const total =
+            subtotal +
+            delivery -
+            discount;
+
+
+        alert(
+
+            "Order placed successfully! 🎉\n\n" +
+
+            "Customer: " + name + "\n" +
+
+            "Items: " + cart.length + "\n" +
+
+            "Payment: " + payment + "\n" +
+
+            "Total: ₹" +
+            total.toLocaleString("en-IN") +
+
+            "\n\nThank you for ordering from FoodHub!"
+
         );
 
 
-        selectedSeatList.push(
-            seatId
+        cart = [];
+
+
+        updateCartCount();
+
+
+        closeCart();
+
+
+        document.getElementById("customerName").value = "";
+        document.getElementById("customerPhone").value = "";
+        document.getElementById("customerEmail").value = "";
+        document.getElementById("customerAddress").value = "";
+
+    }
+
+
+    /* ================= WISHLIST ================= */
+
+    function addWishlist(name) {
+
+        alert(
+            name + " added to wishlist ❤️"
         );
 
     }
 
 
-    updateBookingSummary();
+    /* ================= LOGIN ================= */
 
-}
+    function showLogin() {
 
-
-
-/* =========================================================
-   BOOKING SUMMARY
-========================================================= */
-
-function updateBookingSummary() {
-
-    if (
-        selectedSeatList.length === 0
-    ) {
-
-        selectedSeats.textContent =
-            "None";
-
-        totalPrice.textContent =
-            "0";
-
-        return;
+        alert(
+            "Login page can be connected here."
+        );
 
     }
 
 
-    selectedSeats.textContent =
-        selectedSeatList.join(", ");
+    /* ================= CLOSE MODAL ================= */
 
+    document.getElementById("cartModal")
+        .addEventListener("click", function(event) {
 
-    const total =
-        selectedSeatList.length *
-        currentMovie.price;
+            if (event.target === this) {
 
-
-    totalPrice.textContent =
-        total.toLocaleString("en-IN");
-
-}
-
-
-
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
-
-document
-    .getElementById("closeModal")
-    .addEventListener(
-        "click",
-        closeBooking
-    );
-
-
-bookingModal.addEventListener(
-    "click",
-    function(e) {
-
-        if (
-            e.target ===
-            bookingModal
-        ) {
-
-            closeBooking();
-
-        }
-
-    }
-);
-
-
-function closeBooking() {
-
-    bookingModal.classList.remove(
-        "show"
-    );
-
-}
-
-
-
-/* =========================================================
-   CONFIRM BOOKING
-========================================================= */
-
-document
-    .getElementById("confirmBooking")
-    .addEventListener(
-        "click",
-        function() {
-
-            if (
-                selectedSeatList.length === 0
-            ) {
-
-                alert(
-                    "Please select at least one seat."
-                );
-
-                return;
+                closeCart();
 
             }
 
+        });
 
-            const bookingId =
-                "CB" +
-                Date.now()
-                    .toString()
-                    .slice(-8);
 
+    /* ================= INITIAL LOAD ================= */
 
-            document.getElementById(
-                "bookingId"
-            ).textContent =
-                bookingId;
-
-
-            document.getElementById(
-                "bookingArea"
-            ).style.display =
-                "none";
-
-
-            document.getElementById(
-                "successMessage"
-            ).style.display =
-                "block";
-
-        }
-    );
-
-
-
-/* =========================================================
-   FEATURED BOOKING
-========================================================= */
-
-document
-    .getElementById("featuredBook")
-    .addEventListener(
-        "click",
-        function() {
-
-            openBooking(1);
-
-        }
-    );
-
-
-
-/* =========================================================
-   DATE BUTTONS
-========================================================= */
-
-document
-    .querySelectorAll(".date")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            function() {
-
-                document
-                    .querySelectorAll(".date")
-                    .forEach(
-                        btn =>
-                        btn.classList.remove(
-                            "active"
-                        )
-                    );
-
-
-                this.classList.add(
-                    "active"
-                );
-
-            }
-        );
-
-    });
-
-
-
-/* =========================================================
-   SHOWTIME BUTTONS
-========================================================= */
-
-document
-    .querySelectorAll(".time")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            function() {
-
-                document
-                    .querySelectorAll(".time")
-                    .forEach(
-                        btn =>
-                        btn.classList.remove(
-                            "selected"
-                        )
-                    );
-
-
-                this.classList.add(
-                    "selected"
-                );
-
-            }
-        );
-
-    });
-
-
-
-/* =========================================================
-   NEWSLETTER
-========================================================= */
-
-document
-    .getElementById("newsletterForm")
-    .addEventListener(
-        "submit",
-        function(e) {
-
-            e.preventDefault();
-
-
-            const email =
-                document
-                .getElementById("email")
-                .value
-                .trim();
-
-
-            const message =
-                document.getElementById(
-                    "newsletterMessage"
-                );
-
-
-            if (!email) return;
-
-
-            message.textContent =
-                "✓ Thanks! Movie updates are now coming your way.";
-
-
-            message.style.color =
-                "#65c982";
-
-
-            this.reset();
-
-        }
-    );
-
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-document
-    .getElementById("mobileMenu")
-    .addEventListener(
-        "click",
-        function() {
-
-            const nav =
-                document.querySelector(
-                    ".nav"
-                );
-
-
-            if (
-                nav.style.display ===
-                "block"
-            ) {
-
-                nav.style.display =
-                    "none";
-
-            } else {
-
-                nav.style.display =
-                    "block";
-
-                nav.style.position =
-                    "absolute";
-
-                nav.style.top =
-                    "65px";
-
-                nav.style.left =
-                    "0";
-
-                nav.style.right =
-                    "0";
-
-                nav.style.background =
-                    "#101010";
-
-                nav.style.padding =
-                    "20px";
-
-            }
-
-        }
-    );
-
-
-
-/* =========================================================
-   YEAR
-========================================================= */
-
-document.getElementById(
-    "year"
-).textContent =
-    new Date().getFullYear();
-
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-renderMovies(MOVIES);
-
+    renderProducts();
 
 </script>
 
 </body>
 
 </html>
-```
