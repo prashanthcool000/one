@@ -1,30 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>FoodHub - Order Delicious Food</title>
 
-    <title>StyleHub - Shop Dresses</title>
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 
     <style>
 
@@ -36,34 +28,32 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #faf8f9;
-            color: #222;
+            background: #f8f9fb;
+            color: #171717;
         }
-
 
         /* ================= HEADER ================= */
 
         header {
             background: #ffffff;
-            padding: 18px 7%;
+            padding: 17px 7%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             position: sticky;
             top: 0;
             z-index: 1000;
-
             box-shadow: 0 2px 15px rgba(0,0,0,.06);
         }
 
         .logo {
             font-size: 26px;
             font-weight: 800;
+            color: #222;
         }
 
         .logo span {
-            color: #db2777;
+            color: #f97316;
         }
 
         nav {
@@ -79,7 +69,7 @@
         }
 
         nav a:hover {
-            color: #db2777;
+            color: #f97316;
         }
 
         .header-actions {
@@ -101,42 +91,26 @@
             position: absolute;
             top: -11px;
             right: -11px;
-
+            background: #f97316;
+            color: white;
             width: 19px;
             height: 19px;
-
             border-radius: 50%;
-
-            background: #db2777;
-            color: white;
-
             font-size: 10px;
-
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-
         /* ================= HERO ================= */
 
         .hero {
-            background:
-                linear-gradient(
-                    120deg,
-                    #831843,
-                    #be185d,
-                    #ec4899
-                );
-
+            background: linear-gradient(120deg, #ea580c, #f97316, #fb923c);
             color: white;
-
-            padding: 75px 7%;
-
+            padding: 70px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             gap: 40px;
         }
 
@@ -145,28 +119,24 @@
         }
 
         .hero h1 {
-            font-size: 50px;
+            font-size: 48px;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .hero p {
-            color: #fce7f3;
+            color: #fff7ed;
             font-size: 17px;
             line-height: 1.7;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         .search-box {
             background: white;
-
             border-radius: 12px;
-
             display: flex;
             align-items: center;
-
             padding: 6px;
-
             max-width: 620px;
         }
 
@@ -178,34 +148,25 @@
         .search-box input {
             border: none;
             outline: none;
-
             flex: 1;
-
             padding: 15px;
-
             font-size: 15px;
         }
 
         .search-box button {
             background: #222;
             color: white;
-
             border: none;
-
             padding: 14px 22px;
-
             border-radius: 9px;
-
             cursor: pointer;
-
             font-weight: 600;
         }
 
-        .hero-dress {
-            font-size: 180px;
-            opacity: .2;
+        .hero-food {
+            font-size: 170px;
+            opacity: .22;
         }
-
 
         /* ================= COMMON ================= */
 
@@ -223,7 +184,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             margin-bottom: 28px;
         }
 
@@ -236,132 +196,92 @@
             font-size: 13px;
         }
 
-
         /* ================= CATEGORIES ================= */
 
         .categories {
             display: flex;
             gap: 14px;
-
             overflow-x: auto;
-
             padding-bottom: 10px;
         }
 
         .category {
             background: white;
-
             border: 1px solid #e5e7eb;
-
             padding: 13px 23px;
-
             border-radius: 30px;
-
             cursor: pointer;
-
             white-space: nowrap;
-
             font-weight: 600;
-
             transition: .2s;
         }
 
         .category:hover,
         .category.active {
-            background: #db2777;
+            background: #f97316;
             color: white;
-            border-color: #db2777;
+            border-color: #f97316;
         }
 
-
-        /* ================= PRODUCTS ================= */
+        /* ================= FOOD GRID ================= */
 
         .product-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
         }
 
         .product-card {
             background: white;
-
             border-radius: 18px;
-
             overflow: hidden;
-
             border: 1px solid #e5e7eb;
-
             transition: .3s;
-
             position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-6px);
-
-            box-shadow:
-                0 15px 35px
-                rgba(0,0,0,.09);
+            box-shadow: 0 15px 35px rgba(0,0,0,.09);
         }
 
         .wishlist {
             position: absolute;
-
             right: 15px;
             top: 15px;
-
             width: 38px;
             height: 38px;
-
             border-radius: 50%;
-
             border: none;
-
             background: white;
-
-            box-shadow:
-                0 4px 15px
-                rgba(0,0,0,.12);
-
+            box-shadow: 0 4px 15px rgba(0,0,0,.12);
             cursor: pointer;
-
             z-index: 2;
         }
 
         .wishlist:hover {
-            color: #e11d48;
+            color: #ef4444;
         }
 
         .product-image {
-            height: 330px;
-
-            background: #fdf2f8;
-
+            height: 220px;
+            background: #fff7ed;
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             padding: 12px;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             border-radius: 12px;
-
             transition: .3s;
         }
 
-        .product-card:hover
-        .product-image img {
-            transform: scale(1.04);
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
         }
 
         .product-info {
@@ -369,36 +289,27 @@
         }
 
         .category-name {
-            color: #db2777;
-
+            color: #f97316;
             font-size: 11px;
-
             font-weight: 700;
-
             text-transform: uppercase;
         }
 
         .product-name {
             font-size: 18px;
-
             font-weight: 700;
-
             margin: 7px 0;
         }
 
         .description {
             color: #777;
-
             font-size: 12px;
-
             line-height: 1.6;
-
             margin-bottom: 12px;
         }
 
         .rating {
             font-size: 13px;
-
             margin-bottom: 13px;
         }
 
@@ -408,111 +319,77 @@
 
         .price-row {
             display: flex;
-
-            justify-content:
-                space-between;
-
+            justify-content: space-between;
             align-items: center;
         }
 
         .price {
             font-size: 20px;
-
             font-weight: 800;
         }
 
         .old-price {
             color: #aaa;
-
-            text-decoration:
-                line-through;
-
+            text-decoration: line-through;
             font-size: 12px;
-
             margin-left: 5px;
         }
 
         .buy-btn {
-            background: #db2777;
-
+            background: #f97316;
             color: white;
-
             border: none;
-
             padding: 11px 15px;
-
             border-radius: 9px;
-
             cursor: pointer;
-
             font-weight: 600;
         }
 
         .buy-btn:hover {
-            background: #be185d;
+            background: #ea580c;
         }
-
 
         /* ================= FEATURES ================= */
 
         .features {
             display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
         .feature {
             background: white;
-
             padding: 25px;
-
             border-radius: 15px;
-
             text-align: center;
         }
 
         .feature i {
             font-size: 28px;
-
-            color: #db2777;
-
+            color: #f97316;
             margin-bottom: 15px;
         }
 
         .feature h3 {
             font-size: 15px;
-
             margin-bottom: 7px;
         }
 
         .feature p {
             color: #777;
-
             font-size: 12px;
         }
-
 
         /* ================= MODAL ================= */
 
         .modal {
             display: none;
-
             position: fixed;
-
             inset: 0;
-
-            background:
-                rgba(0,0,0,.65);
-
+            background: rgba(0,0,0,.65);
             z-index: 2000;
-
             align-items: center;
-
             justify-content: center;
-
             padding: 20px;
         }
 
@@ -522,74 +399,55 @@
 
         .modal-content {
             background: white;
-
             width: 100%;
-
             max-width: 580px;
-
             border-radius: 20px;
-
             padding: 30px;
-
             position: relative;
-
             max-height: 90vh;
-
             overflow-y: auto;
         }
 
         .close {
             position: absolute;
-
             right: 20px;
             top: 18px;
-
             font-size: 25px;
-
             cursor: pointer;
-
             color: #777;
         }
 
         .modal-title {
             font-size: 24px;
-
             margin-bottom: 5px;
         }
 
         .modal-subtitle {
             color: #777;
-
             font-size: 13px;
-
             margin-bottom: 25px;
         }
 
+        /* ================= CART ITEMS ================= */
 
-        /* ================= CART ================= */
+        .cart-items {
+            margin-bottom: 20px;
+        }
 
         .cart-item {
             display: flex;
-
             align-items: center;
-
             gap: 14px;
-
-            background: #fdf2f8;
-
+            background: #fff7ed;
             padding: 12px;
-
             border-radius: 12px;
-
             margin-bottom: 10px;
         }
 
         .cart-item img {
             width: 65px;
-            height: 75px;
-
+            height: 65px;
             object-fit: cover;
-
             border-radius: 9px;
         }
 
@@ -599,65 +457,48 @@
 
         .cart-item-info h4 {
             font-size: 14px;
-
             margin-bottom: 4px;
         }
 
         .cart-item-price {
-            color: #db2777;
-
+            color: #f97316;
             font-size: 13px;
-
             font-weight: 700;
         }
 
         .quantity {
             display: flex;
-
             align-items: center;
-
             gap: 8px;
         }
 
         .quantity button {
             width: 27px;
             height: 27px;
-
             border: none;
-
             border-radius: 6px;
-
-            background: #db2777;
-
+            background: #f97316;
             color: white;
-
             cursor: pointer;
         }
 
         .quantity span {
             font-weight: 700;
-
             min-width: 15px;
-
             text-align: center;
         }
 
         .empty-cart {
             text-align: center;
-
             padding: 30px;
-
             color: #888;
         }
 
         .empty-cart i {
             font-size: 45px;
-
             margin-bottom: 12px;
-
             color: #ddd;
         }
-
 
         /* ================= FORM ================= */
 
@@ -667,108 +508,73 @@
 
         .form-group label {
             display: block;
-
             font-size: 13px;
-
             font-weight: 600;
-
             margin-bottom: 7px;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-
             padding: 13px;
-
             border: 1px solid #d1d5db;
-
             border-radius: 8px;
-
             outline: none;
         }
 
         .form-group input:focus,
         .form-group select:focus {
-            border-color: #db2777;
+            border-color: #f97316;
         }
-
-
-        /* ================= SUMMARY ================= */
 
         .summary {
             background: #f8fafc;
-
             padding: 18px;
-
             border-radius: 12px;
-
             margin: 20px 0;
         }
 
         .summary-row {
             display: flex;
-
-            justify-content:
-                space-between;
-
+            justify-content: space-between;
             margin-bottom: 10px;
-
             font-size: 14px;
         }
 
         .summary-total {
-            border-top:
-                1px solid #ddd;
-
+            border-top: 1px solid #ddd;
             padding-top: 12px;
-
             font-weight: 800;
-
             font-size: 18px;
         }
 
         .confirm-btn {
             width: 100%;
-
             padding: 15px;
-
             border: none;
-
-            background: #db2777;
-
+            background: #f97316;
             color: white;
-
             border-radius: 10px;
-
             font-weight: 700;
-
             cursor: pointer;
         }
 
         .confirm-btn:hover {
-            background: #be185d;
+            background: #ea580c;
         }
-
 
         /* ================= FOOTER ================= */
 
         footer {
             background: #171717;
-
             color: white;
-
             padding: 50px 7%;
-
             margin-top: 30px;
         }
 
         .footer-grid {
             display: grid;
-
-            grid-template-columns:
-                2fr 1fr 1fr 1fr;
-
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
         }
 
@@ -779,56 +585,42 @@
         footer p,
         footer a {
             color: #aaa;
-
             font-size: 13px;
-
             line-height: 2;
-
             text-decoration: none;
-
             display: block;
         }
 
         footer a:hover {
-            color: #db2777;
+            color: #f97316;
         }
 
         .copyright {
-            border-top:
-                1px solid #333;
-
+            border-top: 1px solid #333;
             margin-top: 35px;
-
             padding-top: 20px;
-
             color: #888;
-
             font-size: 12px;
         }
 
-
         /* ================= RESPONSIVE ================= */
 
-        @media(max-width:1000px) {
+        @media(max-width: 1000px) {
 
             .product-grid {
-                grid-template-columns:
-                    repeat(3,1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .features {
-                grid-template-columns:
-                    repeat(2,1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .hero-dress {
+            .hero-food {
                 display: none;
             }
-
         }
 
-
-        @media(max-width:700px) {
+        @media(max-width: 700px) {
 
             header {
                 padding: 15px 5%;
@@ -843,7 +635,7 @@
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 35px;
             }
 
             .container {
@@ -851,14 +643,12 @@
             }
 
             .product-grid {
-                grid-template-columns:
-                    repeat(2,1fr);
-
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
 
             .product-image {
-                height: 250px;
+                height: 180px;
             }
 
             .product-info {
@@ -875,7 +665,6 @@
 
             .buy-btn {
                 padding: 8px 10px;
-
                 font-size: 11px;
             }
 
@@ -884,91 +673,64 @@
             }
 
             .footer-grid {
-                grid-template-columns:
-                    1fr 1fr;
+                grid-template-columns: 1fr 1fr;
             }
-
         }
 
-
-        @media(max-width:450px) {
+        @media(max-width: 450px) {
 
             .product-grid {
                 grid-template-columns: 1fr;
             }
 
             .product-image {
-                height: 350px;
+                height: 250px;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-
         }
 
     </style>
 
 </head>
 
-
 <body>
-
 
 <!-- ================= HEADER ================= -->
 
 <header>
 
     <div class="logo">
-        Style<span>Hub</span>
+        Food<span>Hub</span>
     </div>
 
-
     <nav>
-
-        <a href="#">
-            Home
-        </a>
-
-        <a href="#dresses">
-            Dresses
-        </a>
-
-        <a href="#offers">
-            Offers
-        </a>
-
-        <a href="#about">
-            About
-        </a>
-
+        <a href="#">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#offers">Offers</a>
+        <a href="#about">About</a>
     </nav>
-
 
     <div class="header-actions">
 
         <i class="fa-regular fa-user"
-           onclick="showLogin()">
-        </i>
-
+           onclick="showLogin()"></i>
 
         <div class="cart-icon"
              onclick="openCart()">
 
-            <i class="fa-solid fa-bag-shopping">
-            </i>
+            <i class="fa-solid fa-cart-shopping"></i>
 
             <span class="cart-count"
-                  id="cartCount">
-                0
-            </span>
+                  id="cartCount">0</span>
 
         </div>
 
     </div>
 
 </header>
-
 
 
 <!-- ================= HERO ================= -->
@@ -978,27 +740,24 @@
     <div class="hero-content">
 
         <h1>
-            Fashion That<br>
-            Feels Like You
+            Delicious Food,<br>
+            Delivered Fast
         </h1>
 
         <p>
-            Discover beautiful dresses for every occasion.
-            Shop the latest styles at amazing prices.
+            Order your favourite meals from the best restaurants
+            and get them delivered straight to your doorstep.
         </p>
-
 
         <div class="search-box">
 
-            <i class="fa-solid fa-magnifying-glass">
-            </i>
+            <i class="fa-solid fa-magnifying-glass"></i>
 
             <input
-                type="text"
-                id="searchInput"
-                placeholder="Search dresses, gowns, sarees..."
-                onkeyup="searchProducts()">
-
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search pizza, burger, biryani..."
+                    onkeyup="searchProducts()">
 
             <button onclick="searchProducts()">
                 Search
@@ -1008,16 +767,11 @@
 
     </div>
 
-
-    <div class="hero-dress">
-
-        <i class="fa-solid fa-person-dress">
-        </i>
-
+    <div class="hero-food">
+        <i class="fa-solid fa-bowl-food"></i>
     </div>
 
 </section>
-
 
 
 <!-- ================= CATEGORIES ================= -->
@@ -1028,48 +782,50 @@
 
         <div class="section-title">
 
-            <h2>
-                Shop by Category
-            </h2>
+            <h2>Explore Categories</h2>
 
         </div>
-
 
         <div class="categories">
 
             <div class="category active"
-                 onclick="filterCategory('All',this)">
+                 onclick="filterCategory('All', this)">
                 All
             </div>
 
             <div class="category"
-                 onclick="filterCategory('Casual',this)">
-                👗 Casual
+                 onclick="filterCategory('Pizza', this)">
+                🍕 Pizza
             </div>
 
             <div class="category"
-                 onclick="filterCategory('Party',this)">
-                ✨ Party Wear
+                 onclick="filterCategory('Burger', this)">
+                🍔 Burgers
             </div>
 
             <div class="category"
-                 onclick="filterCategory('Gown',this)">
-                💃 Gowns
+                 onclick="filterCategory('Biryani', this)">
+                🍛 Biryani
             </div>
 
             <div class="category"
-                 onclick="filterCategory('Saree',this)">
-                🥻 Sarees
+                 onclick="filterCategory('Indian', this)">
+                🍱 Indian
             </div>
 
             <div class="category"
-                 onclick="filterCategory('Kurti',this)">
-                🌸 Kurtis
+                 onclick="filterCategory('Chinese', this)">
+                🥡 Chinese
             </div>
 
             <div class="category"
-                 onclick="filterCategory('Wedding',this)">
-                💍 Wedding
+                 onclick="filterCategory('Dessert', this)">
+                🍰 Desserts
+            </div>
+
+            <div class="category"
+                 onclick="filterCategory('Drinks', this)">
+                🥤 Drinks
             </div>
 
         </div>
@@ -1079,25 +835,20 @@
 </section>
 
 
-
-<!-- ================= PRODUCTS ================= -->
+<!-- ================= FOOD MENU ================= -->
 
 <section class="section"
-         id="dresses">
+         id="menu">
 
     <div class="container">
 
         <div class="section-title">
 
-            <h2>
-                Trending Dresses
-            </h2>
+            <h2>Popular Food</h2>
 
-            <span id="resultCount">
-            </span>
+            <span id="resultCount"></span>
 
         </div>
-
 
         <div class="product-grid"
              id="productGrid">
@@ -1106,7 +857,6 @@
     </div>
 
 </section>
-
 
 
 <!-- ================= FEATURES ================= -->
@@ -1118,70 +868,50 @@
 
         <div class="features">
 
-
             <div class="feature">
 
-                <i class="fa-solid fa-truck-fast">
-                </i>
+                <i class="fa-solid fa-motorcycle"></i>
 
-                <h3>
-                    Fast Delivery
-                </h3>
+                <h3>Fast Delivery</h3>
 
                 <p>
-                    Quick and reliable delivery
-                    to your doorstep.
+                    Hot and fresh food delivered quickly.
                 </p>
 
             </div>
 
-
             <div class="feature">
 
-                <i class="fa-solid fa-shirt">
-                </i>
+                <i class="fa-solid fa-utensils"></i>
 
-                <h3>
-                    Premium Quality
-                </h3>
+                <h3>Best Restaurants</h3>
 
                 <p>
-                    Carefully selected fashion
-                    for every occasion.
+                    Delicious food from trusted restaurants.
                 </p>
 
             </div>
 
-
             <div class="feature">
 
-                <i class="fa-solid fa-tags">
-                </i>
+                <i class="fa-solid fa-tag"></i>
 
-                <h3>
-                    Best Offers
-                </h3>
+                <h3>Great Offers</h3>
 
                 <p>
-                    Enjoy exciting discounts
-                    on trending styles.
+                    Enjoy exciting deals and discounts.
                 </p>
 
             </div>
 
-
             <div class="feature">
 
-                <i class="fa-solid fa-rotate-left">
-                </i>
+                <i class="fa-solid fa-headset"></i>
 
-                <h3>
-                    Easy Returns
-                </h3>
+                <h3>24/7 Support</h3>
 
                 <p>
-                    Simple and hassle-free
-                    return policy.
+                    Our support team is always available.
                 </p>
 
             </div>
@@ -1193,40 +923,34 @@
 </section>
 
 
-
-<!-- ================= CART MODAL ================= -->
+<!-- ================= CART / CHECKOUT MODAL ================= -->
 
 <div class="modal"
      id="cartModal">
 
-
     <div class="modal-content">
-
 
         <span class="close"
               onclick="closeCart()">
-
             &times;
-
         </span>
 
-
         <h2 class="modal-title">
-            Shopping Bag
+            Your Order
         </h2>
 
-
         <p class="modal-subtitle">
-            Review your items before placing your order.
+            Review your items and enter your delivery details.
         </p>
 
-
-        <div id="cartItems">
+        <div id="cartItems"
+             class="cart-items">
         </div>
 
 
-        <div id="checkoutSection">
+        <!-- CUSTOMER DETAILS -->
 
+        <div id="checkoutSection">
 
             <div class="form-group">
 
@@ -1235,9 +959,9 @@
                 </label>
 
                 <input
-                    type="text"
-                    id="customerName"
-                    placeholder="Enter your name">
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter your name">
 
             </div>
 
@@ -1249,9 +973,9 @@
                 </label>
 
                 <input
-                    type="tel"
-                    id="customerPhone"
-                    placeholder="Enter mobile number">
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="Enter mobile number">
 
             </div>
 
@@ -1263,9 +987,9 @@
                 </label>
 
                 <input
-                    type="email"
-                    id="customerEmail"
-                    placeholder="Enter email">
+                        type="email"
+                        id="customerEmail"
+                        placeholder="Enter email">
 
             </div>
 
@@ -1277,42 +1001,9 @@
                 </label>
 
                 <input
-                    type="text"
-                    id="customerAddress"
-                    placeholder="House No, Street, City">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Size
-                </label>
-
-                <select id="dressSize">
-
-                    <option value="S">
-                        Small (S)
-                    </option>
-
-                    <option value="M">
-                        Medium (M)
-                    </option>
-
-                    <option value="L">
-                        Large (L)
-                    </option>
-
-                    <option value="XL">
-                        Extra Large (XL)
-                    </option>
-
-                    <option value="XXL">
-                        XXL
-                    </option>
-
-                </select>
+                        type="text"
+                        id="customerAddress"
+                        placeholder="House No, Street, City">
 
             </div>
 
@@ -1350,9 +1041,7 @@
 
                 <div class="summary-row">
 
-                    <span>
-                        Subtotal
-                    </span>
+                    <span>Subtotal</span>
 
                     <span id="summarySubtotal">
                         ₹0
@@ -1360,25 +1049,19 @@
 
                 </div>
 
-
                 <div class="summary-row">
 
-                    <span>
-                        Delivery
-                    </span>
+                    <span>Delivery Fee</span>
 
                     <span id="deliveryFee">
-                        ₹49
+                        ₹40
                     </span>
 
                 </div>
 
-
                 <div class="summary-row">
 
-                    <span>
-                        Discount
-                    </span>
+                    <span>Discount</span>
 
                     <span id="discount">
                         ₹0
@@ -1386,12 +1069,9 @@
 
                 </div>
 
-
                 <div class="summary-row summary-total">
 
-                    <span>
-                        Total
-                    </span>
+                    <span>Total</span>
 
                     <span id="summaryTotal">
                         ₹0
@@ -1405,9 +1085,7 @@
             <button class="confirm-btn"
                     onclick="confirmOrder()">
 
-                <i class="fa-solid fa-lock">
-                </i>
-
+                <i class="fa-solid fa-lock"></i>
                 Place Order
 
             </button>
@@ -1419,28 +1097,24 @@
 </div>
 
 
-
 <!-- ================= FOOTER ================= -->
 
 <footer id="about">
 
-
     <div class="footer-grid">
-
 
         <div>
 
             <h3>
-                StyleHub
+                FoodHub
             </h3>
 
             <p>
-                Your destination for stylish dresses,
-                modern fashion and affordable prices.
+                Your favourite destination for delicious food,
+                great prices and fast delivery.
             </p>
 
         </div>
-
 
         <div>
 
@@ -1452,8 +1126,8 @@
                 Home
             </a>
 
-            <a href="#dresses">
-                Dresses
+            <a href="#menu">
+                Menu
             </a>
 
             <a href="#offers">
@@ -1465,7 +1139,6 @@
             </a>
 
         </div>
-
 
         <div>
 
@@ -1482,15 +1155,14 @@
             </a>
 
             <a href="#">
-                Shipping
+                Delivery
             </a>
 
             <a href="#">
-                Returns
+                Refunds
             </a>
 
         </div>
-
 
         <div>
 
@@ -1499,210 +1171,169 @@
             </h3>
 
             <a href="#">
-                <i class="fa-brands fa-instagram">
-                </i>
+                <i class="fa-brands fa-instagram"></i>
                 Instagram
             </a>
 
             <a href="#">
-                <i class="fa-brands fa-facebook">
-                </i>
+                <i class="fa-brands fa-facebook"></i>
                 Facebook
             </a>
 
             <a href="#">
-                <i class="fa-brands fa-pinterest">
-                </i>
-                Pinterest
+                <i class="fa-brands fa-x-twitter"></i>
+                Twitter
             </a>
 
         </div>
 
     </div>
 
-
     <div class="copyright">
 
-        © 2026 StyleHub. All rights reserved.
+        © 2026 FoodHub. All rights reserved.
 
     </div>
 
 </footer>
 
 
-
 <script>
 
-
-    /* ================= DRESS DATA ================= */
+    /* ================= FOOD DATA ================= */
 
     const products = [
 
         {
             id: 1,
-            category: "Casual",
-            name: "Floral Summer Dress",
-            price: 899,
-            oldPrice: 1299,
+            category: "Pizza",
+            name: "Margherita Pizza",
+            price: 299,
+            oldPrice: 349,
             rating: 4.8,
-            description:
-                "Beautiful floral dress perfect for casual outings.",
-            image:
-                "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80"
+            description: "Fresh mozzarella, tomato sauce and basil.",
+            image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 2,
-            category: "Party",
-            name: "Elegant Party Dress",
-            price: 1499,
-            oldPrice: 1999,
+            category: "Pizza",
+            name: "Pepperoni Pizza",
+            price: 399,
+            oldPrice: 449,
             rating: 4.9,
-            description:
-                "Stylish party dress with a modern elegant look.",
-            image:
-                "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80"
+            description: "Loaded with pepperoni and melted cheese.",
+            image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 3,
-            category: "Gown",
-            name: "Evening Maxi Gown",
-            price: 2199,
-            oldPrice: 2799,
+            category: "Burger",
+            name: "Classic Chicken Burger",
+            price: 249,
+            oldPrice: 299,
             rating: 4.7,
-            description:
-                "Premium evening gown designed for special occasions.",
-            image:
-                "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80"
+            description: "Crispy chicken, lettuce, cheese and special sauce.",
+            image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 4,
-            category: "Saree",
-            name: "Designer Silk Saree",
-            price: 2499,
-            oldPrice: 3299,
-            rating: 4.8,
-            description:
-                "Traditional designer saree with a premium finish.",
-            image:
-                "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"
+            category: "Burger",
+            name: "Cheese Burger",
+            price: 219,
+            oldPrice: 269,
+            rating: 4.6,
+            description: "Juicy patty with cheddar cheese and fresh vegetables.",
+            image: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 5,
-            category: "Kurti",
-            name: "Printed Cotton Kurti",
-            price: 699,
-            oldPrice: 999,
-            rating: 4.6,
-            description:
-                "Comfortable cotton kurti for everyday wear.",
-            image:
-                "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80"
+            category: "Biryani",
+            name: "Chicken Biryani",
+            price: 299,
+            oldPrice: 349,
+            rating: 4.9,
+            description: "Aromatic basmati rice cooked with tender chicken.",
+            image: "https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 6,
-            category: "Wedding",
-            name: "Bridal Lehenga",
-            price: 5999,
-            oldPrice: 7499,
-            rating: 4.9,
-            description:
-                "Luxury bridal lehenga for your special day.",
-            image:
-                "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=600&q=80"
+            category: "Biryani",
+            name: "Mutton Biryani",
+            price: 399,
+            oldPrice: 449,
+            rating: 4.8,
+            description: "Traditional biryani with tender mutton and spices.",
+            image: "https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 7,
-            category: "Casual",
-            name: "Denim Shirt Dress",
-            price: 999,
-            oldPrice: 1399,
+            category: "Indian",
+            name: "Paneer Butter Masala",
+            price: 279,
+            oldPrice: 319,
             rating: 4.7,
-            description:
-                "Trendy denim shirt dress with a relaxed fit.",
-            image:
-                "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=600&q=80"
+            description: "Soft paneer cooked in creamy tomato gravy.",
+            image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 8,
-            category: "Party",
-            name: "Satin Cocktail Dress",
-            price: 1799,
-            oldPrice: 2299,
+            category: "Indian",
+            name: "Masala Dosa",
+            price: 149,
+            oldPrice: 179,
             rating: 4.8,
-            description:
-                "Elegant satin dress for parties and celebrations.",
-            image:
-                "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"
+            description: "Crispy dosa served with potato masala and chutney.",
+            image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 9,
-            category: "Gown",
-            name: "Princess Style Gown",
-            price: 2899,
-            oldPrice: 3499,
-            rating: 4.9,
-            description:
-                "Beautiful flowing gown with a princess silhouette.",
-            image:
-                "https://images.unsplash.com/photo-1566479179817-c0f5d7d8f8f7?auto=format&fit=crop&w=600&q=80"
+            category: "Chinese",
+            name: "Veg Hakka Noodles",
+            price: 199,
+            oldPrice: 229,
+            rating: 4.6,
+            description: "Stir-fried noodles with fresh vegetables.",
+            image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 10,
-            category: "Saree",
-            name: "Embroidered Saree",
-            price: 1999,
-            oldPrice: 2599,
+            category: "Chinese",
+            name: "Chicken Fried Rice",
+            price: 249,
+            oldPrice: 289,
             rating: 4.7,
-            description:
-                "Elegant embroidered saree for festive occasions.",
-            image:
-                "https://images.unsplash.com/photo-1610030469668-8e9f641aaf1b?auto=format&fit=crop&w=600&q=80"
+            description: "Flavourful fried rice with chicken and vegetables.",
+            image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 11,
-            category: "Kurti",
-            name: "Anarkali Kurti",
-            price: 1199,
-            oldPrice: 1599,
-            rating: 4.8,
-            description:
-                "Beautiful Anarkali style kurti with a graceful fit.",
-            image:
-                "https://images.unsplash.com/photo-1597983073493-88cd35cf93e7?auto=format&fit=crop&w=600&q=80"
+            category: "Dessert",
+            name: "Chocolate Cake",
+            price: 179,
+            oldPrice: 219,
+            rating: 4.9,
+            description: "Rich and creamy chocolate cake.",
+            image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
         },
-
 
         {
             id: 12,
-            category: "Wedding",
-            name: "Embroidered Bridal Dress",
-            price: 4499,
-            oldPrice: 5999,
-            rating: 4.9,
-            description:
-                "Premium embroidered dress for weddings and receptions.",
-            image:
-                "https://images.unsplash.com/photo-1594552072238-5c1a0f1f2d4b?auto=format&fit=crop&w=600&q=80"
+            category: "Drinks",
+            name: "Fresh Mango Shake",
+            price: 129,
+            oldPrice: 159,
+            rating: 4.8,
+            description: "Refreshing mango shake made with fresh mangoes.",
+            image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&q=80"
         }
 
     ];
@@ -1722,49 +1353,30 @@
         const grid =
             document.getElementById("productGrid");
 
-
         const search =
             document.getElementById("searchInput")
                 .value
                 .toLowerCase();
 
-
         const filteredProducts =
             products.filter(product => {
-
 
                 const categoryMatch =
                     selectedCategory === "All" ||
                     product.category === selectedCategory;
 
-
                 const searchMatch =
-                    product.name
-                        .toLowerCase()
-                        .includes(search)
+                    product.name.toLowerCase().includes(search) ||
+                    product.category.toLowerCase().includes(search) ||
+                    product.description.toLowerCase().includes(search);
 
-                    ||
-
-                    product.category
-                        .toLowerCase()
-                        .includes(search)
-
-                    ||
-
-                    product.description
-                        .toLowerCase()
-                        .includes(search);
-
-
-                return categoryMatch &&
-                       searchMatch;
+                return categoryMatch && searchMatch;
 
             });
 
 
-        document.getElementById("resultCount")
-            .innerText =
-            filteredProducts.length + " dresses";
+        document.getElementById("resultCount").innerText =
+            filteredProducts.length + " items";
 
 
         grid.innerHTML = "";
@@ -1773,31 +1385,14 @@
         if (filteredProducts.length === 0) {
 
             grid.innerHTML = `
-
-                <div style="
-                    grid-column:1/-1;
-                    text-align:center;
-                    padding:50px;
-                    color:#777;
-                ">
-
+                <div style="grid-column:1/-1;text-align:center;padding:50px;color:#777">
                     <i class="fa-solid fa-face-sad-tear"
-                       style="
-                       font-size:45px;
-                       margin-bottom:15px;
-                       ">
-                    </i>
+                       style="font-size:45px;margin-bottom:15px"></i>
 
-                    <h3>
-                        No dresses found
-                    </h3>
+                    <h3>No food found</h3>
 
-                    <p>
-                        Try another search.
-                    </p>
-
+                    <p>Try searching for something else.</p>
                 </div>
-
             `;
 
             return;
@@ -1806,66 +1401,46 @@
 
         filteredProducts.forEach(product => {
 
-
             grid.innerHTML += `
 
                 <div class="product-card">
 
-
                     <button class="wishlist"
-                            onclick="
-                            addWishlist('${product.name}')
-                            ">
+                            onclick="addWishlist('${product.name}')">
 
-                        <i class="
-                            fa-regular
-                            fa-heart
-                        ">
-                        </i>
+                        <i class="fa-regular fa-heart"></i>
 
                     </button>
 
 
                     <div class="product-image">
 
-                        <img
-                            src="${product.image}"
-                            alt="${product.name}">
+                        <img src="${product.image}"
+                             alt="${product.name}">
 
                     </div>
 
 
                     <div class="product-info">
 
-
                         <div class="category-name">
-
                             ${product.category}
-
                         </div>
 
 
                         <div class="product-name">
-
                             ${product.name}
-
                         </div>
 
 
                         <div class="description">
-
                             ${product.description}
-
                         </div>
 
 
                         <div class="rating">
 
-                            <i class="
-                                fa-solid
-                                fa-star
-                            ">
-                            </i>
+                            <i class="fa-solid fa-star"></i>
 
                             ${product.rating}
 
@@ -1878,38 +1453,23 @@
 
                         <div class="price-row">
 
-
                             <div>
 
                                 <span class="price">
-
-                                    ₹${product.price
-                                    .toLocaleString("en-IN")}
-
+                                    ₹${product.price.toLocaleString("en-IN")}
                                 </span>
 
-
                                 <span class="old-price">
-
-                                    ₹${product.oldPrice
-                                    .toLocaleString("en-IN")}
-
+                                    ₹${product.oldPrice.toLocaleString("en-IN")}
                                 </span>
 
                             </div>
 
 
                             <button class="buy-btn"
-                                    onclick="
-                                    addToCart(${product.id})
-                                    ">
+                                    onclick="addToCart(${product.id})">
 
-                                <i class="
-                                    fa-solid
-                                    fa-bag-shopping
-                                ">
-                                </i>
-
+                                <i class="fa-solid fa-cart-plus"></i>
                                 Add
 
                             </button>
@@ -1929,10 +1489,7 @@
 
     /* ================= CATEGORY FILTER ================= */
 
-    function filterCategory(
-        category,
-        element
-    ) {
+    function filterCategory(category, element) {
 
         selectedCategory = category;
 
@@ -1964,18 +1521,15 @@
 
     function addToCart(id) {
 
-
         const product =
-            products.find(
-                product =>
-                    product.id === id
+            products.find(product =>
+                product.id === id
             );
 
 
         const existing =
-            cart.find(
-                item =>
-                    item.id === id
+            cart.find(item =>
+                item.id === id
             );
 
 
@@ -1983,9 +1537,7 @@
 
             existing.quantity++;
 
-        }
-
-        else {
+        } else {
 
             cart.push({
 
@@ -2001,10 +1553,7 @@
         updateCartCount();
 
 
-        alert(
-            product.name +
-            " added to your bag!"
-        );
+        alert(product.name + " added to cart!");
 
     }
 
@@ -2013,18 +1562,16 @@
 
     function updateCartCount() {
 
-
         const total =
             cart.reduce(
-                (sum,item) =>
+                (sum, item) =>
                     sum + item.quantity,
                 0
             );
 
 
-        document.getElementById(
-            "cartCount"
-        ).innerText = total;
+        document.getElementById("cartCount")
+            .innerText = total;
 
     }
 
@@ -2033,13 +1580,10 @@
 
     function openCart() {
 
-
         renderCart();
 
-
-        document.getElementById(
-            "cartModal"
-        ).classList.add("show");
+        document.getElementById("cartModal")
+            .classList.add("show");
 
     }
 
@@ -2048,10 +1592,8 @@
 
     function closeCart() {
 
-
-        document.getElementById(
-            "cartModal"
-        ).classList.remove("show");
+        document.getElementById("cartModal")
+            .classList.remove("show");
 
     }
 
@@ -2060,53 +1602,37 @@
 
     function renderCart() {
 
-
         const cartItems =
-            document.getElementById(
-                "cartItems"
-            );
+            document.getElementById("cartItems");
 
 
         if (cart.length === 0) {
-
 
             cartItems.innerHTML = `
 
                 <div class="empty-cart">
 
-                    <i class="
-                        fa-solid
-                        fa-bag-shopping
-                    ">
-                    </i>
+                    <i class="fa-solid fa-cart-shopping"></i>
 
-                    <h3>
-                        Your bag is empty
-                    </h3>
+                    <h3>Your cart is empty</h3>
 
-                    <p>
-                        Add some beautiful dresses
-                        to continue shopping.
-                    </p>
+                    <p>Add some delicious food to continue.</p>
 
                 </div>
 
             `;
 
 
-            document.getElementById(
-                "checkoutSection"
-            ).style.display = "none";
-
+            document.getElementById("checkoutSection")
+                .style.display = "none";
 
             return;
 
         }
 
 
-        document.getElementById(
-            "checkoutSection"
-        ).style.display = "block";
+        document.getElementById("checkoutSection")
+            .style.display = "block";
 
 
         cartItems.innerHTML = "";
@@ -2114,32 +1640,22 @@
 
         cart.forEach(item => {
 
-
             cartItems.innerHTML += `
 
                 <div class="cart-item">
 
-
-                    <img
-                        src="${item.image}"
-                        alt="${item.name}">
+                    <img src="${item.image}"
+                         alt="${item.name}">
 
 
-                    <div class="
-                        cart-item-info
-                    ">
+                    <div class="cart-item-info">
 
                         <h4>
                             ${item.name}
                         </h4>
 
-                        <span class="
-                            cart-item-price
-                        ">
-
-                            ₹${item.price
-                            .toLocaleString("en-IN")}
-
+                        <span class="cart-item-price">
+                            ₹${item.price.toLocaleString("en-IN")}
                         </span>
 
                     </div>
@@ -2147,35 +1663,16 @@
 
                     <div class="quantity">
 
-
-                        <button
-                            onclick="
-                            changeQuantity(
-                                ${item.id},
-                                -1
-                            )">
-
+                        <button onclick="changeQuantity(${item.id}, -1)">
                             -
-
                         </button>
 
-
                         <span>
-
                             ${item.quantity}
-
                         </span>
 
-
-                        <button
-                            onclick="
-                            changeQuantity(
-                                ${item.id},
-                                1
-                            )">
-
+                        <button onclick="changeQuantity(${item.id}, 1)">
                             +
-
                         </button>
 
                     </div>
@@ -2192,23 +1689,17 @@
     }
 
 
-    /* ================= QUANTITY ================= */
+    /* ================= CHANGE QUANTITY ================= */
 
-    function changeQuantity(
-        id,
-        change
-    ) {
-
+    function changeQuantity(id, change) {
 
         const item =
-            cart.find(
-                item =>
-                    item.id === id
+            cart.find(item =>
+                item.id === id
             );
 
 
-        if (!item)
-            return;
+        if (!item) return;
 
 
         item.quantity += change;
@@ -2217,16 +1708,14 @@
         if (item.quantity <= 0) {
 
             cart =
-                cart.filter(
-                    item =>
-                        item.id !== id
+                cart.filter(item =>
+                    item.id !== id
                 );
 
         }
 
 
         updateCartCount();
-
 
         renderCart();
 
@@ -2237,29 +1726,20 @@
 
     function updateSummary() {
 
-
         const subtotal =
             cart.reduce(
-                (sum,item) =>
-                    sum +
-                    item.price *
-                    item.quantity,
+                (sum, item) =>
+                    sum + item.price * item.quantity,
                 0
             );
 
 
         const delivery =
-            subtotal >= 1499
-                ? 0
-                : 49;
+            subtotal >= 499 ? 0 : 40;
 
 
         const discount =
-            subtotal >= 2999
-                ? 300
-                : subtotal >= 1999
-                    ? 150
-                    : 0;
+            subtotal >= 999 ? 100 : 0;
 
 
         const total =
@@ -2268,33 +1748,26 @@
             discount;
 
 
-        document.getElementById(
-            "summarySubtotal"
-        ).innerText =
-            "₹" +
-            subtotal.toLocaleString("en-IN");
+        document.getElementById("summarySubtotal")
+            .innerText =
+            "₹" + subtotal.toLocaleString("en-IN");
 
 
-        document.getElementById(
-            "deliveryFee"
-        ).innerText =
+        document.getElementById("deliveryFee")
+            .innerText =
             delivery === 0
                 ? "FREE"
                 : "₹" + delivery;
 
 
-        document.getElementById(
-            "discount"
-        ).innerText =
-            "₹" +
-            discount.toLocaleString("en-IN");
+        document.getElementById("discount")
+            .innerText =
+            "₹" + discount.toLocaleString("en-IN");
 
 
-        document.getElementById(
-            "summaryTotal"
-        ).innerText =
-            "₹" +
-            total.toLocaleString("en-IN");
+        document.getElementById("summaryTotal")
+            .innerText =
+            "₹" + total.toLocaleString("en-IN");
 
     }
 
@@ -2303,60 +1776,44 @@
 
     function confirmOrder() {
 
-
         const name =
-            document.getElementById(
-                "customerName"
-            ).value.trim();
+            document.getElementById("customerName")
+                .value.trim();
 
 
         const phone =
-            document.getElementById(
-                "customerPhone"
-            ).value.trim();
+            document.getElementById("customerPhone")
+                .value.trim();
 
 
         const email =
-            document.getElementById(
-                "customerEmail"
-            ).value.trim();
+            document.getElementById("customerEmail")
+                .value.trim();
 
 
         const address =
-            document.getElementById(
-                "customerAddress"
-            ).value.trim();
-
-
-        const size =
-            document.getElementById(
-                "dressSize"
-            ).value;
+            document.getElementById("customerAddress")
+                .value.trim();
 
 
         const payment =
-            document.getElementById(
-                "paymentMethod"
-            ).value;
+            document.getElementById("paymentMethod")
+                .value;
 
 
         if (cart.length === 0) {
 
-            alert(
-                "Your shopping bag is empty."
-            );
+            alert("Your cart is empty.");
 
             return;
 
         }
 
 
-        if (
-            !name ||
+        if (!name ||
             !phone ||
             !email ||
-            !address
-        ) {
+            !address) {
 
             alert(
                 "Please fill all delivery details."
@@ -2380,26 +1837,18 @@
 
         const subtotal =
             cart.reduce(
-                (sum,item) =>
-                    sum +
-                    item.price *
-                    item.quantity,
+                (sum, item) =>
+                    sum + item.price * item.quantity,
                 0
             );
 
 
         const delivery =
-            subtotal >= 1499
-                ? 0
-                : 49;
+            subtotal >= 499 ? 0 : 40;
 
 
         const discount =
-            subtotal >= 2999
-                ? 300
-                : subtotal >= 1999
-                    ? 150
-                    : 0;
+            subtotal >= 999 ? 100 : 0;
 
 
         const total =
@@ -2412,24 +1861,16 @@
 
             "Order placed successfully! 🎉\n\n" +
 
-            "Customer: " +
-            name +
-            "\n" +
+            "Customer: " + name + "\n" +
 
-            "Size: " +
-            size +
-            "\n" +
+            "Items: " + cart.length + "\n" +
 
-            "Payment: " +
-            payment +
-            "\n" +
+            "Payment: " + payment + "\n" +
 
             "Total: ₹" +
             total.toLocaleString("en-IN") +
 
-            "\n\n" +
-
-            "Thank you for shopping with StyleHub!"
+            "\n\nThank you for ordering from FoodHub!"
 
         );
 
@@ -2443,24 +1884,10 @@
         closeCart();
 
 
-        document.getElementById(
-            "customerName"
-        ).value = "";
-
-
-        document.getElementById(
-            "customerPhone"
-        ).value = "";
-
-
-        document.getElementById(
-            "customerEmail"
-        ).value = "";
-
-
-        document.getElementById(
-            "customerAddress"
-        ).value = "";
+        document.getElementById("customerName").value = "";
+        document.getElementById("customerPhone").value = "";
+        document.getElementById("customerEmail").value = "";
+        document.getElementById("customerAddress").value = "";
 
     }
 
@@ -2470,8 +1897,7 @@
     function addWishlist(name) {
 
         alert(
-            name +
-            " added to wishlist ❤️"
+            name + " added to wishlist ❤️"
         );
 
     }
@@ -2490,22 +1916,16 @@
 
     /* ================= CLOSE MODAL ================= */
 
-    document.getElementById(
-        "cartModal"
-    ).addEventListener(
-        "click",
-        function(event) {
+    document.getElementById("cartModal")
+        .addEventListener("click", function(event) {
 
-            if (
-                event.target === this
-            ) {
+            if (event.target === this) {
 
                 closeCart();
 
             }
 
-        }
-    );
+        });
 
 
     /* ================= INITIAL LOAD ================= */
@@ -2513,7 +1933,6 @@
     renderProducts();
 
 </script>
-
 
 </body>
 
